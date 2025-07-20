@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Social links profile</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root{
+      --black: #141414;
+      --dark-gray: #1f1f1f;
+      --gray: #333;
+      --neon: #c3ea3f;
+      --gray-text: #b1b1b1;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("./assets/fonts/static/Inter-Regular.ttf") format("true-type");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("./assets/fonts/static/Inter-Bold.ttf") format("true-type");
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("./assets/fonts/static/Inter-SemiBold.ttf") format("true-type");
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    body{
+      background-color: var(--black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: "Inter", sans-serif;
+      color: var(--gray-text);
+    }
+
+    .card{
+      width: 375px;
+      height: fit-content;
+      background-color: var(--dark-gray);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .card img.avatar{
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+    }
+
+    .profile-info{
+      text-align: center;
+    }
+
+    .profile-info h2{
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .profile-info p.neon{
+      color: var(--neon);
+      font-weight: 700;
+      margin-top: 18px;
+      letter-spacing: -0.04rem;
+    }
+
+    .profile-info p{
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 30px;
+    }
+
+    .social-links{
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .social-links ul{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .social-links li{
+      width: 100%;
+      text-align: center;
+      background-color: var(--gray);
+      padding: 16px 0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-text);
+      transition: background-color 0. 3s ease;
+    }
+
+    .social-links li:hover{
+      background-color: var(--neon);
+      cursor: pointer;
+      color: var(--black);
+    }
+
+
+    @media (max-width: 768px) {
+      .card{
+        width: 325px;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <article class="card">
+      <img src="./assets/images/avatar-jessica.jpeg" alt="Jessica Randall" class="avatar">
+      <div class="profile-info">
+        <h2>Jessica Randall</h2>
+        <p class="neon">London, United Kingdom</p>
+        <p>"Front-end developer and avid reader."</p>
+      </div>
+
+      <div class="social-links">
+        <ul>
+          <li>
+            GitHub
+          </li>
+          <li>
+            Frontend Mentor
+          </li>
+          <li>
+            LinkedIn
+          </li>
+          <li>
+            Twitter
+          </li>
+          <li>
+            Instagram
+          </li>
+        </ul>
+
+    </article>
+  </main>
+  
+  <!-- Jessica Randall
+  London, United Kingdom
+  "Front-end developer and avid reader."
+
+  GitHub
+  Frontend Mentor
+  LinkedIn
+  Twitter
+  Instagram
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
