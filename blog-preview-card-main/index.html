@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png" />
+
+        <title>Frontend Mentor | Blog preview card</title>
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --primary-yellow: hsl(47, 88%, 63%);
+                --gray-950: hsl(0, 0%, 7%);
+                --gray-500: hsl(0, 0%, 42%);
+            }
+
+            @font-face {
+                font-family: 'Figtree';
+                src: url('./assets/fonts/static/Figtree-Medium.ttf')
+                    format('truetype');
+                font-weight: 500;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Figtree';
+                src: url('./assets/fonts/static/Figtree-ExtraBold.ttf')
+                    format('truetype');
+                font-weight: 800;
+                font-style: normal;
+            }
+
+            body {
+                background-color: var(--primary-yellow);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                font-family: 'Figtree', sans-serif;
+            }
+
+            .card {
+                background-color: white;
+                border-radius: 20px;
+                padding: 24px;
+                max-width: 384px;
+                max-height: 522px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                box-shadow: 8px 8px 0 0px #000000;
+                border: #000000 1px solid;
+            }
+
+            .card .card-img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .content h3 {
+                background-color: var(--primary-yellow);
+                width: fit-content;
+                padding: 4px 12px;
+                border-radius: 4px;
+                font-weight: 900;
+                font-size: 14px;
+                line-height: 150%;
+                color: var(--gray-950);
+            }
+
+            .content p {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 150%;
+                color: var(--gray-950);
+            }
+
+            .content h1 {
+                font-weight: 800;
+                font-size: 24px;
+                line-height: 150%;
+                color: var(--gray-950);
+                transition: color 0.2s ease;
+            }
+
+            .content h1:hover {
+                color: var(--primary-yellow);
+                cursor: pointer;
+            }
+
+            .content h2 {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 150%;
+                color: var(--gray-500);
+            }
+
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .user .avatar {
+                width: 32px;
+                height: 32px;
+            }
+
+            .user p {
+                font-weight: 800;
+                color: var(--gray-950);
+                font-size: 14px;
+                line-height: 150%;
+            }
+
+            @media (max-width: 768px) {
+                .card {
+                    width: 327px;
+                    height: 501px;
+                }
+
+                .card .card-img {
+                    height: 200px;
+                    object-fit: cover;
+                }
+
+                .content h1 {
+                    font-size: 20px;
+                }
+
+                .content h2 {
+                    font-size: 14px;
+                }
+
+                .content h3,
+                .content p,
+                .user p {
+                    font-size: 12px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <article class="card">
+                <img
+                    src="./assets/images/illustration-article.svg"
+                    alt="A set of drawers with a plant and a lamp on top"
+                    class="card-img" />
+                <div class="content">
+                    <h3>Learning</h3>
+                    <p>Published 21 Dec 2023</p>
+                    <h1>HTML & CSS foundations</h1>
+                    <h2>
+                        These languages are the backbone of every website,
+                        defining structure, content, and presentation.
+                    </h2>
+                </div>
+                <div class="user">
+                    <img
+                        src="./assets/images/image-avatar.webp"
+                        alt="Avatar of Greg Hooper"
+                        class="avatar" />
+                    <p>Greg Hooper</p>
+                </div>
+            </article>
+        </main>
+        <!-- Learning
+
+  Published 21 Dec 2023
+
+  HTML & CSS foundations
+
+  These languages are the backbone of every website, defining structure, content, and presentation.
+
+  Greg Hooper
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+    </body>
+</html>
