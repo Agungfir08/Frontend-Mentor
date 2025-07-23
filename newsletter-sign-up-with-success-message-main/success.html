@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png" />
+
+        <script src="./script.js" defer></script>
+
+        <title>
+            Frontend Mentor | Newsletter sign-up form with success message
+        </title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --dark-blue: hsl(232, 30.7%, 19.8%);
+                --dark-background: #36384d;
+                --text-color: #262639;
+                --orange: #fb6355;
+                --white: #fff;
+                --gray: #c8c8c8;
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                src: url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                src: url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                padding: 6rem 2rem 2rem 2rem;
+                justify-content: space-between;
+                min-height: 100vh;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .header img {
+                width: 4rem;
+                height: auto;
+            }
+            h1 {
+                font-size: clamp(2.5rem, 6vw, 3.5rem);
+                color: var(--dark-blue);
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 1rem;
+                color: var(--text-color);
+            }
+
+            .btn {
+                background-color: var(--dark-blue);
+                color: var(--white);
+                font-weight: 700;
+                font-size: 0.75rem;
+                padding: 1rem 1.25rem;
+                border-radius: 0.5rem;
+                border: none;
+                cursor: pointer;
+            }
+
+            @media (min-width: 786px) {
+                body {
+                    background-color: var(--dark-background);
+                }
+
+                main {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                }
+
+                .container {
+                    aspect-ratio: 1/1;
+                    width: 500px;
+                    background-color: var(--white);
+                    border-radius: 1.5rem;
+                    padding: 4rem;
+                    min-height: unset;
+                }
+                .header {
+                    gap: 1rem;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .btn:hover {
+                    background: linear-gradient(
+                        90deg,
+                        #ff537b 0%,
+                        #fa6b42 100%
+                    );
+                    box-shadow: 0 0 1rem rgba(250, 107, 66, 0.5);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section class="container">
+                <div class="header">
+                    <img
+                        src="./assets/images/icon-success.svg"
+                        alt="Success illustration" />
+                    <h1>Thanks for subscribing!</h1>
+                    <p>
+                        A confirmation email has been sent to
+                        <strong>ash@loremcompany.com</strong>. Please open it
+                        and click the button inside to confirm your
+                        subscription.
+                    </p>
+                </div>
+                <button type="button" class="btn" id="dismiss-btn">
+                    Dismiss message
+                </button>
+            </section>
+        </main>
+    </body>
+</html>

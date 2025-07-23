@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png" />
+
+        <script src="./script.js" defer></script>
+
+        <title>
+            Frontend Mentor | Newsletter sign-up form with success message
+        </title>
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --dark-blue: hsl(232, 30.7%, 19.8%);
+                --dark-background: #36384d;
+                --text-color: #262639;
+                --orange: #fb6355;
+                --white: #fff;
+                --gray: #c8c8c8;
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                src: url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                src: url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .container img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .signup-content {
+                display: flex;
+                flex-direction: column;
+                gap: 1.75rem;
+                padding: 0 2rem 4rem 2rem;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 6vw, 3.5rem);
+                color: var(--dark-blue);
+            }
+
+            p,
+            ul {
+                font-size: 1rem;
+                color: var(--text-color);
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 1.125rem;
+            }
+
+            ul li {
+                display: flex;
+                align-items: start;
+                gap: 1.3725rem;
+            }
+
+            .signup-form {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+
+            .signup-input {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .signup-input .input-label {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .signup-input .input-label label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--dark-blue);
+            }
+
+            .signup-input .input-label .error-message {
+                color: var(--orange);
+                font-size: 0.75rem;
+                font-weight: 700;
+            }
+
+            .signup-input input {
+                padding: 1rem 1.25rem;
+                border-radius: 0.5rem;
+                border: 1px solid var(--gray);
+            }
+
+            .signup-input input.error {
+                border-color: var(--orange);
+                color: var(--orange);
+                background-color: rgb(251, 99, 85, 0.1);
+            }
+
+            .btn {
+                background-color: var(--dark-blue);
+                color: var(--white);
+                font-weight: 700;
+                font-size: 0.75rem;
+                padding: 1rem 1.25rem;
+                border-radius: 0.5rem;
+                border: none;
+                cursor: pointer;
+            }
+
+            @media (min-width: 786px) {
+                body {
+                    background-color: var(--dark-background);
+                }
+
+                main {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                }
+
+                .container {
+                    width: 800px;
+                    background-color: var(--white);
+                    border-radius: 1.5rem;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .container {
+                    flex-direction: row-reverse;
+                    padding: 1.5rem;
+                    width: max-content;
+                }
+                .signup-content {
+                    justify-content: center;
+                    padding: 0;
+                    margin: 0 2.5rem;
+                    width: 375px;
+                }
+
+                .btn:hover {
+                    background: linear-gradient(
+                        90deg,
+                        #ff537b 0%,
+                        #fa6b42 100%
+                    );
+                    box-shadow: 0 0 1rem rgba(250, 107, 66, 0.5);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section class="container">
+                <picture>
+                    <source
+                        media="(min-width:1024px)"
+                        srcset="
+                            ./assets/images/illustration-sign-up-desktop.svg
+                        " />
+                    <source
+                        media="(min-width:786px)"
+                        srcset="
+                            ./assets/images/illustration-sign-up-tablet.svg
+                        " />
+                    <img
+                        src="./assets/images/illustration-sign-up-mobile.svg"
+                        alt="Illustration of a sign-up form" />
+                </picture>
+
+                <div class="signup-content">
+                    <h1>Stay updated!</h1>
+                    <p>
+                        Join 60,000+ product managers receiving monthly updates
+                        on:
+                    </p>
+                    <ul>
+                        <li>
+                            <img
+                                src="./assets/images/icon-list.svg"
+                                alt="Icon"
+                                style="width: 20px; height: 20px" />
+                            Product discovery and building what matters
+                        </li>
+                        <li>
+                            <img
+                                src="./assets/images/icon-list.svg"
+                                alt="Icon"
+                                style="width: 20px; height: 20px" />
+                            Measuring to ensure updates are a success
+                        </li>
+                        <li>
+                            <img
+                                src="./assets/images/icon-list.svg"
+                                alt="Icon"
+                                style="width: 20px; height: 20px" />
+                            And much more!
+                        </li>
+                    </ul>
+
+                    <form class="signup-form" id="signup-form">
+                        <div class="signup-input">
+                            <div class="input-label">
+                                <label for="email">Email address</label>
+                                <span class="error-message"></span>
+                            </div>
+                            <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="email@company.com" />
+                        </div>
+                        <button type="submit" class="btn">
+                            Subscribe to monthly newsletter
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <!-- Sign-up form start -->
+
+        <!-- Stay updated!
+
+  Join 60,000+ product managers receiving monthly updates on:
+
+  Product discovery and building what matters
+  Measuring to ensure updates are a success
+  And much more!
+
+  Email address
+  email@company.com
+
+  Subscribe to monthly newsletter -->
+
+        <!-- Sign-up form end -->
+
+        <!-- Success message start -->
+
+        <!-- Thanks for subscribing!
+
+  A confirmation email has been sent to ash@loremcompany.com. 
+  Please open it and click the button inside to confirm your subscription.
+
+  Dismiss message -->
+
+        <!-- Success message end -->
+
+        <div class="attribution">
+            Challenge by
+            <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by <a href="#">Agung Firmansyah</a>.
+        </div>
+    </body>
+</html>
