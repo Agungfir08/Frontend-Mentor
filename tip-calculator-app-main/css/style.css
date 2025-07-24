@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+:root {
+    --green-background: hsl(185, 41.5%, 83.9%);
+    --dark-green: hsl(183, 100%, 14.7%);
+    --soft-green: hsl(173, 59.7%, 76.7%);
+    --green: hsl(171, 68.8%, 45.3%);
+    --gray-background: hsl(203, 50%, 97%);
+    --red: hsl(13, 59%, 59%);
+
+    --text-color: hsl(183, 25%, 29%);
+    --gray-text-color: #667474;
+    --green-text-color: #739ea4;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background-color: var(--green-background);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
+}
+
+main > h1 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.42rem;
+    color: var(--text-color);
+}
+
+.container {
+    background-color: white;
+    max-width: 24rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+}
+
+.container .calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+label {
+    font-size: 1rem;
+    color: var(--gray-text-color);
+    font-weight: 700;
+}
+
+span.error-message {
+    font-family: 'Space Mono', monospace;
+    color: var(--red);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.bill,
+.tip,
+.people {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.bill input,
+.people input,
+.tip .tip-buttons input {
+    border-radius: 0.25rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    padding: 0.5rem;
+    text-align: right;
+    border: none;
+    background-color: var(--gray-background);
+}
+
+.bill input:focus,
+.people input:focus,
+.tip .tip-buttons input:focus {
+    outline: 2px solid var(--green);
+}
+
+.people input.error {
+    outline: 2px solid var(--red);
+}
+
+.people .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip .tip-buttons input {
+    text-align: center;
+}
+
+.tip .tip-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.tip .tip-buttons .tip-button {
+    background-color: var(--dark-green);
+    color: white;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    border: none;
+}
+
+.tip .tip-buttons .tip-button.active {
+    background-color: var(--green);
+    color: var(--dark-green);
+}
+
+.tip-preview {
+    background-color: var(--dark-green);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tip-preview .tip-preview__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tip-preview .tip-preview__text .tip-amount,
+.tip-preview .tip-preview__text .tip-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip-preview .tip-preview__text .tip-amount .text p,
+.tip-preview .tip-preview__text .tip-total .text p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.tip-preview .tip-preview__text .tip-amount .text span,
+.tip-preview .tip-preview__text .tip-total .text span {
+    color: var(--gray-text-color);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.tip-preview .tip-preview__text .tip-amount h1,
+.tip-preview .tip-preview__text .tip-total h1 {
+    color: var(--soft-green);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.tip-preview .reset-button {
+    background-color: var(--green);
+    color: var(--dark-green);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tip-preview .reset-button:hover {
+    background-color: var(--soft-green);
+}
+
+@media (min-width: 1024px) {
+    main {
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .container {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        max-width: 57.5rem;
+    }
+
+    .tip .tip-buttons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tip-preview {
+        justify-content: space-between;
+    }
+}
