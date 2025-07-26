@@ -31,7 +31,7 @@ main {
 }
 
 .card {
-    max-width: 325px;
+    width: 325px;
     padding: 24px;
     background-color: var(--White);
     border-radius: 12px;
@@ -93,7 +93,7 @@ main {
     }
 
     .card {
-        max-width: 600px;
+        width: 600px;
         padding: 32px;
     }
 
