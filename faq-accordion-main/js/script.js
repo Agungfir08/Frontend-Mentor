@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll('.card-question button');
-const answers = document.querySelectorAll('#answer');
+const answers = document.querySelectorAll('[id^="answer-"]');
 
 function toggleAccordion(event, index) {
     const button = event.currentTarget;
