@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Green-200: hsl(148, 38%, 91%);
+    --Green-600: hsl(169, 82%, 27%);
+    --Green-900: hsl(171, 83%, 14%);
+    --Red: hsl(0, 66%, 54%);
+
+    --White: hsl(0, 0%, 100%);
+    --Grey-500: hsl(186, 15%, 59%);
+    --Grey-900: hsl(187, 24%, 22%);
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url(../assets/fonts/static/Karla-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url(../assets/fonts/static/Karla-Bold.ttf) format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    background-color: var(--Green-200);
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.card {
+    background-color: var(--White);
+    padding: 24px;
+    border-radius: 12px;
+    width: 350px;
+}
+
+#card-success-message {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Green-900);
+    gap: 16px;
+    color: var(--White);
+    padding: 24px;
+    border-radius: 12px;
+    width: 350px;
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.5s ease-in-out, top 0.6s ease-in-out;
+}
+
+#card-success-message.appear {
+    opacity: 1;
+    top: 5%;
+}
+
+#card-success-message .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--Grey-900);
+    letter-spacing: calc(0.02rem * -1);
+    margin-bottom: 42px;
+}
+
+.card #contact-form,
+.card #contact-form .input-name {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card #contact-form .input-name .firstname,
+.card #contact-form .input-name .lastname,
+.card #contact-form .input-email,
+.card #contact-form .input-query,
+.card #contact-form .input-query .button-group,
+.card #contact-form .input-message,
+.card #contact-form .input-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.card #contact-form .input-name .firstname label,
+.card #contact-form .input-name .lastname label,
+.card #contact-form .input-email label,
+.card #contact-form .input-query legend,
+.card #contact-form .input-message label {
+    font-size: 16px;
+}
+
+span.required {
+    color: var(--Green-600);
+}
+
+span.error-message {
+    color: var(--Red);
+    font-size: 14px;
+}
+
+.card #contact-form .input-name .firstname input,
+.card #contact-form .input-name .lastname input,
+.card #contact-form .input-email input,
+.card #contact-form .input-message textarea {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 1px solid var(--Grey-500);
+}
+
+.card #contact-form .input-name .firstname input:focus,
+.card #contact-form .input-name .lastname input:focus,
+.card #contact-form .input-email input:focus,
+.card #contact-form .input-message textarea:focus,
+.card #contact-form .input-query .button-group .button:focus,
+.card #contact-form .input-name .firstname input:active,
+.card #contact-form .input-name .lastname input:active,
+.card #contact-form .input-email input:active,
+.card #contact-form .input-message textarea:active {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: 1px solid var(--Green-600);
+}
+
+.card #contact-form .input-name .firstname input.error,
+.card #contact-form .input-name .lastname input.error,
+.card #contact-form .input-email input.error,
+.card #contact-form .input-message textarea.error {
+    border: 1px solid var(--Red);
+}
+
+.card #contact-form .input-query {
+    border: none;
+}
+
+.card #contact-form .input-query legend {
+    margin-bottom: 16px;
+}
+
+.card #contact-form .input-query .button-group .button {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--Grey-500);
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.card #contact-form .input-query .button-group .button input[type='radio'] {
+    accent-color: var(--Green-600);
+}
+
+.card
+    #contact-form
+    .input-query
+    .button-group
+    .button:has(input[type='radio']:checked) {
+    outline: 1px solid var(--Green-600);
+    background-color: var(--Green-200);
+}
+
+.card #contact-form .input-checkbox .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.card #contact-form .input-checkbox .checkbox input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--Green-600);
+}
+
+.card #contact-form > button {
+    background-color: var(--Green-600);
+    color: var(--White);
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .card {
+        width: 750px;
+    }
+
+    .card #contact-form .input-name,
+    .card #contact-form .input-query .button-group {
+        flex-direction: row;
+    }
+
+    .card #contact-form > button:hover {
+        background-color: var(--Green-900);
+    }
+
+    .card #contact-form .input-checkbox .checkbox input[type='checkbox']:hover,
+    .card #contact-form .input-checkbox .checkbox label:hover,
+    .card #contact-form .input-name .firstname input:hover,
+    .card #contact-form .input-name .lastname input:hover,
+    .card #contact-form .input-email input:hover,
+    .card #contact-form .input-message textarea:hover,
+    .card
+        #contact-form
+        .input-query
+        .button-group
+        .button
+        input[type='radio']:hover,
+    .card #contact-form .input-query .button-group .button label:hover {
+        cursor: pointer;
+    }
+
+    #card-success-message {
+        width: max-content;
+    }
+
+    span.error-message:hover {
+        cursor: default;
+    }
+}
