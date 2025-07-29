@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png" />
+        <link rel="stylesheet" href="style.css" />
+
+        <title>Frontend Mentor | NFT preview card component</title>
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <article class="card" aria-labelledby="card-title">
+                <div class="card__image-container">
+                    <img
+                        src="./images/image-equilibrium.jpg"
+                        alt="Equilibrium"
+                        class="card__image" />
+                    <div class="card__image-overlay">
+                        <img
+                            src="./images/icon-view.svg"
+                            alt="View"
+                            class="card__image-icon" />
+                    </div>
+                </div>
+                <h1 class="card__title hover__text-blue" id="card-title">
+                    Equilibrium #3429
+                </h1>
+                <p class="card__description">
+                    Our Equilibrium collection promotes balance and calm.
+                </p>
+                <div class="card__info">
+                    <div class="card__info-list">
+                        <img
+                            src="./images/icon-ethereum.svg"
+                            alt="Ethereum"
+                            class="card__info-icon" />
+                        <span class="card__info-price">0.041 ETH</span>
+                    </div>
+                    <div class="card__info-list">
+                        <img
+                            src="./images/icon-clock.svg"
+                            alt="Clock"
+                            class="card__info-icon" />
+                        <span class="card__info-time">3 days left</span>
+                    </div>
+                </div>
+                <div class="card__line"></div>
+                <div class="card__creator">
+                    <img
+                        src="./images/image-avatar.png"
+                        alt="Jules Wyvern"
+                        class="card__creator-image" />
+                    <p class="card__creator-text">
+                        Creation of&nbsp;<span
+                            class="card__creator-name hover__text-blue"
+                            >Jules Wyvern</span
+                        >
+                    </p>
+                </div>
+            </article>
+        </main>
+        <!-- 
+
+  Our Equilibrium collection promotes balance and calm.
+
+  0.041 ETH
+  3 days left
+  
+  Creation of Jules Wyvern -->
+
+        <footer class="attribution">
+            Challenge by
+            <a
+                aria-label="visit Frontend Mentor website"
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by
+            <a
+                aria-label="visit Agung on Github"
+                href="https://github.com/agungfir08/frontend-mentor"
+                >Agung Firmansyah</a
+            >.
+        </footer>
+    </body>
+</html>
