@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png" />
+
+        <title>Frontend Mentor | E-commerce product page</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="./js/script.js" defer></script>
+        <!-- link to the main stylesheet -->
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+        </style>
+    </head>
+    <body>
+        <div tabindex="-1" id="overlay" class="close" aria-hidden="true"></div>
+        <header>
+            <div class="left-side">
+                <button
+                    id="menu-button"
+                    type="button"
+                    aria-label="Toggle Menu"
+                    aria-expanded="false"
+                    aria-controls="nav-links">
+                    <img src="./images/icon-menu.svg" alt="Menu Icon" />
+                </button>
+                <a aria-label="Sneaker Company Logo" href="#">
+                    <img src="./images/logo.svg" alt="Logo" />
+                </a>
+                <nav id="nav-links">
+                    <ul>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="right-side">
+                <div class="cart-header">
+                    <button
+                        type="button"
+                        id="cart-button"
+                        aria-label="View Cart"
+                        aria-controls="cart-dropdown"
+                        aria-expanded="false">
+                        <img src="./images/icon-cart.svg" alt="Cart Icon" />
+                    </button>
+                    <div class="cart-items hidden">
+                        <span id="cart-count"></span>
+                    </div>
+                </div>
+                <img src="./images/image-avatar.png" alt="Avatar Image" />
+            </div>
+
+            <div
+                id="cart-dropdown"
+                class="hidden"
+                role="dialog"
+                aria-labelledby="cart-title"
+                aria-hidden="true">
+                <h2 id="cart-title">Cart</h2>
+                <hr />
+                <div
+                    class="cart-items"
+                    role="region"
+                    aria-label="Cart Items"></div>
+            </div>
+        </header>
+        <main>
+            <section class="image-section" aria-label="Product Images">
+                <div class="image-gallery">
+                    <button
+                        id="previous-image"
+                        type="button"
+                        aria-label="Previous Image"
+                        aria-controls="main-image"
+                        tabindex="0">
+                        <img
+                            src="./images/icon-previous.svg"
+                            alt="Previous Icon" />
+                    </button>
+                    <div
+                        id="main-image"
+                        role="region"
+                        aria-label="Product Images">
+                        <img
+                            src="./images/image-product-1.jpg"
+                            alt="Fall Limited Edition Sneakers from front view" />
+                        <img
+                            src="./images/image-product-2.jpg"
+                            alt="Fall Limited Edition Sneakers from back view" />
+                        <img
+                            src="./images/image-product-3.jpg"
+                            alt="Fall Limited Edition Sneakers from side view of the right shoe" />
+                        <img
+                            src="./images/image-product-4.jpg"
+                            alt="Fall Limited Edition Sneakers from side view of the left shoe" />
+                    </div>
+                    <button
+                        id="next-image"
+                        type="button"
+                        aria-label="Next Image"
+                        aria-controls="main-image"
+                        tabindex="0">
+                        <img src="./images/icon-next.svg" alt="Next Icon" />
+                    </button>
+                </div>
+                <div
+                    class="thumbnail-gallery"
+                    role="tablist"
+                    aria-label="Thumbnail Product Images">
+                    <button
+                        id="thumbnail-1"
+                        type="button"
+                        role="tab"
+                        aria-label="Thumbnail 1"
+                        aria-selected="true"
+                        aria-controls="main-image">
+                        <img
+                            src="./images/image-product-1-thumbnail.jpg"
+                            alt="Thumbnail 1" />
+                    </button>
+                    <button
+                        id="thumbnail-2"
+                        type="button"
+                        role="tab"
+                        aria-label="Thumbnail 2"
+                        aria-selected="false"
+                        aria-controls="main-image">
+                        <img
+                            src="./images/image-product-2-thumbnail.jpg"
+                            alt="Thumbnail 2" />
+                    </button>
+                    <button
+                        id="thumbnail-3"
+                        type="button"
+                        role="tab"
+                        aria-label="Thumbnail 3"
+                        aria-selected="false"
+                        aria-controls="main-image">
+                        <img
+                            src="./images/image-product-3-thumbnail.jpg"
+                            alt="Thumbnail 3" />
+                    </button>
+                    <button
+                        id="thumbnail-4"
+                        type="button"
+                        role="tab"
+                        aria-label="Thumbnail 4"
+                        aria-selected="false"
+                        aria-controls="main-image">
+                        <img
+                            src="./images/image-product-4-thumbnail.jpg"
+                            alt="Thumbnail 4" />
+                    </button>
+                </div>
+            </section>
+            <section class="item-description" aria-labelledby="product-name">
+                <h2>Sneaker Company</h2>
+                <h1 id="product-name">Fall Limited Edition Sneakers</h1>
+                <p>
+                    These low-profile sneakers are your perfect casual wear
+                    companion. Featuring a durable rubber outer sole, they’ll
+                    withstand everything the weather can offer.
+                </p>
+                <div class="price">
+                    <div class="price-discount">
+                        <span class="current-price">$125.00</span>
+                        <span class="discount">50%</span>
+                    </div>
+                    <span class="original-price">$250.00</span>
+                </div>
+                <div class="add-cart">
+                    <div
+                        class="quantity"
+                        role="spinbutton"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="99"
+                        aria-label="Product quantity">
+                        <button
+                            id="decrease-quantity"
+                            aria-label="Decrease Quantity"
+                            tabindex="0">
+                            <img
+                                src="./images/icon-minus.svg"
+                                alt="Minus Icon"
+                                aria-hidden="true" />
+                        </button>
+                        <span id="quantity">0</span>
+                        <button
+                            id="increase-quantity"
+                            aria-label="Increase Quantity"
+                            tabindex="0">
+                            <img
+                                src="./images/icon-plus.svg"
+                                alt="Plus Icon"
+                                aria-hidden="true" />
+                        </button>
+                    </div>
+                    <button id="add-to-cart" aria-label="Add to Cart">
+                        <span class="icon" aria-hidden="true">
+                            <img src="./images/icon-cart.svg" alt="Cart Icon" />
+                        </span>
+                        Add to cart
+                    </button>
+                </div>
+            </section>
+            <section
+                class="image-section lightbox-mode hidden"
+                aria-label="Product Images"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="lightbox-title"
+                aria-hidden="true">
+                <span id="lightbox-title" class="sr-only"
+                    >Product Image Lightbox</span
+                >
+                <button
+                    id="close-lightbox"
+                    type="button"
+                    aria-label="Close Lightbox"
+                    aria-controls="main-image">
+                    <img src="./images/icon-close.svg" alt="Close Icon" />
+                </button>
+                <div class="image-gallery">
+                    <button
+                        id="previous-image"
+                        type="button"
+                        aria-label="Previous Image"
+                        aria-controls="lightbox-main-image"
+                        tabindex="0">
+                        <img
+                            src="./images/icon-previous.svg"
+                            alt="Previous Icon"
+                            aria-hidden="true" />
+                    </button>
+                    <div id="lightbox-main-image">
+                        <img
+                            src="./images/image-product-1.jpg"
+                            alt="Fall Limited Edition Sneakers from front view" />
+                        <img
+                            src="./images/image-product-2.jpg"
+                            alt="Fall Limited Edition Sneakers from back view" />
+                        <img
+                            src="./images/image-product-3.jpg"
+                            alt="Fall Limited Edition Sneakers from side view of the right shoe" />
+                        <img
+                            src="./images/image-product-4.jpg"
+                            alt="Fall Limited Edition Sneakers from side view of the left shoe" />
+                    </div>
+                    <button
+                        id="next-image"
+                        type="button"
+                        aria-label="Next Image"
+                        aria-controls="lightbox-main-image"
+                        tabindex="0">
+                        <img
+                            src="./images/icon-next.svg"
+                            alt="Next Icon"
+                            aria-hidden="true" />
+                    </button>
+                </div>
+                <div
+                    class="thumbnail-gallery"
+                    role="tablist"
+                    aria-label="Thumbnail Product Images">
+                    <button
+                        id="lightbox-thumbnail-1"
+                        aria-label="Thumbnail 1"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="lightbox-main-image">
+                        <img
+                            src="./images/image-product-1-thumbnail.jpg"
+                            alt="Thumbnail 1" />
+                    </button>
+                    <button
+                        id="lightbox-thumbnail-2"
+                        aria-label="Thumbnail 2"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="lightbox-main-image">
+                        <img
+                            src="./images/image-product-2-thumbnail.jpg"
+                            alt="Thumbnail 2" />
+                    </button>
+                    <button
+                        id="lightbox-thumbnail-3"
+                        aria-label="Thumbnail 3"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="lightbox-main-image">
+                        <img
+                            src="./images/image-product-3-thumbnail.jpg"
+                            alt="Thumbnail 3" />
+                    </button>
+                    <button
+                        id="lightbox-thumbnail-4"
+                        aria-label="Thumbnail 4"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="lightbox-main-image">
+                        <img
+                            src="./images/image-product-4-thumbnail.jpg"
+                            alt="Thumbnail 4" />
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="attribution">
+            Challenge by
+            <a
+                aria-label="visit Frontend Mentor website"
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by
+            <a
+                aria-label="visit agung on github"
+                href="https://github.com/agungfir08/frontend-mentor"
+                target="_blank"
+                >Agung Firmansyah</a
+            >.
+        </footer>
+    </body>
+</html>
