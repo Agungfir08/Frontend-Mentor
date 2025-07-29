@@ -347,16 +347,13 @@ main .image-section .image-gallery button img {
     width: 12px;
 }
 
-main .image-section .image-gallery #previous-image {
+main .image-section .image-gallery #previous-image,
+main .image-section .image-gallery #lightbox-previous-image {
     left: 10px;
 }
 
-main .image-section .image-gallery #previous-image:disabled,
-main .image-section .image-gallery #next-image:disabled {
-    opacity: 0.5 !important;
-}
-
-main .image-section .image-gallery #next-image {
+main .image-section .image-gallery #next-image,
+main .image-section .image-gallery #lightbox-next-image {
     right: 10px;
 }
 

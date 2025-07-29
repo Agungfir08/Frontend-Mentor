@@ -38,12 +38,8 @@ const lightboxMainImage = document.getElementById('lightbox-main-image');
 const lightboxThumbnailGalleryButton = document.querySelectorAll(
     '[id^="lightbox-thumbnail-"]'
 );
-const lightboxNextButton = document.querySelector(
-    '.image-section.lightbox-mode .image-gallery #next-image'
-);
-const lightboxPrevButton = document.querySelector(
-    '.image-section.lightbox-mode .image-gallery #previous-image'
-);
+const lightboxNextButton = document.getElementById('lightbox-next-image');
+const lightboxPrevButton = document.getElementById('lightbox-previous-image');
 
 //thumbnail images
 const thumbnailImagesButton = document.querySelectorAll('[id^="thumbnail-"]');
@@ -211,8 +207,11 @@ function cartDropdownToggle() {
 
 function carouselImages(event, mainImageOfCarousel, isLightbox = false) {
     const target = event.currentTarget;
-    const isNext = target.id === 'next-image';
-    const isPrevious = target.id === 'previous-image';
+    const isNext =
+        target.id === 'next-image' || target.id === 'lightbox-next-image';
+    const isPrevious =
+        target.id === 'previous-image' ||
+        target.id === 'lightbox-previous-image';
     const maxindex = mainImageOfCarousel.children.length;
 
     let index = isLightbox ? lightboxIndex : currentIndex;
@@ -282,6 +281,9 @@ function updateThumbnailHighlight(thumbnailButton, index) {
 function lightboxOpen() {
     lightboxContainer.classList.remove('hidden');
     lightboxContainer.setAttribute('aria-hidden', 'false');
+    lightboxIndex = currentIndex;
+    slideImage(lightboxIndex, lightboxMainImage);
+    updateThumbnailHighlight(lightboxThumbnailGalleryButton, lightboxIndex);
     showOverlay();
 }
 
@@ -343,4 +345,3 @@ lightboxPrevButton.addEventListener('click', (event) =>
 );
 
 updateThumbnailHighlight(thumbnailImagesButton, currentIndex);
-updateThumbnailHighlight(lightboxThumbnailGalleryButton, lightboxIndex);
