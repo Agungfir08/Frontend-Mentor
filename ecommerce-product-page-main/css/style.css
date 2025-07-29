@@ -539,7 +539,7 @@ main .image-section.lightbox-mode {
     }
 
     main .image-section .thumbnail-gallery button:hover img {
-        opacity: 0.5;
+        opacity: 0.5 !important;
     }
 
     header #cart-dropdown {
