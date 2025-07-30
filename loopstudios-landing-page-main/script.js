@@ -17,7 +17,7 @@ function openNavigationMenu(event) {
         button.setAttribute('aria-expanded', 'true');
         buttonIcon.src = 'images/icon-close.svg';
         buttonIcon.alt = 'Close Navigation Menu';
-        header.style.position = 'absolute';
+        header.style.position = 'fixed';
     }
 }
 
