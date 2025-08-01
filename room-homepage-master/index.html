@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="./dist/styles.css" />
+        <script src="./script.js" defer></script>
+
+        <title>Frontend Mentor | Room homepage</title>
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+                margin: 1em 0;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="overlay" aria-hidden="false" tabindex="-1"></div>
+        <header class="header">
+            <div class="header__container">
+                <button
+                    type="button"
+                    class="header__menu-button"
+                    aria-controls="nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation menu">
+                    <img
+                        src="./images/icon-hamburger.svg"
+                        alt="Menu icon"
+                        class="header__menu-icon"
+                        aria-hidden="true" />
+                </button>
+
+                <div class="header__logo">
+                    <img
+                        src="./images/logo.svg"
+                        alt="Company logo"
+                        class="header__logo-image" />
+                </div>
+
+                <nav
+                    id="nav"
+                    class="header__nav header__nav--closed"
+                    aria-label="Main navigation">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Home</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Shop</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">About</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero__image-container" id="hero-image">
+                    <div
+                        class="hero__image-slider"
+                        aria-roledescription="carousel">
+                        <picture
+                            class="hero__image-picture"
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="slide 1 of 3 images">
+                            <source
+                                media="(min-width: 1024px)"
+                                srcset="./images/desktop-image-hero-1.jpg" />
+                            <img
+                                src="./images/mobile-image-hero-1.jpg"
+                                alt="Hero image"
+                                class="hero__image" />
+                        </picture>
+                        <picture
+                            class="hero__image-picture"
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="slide 2 of 3 images">
+                            <source
+                                media="(min-width: 1024px)"
+                                srcset="./images/desktop-image-hero-2.jpg" />
+                            <img
+                                src="./images/mobile-image-hero-2.jpg"
+                                alt="Hero image"
+                                class="hero__image" />
+                        </picture>
+                        <picture
+                            class="hero__image-picture"
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="slide 3 of 3 images">
+                            <source
+                                media="(min-width: 1024px)"
+                                srcset="./images/desktop-image-hero-3.jpg" />
+                            <img
+                                src="./images/mobile-image-hero-3.jpg"
+                                alt="Hero image"
+                                class="hero__image" />
+                        </picture>
+                    </div>
+
+                    <fieldset class="hero__button-container">
+                        <legend class="sr-only">Button controls</legend>
+                        <button
+                            type="button"
+                            id="hero-previous"
+                            class="hero__button"
+                            aria-label="previous image"
+                            aria-controls="hero-image"
+                            tabindex="0">
+                            <img
+                                src="./images/icon-angle-left.svg"
+                                alt="Previous Icon"
+                                aria-hidden="true" />
+                        </button>
+                        <button
+                            type="button"
+                            id="hero-next"
+                            class="hero__button"
+                            aria-label="next image"
+                            aria-controls="hero-image"
+                            tabindex="0">
+                            <img
+                                src="./images/icon-angle-right.svg"
+                                alt="Next Icon"
+                                aria-hidden="true" />
+                        </button>
+                    </fieldset>
+                </div>
+                <div class="hero__content">
+                    <h1 class="hero__title" id="hero-title"></h1>
+                    <p class="hero__description"></p>
+                    <button class="hero__shop-button">
+                        Shop now
+                        <span>
+                            <img
+                                src="./images/icon-arrow.svg"
+                                alt="Arrow icon"
+                                class="hero__shop-icon" />
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="about" aria-labelledby="about-title">
+                <img
+                    src="./images/image-about-dark.jpg"
+                    alt=" About image"
+                    class="about__image" />
+                <div class="about__content">
+                    <h2 class="about__title" id="about-title">
+                        About our furniture
+                    </h2>
+                    <p class="about__description">
+                        Our multifunctional collection blends design and
+                        function to suit your individual taste. Make each room
+                        unique, or pick a cohesive theme that best express your
+                        interests and what inspires you. Find the furniture
+                        pieces you need, from traditional to contemporary styles
+                        or anything in between. Product specialists are
+                        available to help you create your dream space.
+                    </p>
+                </div>
+                <img
+                    src="./images/image-about-light.jpg"
+                    alt="About image"
+                    class="about__image" />
+            </section>
+        </main>
+        <!-- Home
+  Shop
+  About
+  Contact
+
+  Discover innovative ways to decorate
+
+  We provide unmatched quality, comfort, and style for property owners across the country. 
+  Our experts combine form and function in bringing your vision to life. Create a room in your 
+  own style with our collection and make your property a reflection of you and what you love.
+
+  Shop now
+
+  We are available all across the globe
+
+  With stores all over the world, it's easy for you to find furniture for your home or place of business. 
+  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our 
+  store locator. Any questions? Don't hesitate to contact us today.
+
+  Shop now
+
+  Manufactured with the best materials
+
+  Our modern furniture store provide a high level of quality. Our company has invested in advanced technology 
+  to ensure that every product is made as perfect and as consistent as possible. With three decades of 
+  experience in this industry, we understand what customers want for their home and office.
+
+  Shop now
+
+  About our furniture
+
+  Our multifunctional collection blends design and function to suit your individual taste.
+  Make each room unique, or pick a cohesive theme that best express your interests and what
+  inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+  or anything in between. Product specialists are available to help you create your dream space. -->
+
+        <footer class="attribution">
+            Challenge by
+            <a
+                aria-label="Visit Frontend Mentor Website"
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by
+            <a
+                aria-label="Visit Agung on GitHub"
+                href="https://github.com/agungfir08/frontend-mentor"
+                >Agung Firmansyah</a
+            >.
+        </footer>
+    </body>
+</html>
