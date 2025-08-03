@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -9,21 +9,23 @@
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="./images/favicon-32x32.png" />
+            href="./images/favicon-32x32.png"
+        />
 
         <title>Frontend Mentor | Bookmark landing page</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="output.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-            rel="stylesheet" />
+            rel="stylesheet"
+        />
 
         <script src="./script.js" defer></script>
         <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
         <style>
             body {
-                font-family: 'Rubik', sans-serif;
+                font-family: "Rubik", sans-serif;
             }
             .attribution {
                 font-size: 11px;
@@ -35,9 +37,10 @@
         </style>
     </head>
     <body>
-        <header class="fixed w-full z-20 bg-white shadow-lg">
+        <header class="fixed z-20 w-full bg-white shadow-lg">
             <div
-                class="relative container mx-auto px-6 py-8 flex items-center justify-between">
+                class="relative container mx-auto flex items-center justify-between px-6 py-8"
+            >
                 <a href="#" class="z-30" id="logo">
                     <img src="./images/logo-bookmark.svg" alt="Logo Icon" />
                 </a>
@@ -48,62 +51,58 @@
                     class="z-30 lg:hidden"
                     aria-controls="nav"
                     aria-expanded="false"
-                    aria-label="Toggle navigation menu">
+                    aria-label="Toggle navigation menu"
+                >
                     <img
                         src="./images/icon-hamburger.svg"
                         alt="Menu Icon"
                         aria-hidden="true"
-                        class="block" />
+                        class="block"
+                    />
                 </button>
 
                 <nav
                     id="nav"
-                    class="fixed top-[-100%] left-0 z-20 flex h-screen w-full flex-col justify-between bg-blue-950/90 px-6 py-[90px] pb-8 transition-all duration-500 ease-in-out lg:static lg:h-fit lg:w-fit lg:bg-transparent lg:p-0">
+                    class="fixed top-[-100%] left-0 z-20 flex h-screen w-full flex-col justify-between bg-blue-950/90 px-6 py-[90px] pb-8 transition-all duration-500 ease-in-out lg:static lg:h-fit lg:w-fit lg:bg-transparent lg:p-0"
+                >
                     <ul
-                        class="flex flex-col text-center *:py-5 *:not-last:border-b-1 *:not-last:border-white/20 *:first:border-t-1 lg:flex-row lg:items-center lg:gap-8 lg:*:border-none lg:*:p-0">
+                        class="flex flex-col text-center *:py-5 *:not-last:border-b-1 *:not-last:border-white/20 *:first:border-t-1 lg:flex-row lg:items-center lg:gap-8 lg:*:border-none lg:*:p-0"
+                    >
                         <li>
-                            <a
-                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
-                                href="#"
-                                >Features</a
-                            >
+                            <a class="nav-links" href="#">Features</a>
                         </li>
                         <li>
-                            <a
-                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
-                                href="#"
-                                >Pricing</a
-                            >
+                            <a class="nav-links" href="#">Pricing</a>
                         </li>
                         <li>
-                            <a
-                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
-                                href="#"
-                                >Contact</a
-                            >
+                            <a class="nav-links" href="#">Contact</a>
                         </li>
                         <li>
                             <button
                                 type="button"
-                                class="w-full rounded-md border-2 py-3 font-medium tracking-widest text-white uppercase lg:w-fit lg:border-red-400 lg:bg-red-400 lg:px-8 lg:text-white hover:text-red-400 hover:bg-white cursor-pointer">
+                                class="w-full cursor-pointer rounded-md border-2 py-3 font-medium tracking-widest text-white uppercase hover:bg-white hover:text-red-400 lg:w-fit lg:border-red-400 lg:bg-red-400 lg:px-8 lg:py-2 lg:text-[13px] lg:font-normal"
+                            >
                                 Login
                             </button>
                         </li>
                     </ul>
                     <ul
-                        class="flex items-center justify-center gap-8 lg:hidden">
+                        class="flex items-center justify-center gap-8 lg:hidden"
+                    >
                         <li>
                             <a href="#">
                                 <img
                                     src="./images/icon-facebook.svg"
-                                    alt="Facebook Icon" />
+                                    alt="Facebook Icon"
+                                />
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <img
                                     src="./images/icon-twitter.svg"
-                                    alt="Twitter Icon" />
+                                    alt="Twitter Icon"
+                                />
                             </a>
                         </li>
                     </ul>
@@ -111,27 +110,34 @@
             </div>
         </header>
         <main class="space-y-28 overflow-x-hidden">
+            <!-- Hero Section -->
             <section
                 aria-labelledby="hero-title"
-                class="pt-[90px] lg:pt-[140px] container mx-auto px-6">
+                class="container mx-auto px-6 pt-[90px] lg:pt-[140px]"
+            >
                 <div
-                    class="flex flex-col lg:flex-row-reverse lg:items-center lg:gap-10">
+                    class="flex flex-col lg:flex-row-reverse lg:items-center lg:gap-10"
+                >
                     <div class="relative flex-1/2">
                         <div
-                            class="absolute top-1/5 -right-16 h-3/4 w-full rounded-l-full bg-blue-600 lg:-right-36"></div>
+                            class="absolute top-1/5 -right-[750px] h-3/4 w-[1000px] rounded-l-full bg-blue-600 md:-right-[600px]"
+                        ></div>
                         <img
                             src="./images/illustration-hero.svg"
                             alt="Hero Image"
-                            class="relative z-10 block h-auto w-full" />
+                            class="relative z-10 block h-auto w-full"
+                        />
                     </div>
-                    <div class="space-y-4 text-center lg:text-left flex-1/2">
+                    <div class="flex-1/2 space-y-4 text-center lg:text-left">
                         <h1
                             id="hero-title"
-                            class="text-2xl lg:text-5xl font-semibold tracking-wide text-blue-950">
+                            class="text-2xl font-semibold tracking-wide text-blue-950 lg:text-5xl"
+                        >
                             A Simple Bookmark Manager
                         </h1>
                         <p
-                            class="text-sm lg:text-lg -tracking-tight lg:tracking-normal text-gray-400">
+                            class="text-sm -tracking-tight text-gray-400 lg:text-lg lg:tracking-normal"
+                        >
                             A clean and simple interface to organize your
                             favourite websites. Open a new browser tab and see
                             your sites load instantly. Try it for free.
@@ -139,44 +145,50 @@
                         <div class="flex items-center gap-3">
                             <button
                                 type="button"
-                                class="flex-1 lg:flex-none rounded-md bg-blue-600 lg:px-6 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-white shadow-lg cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                                class="btn btn-primary flex-1 lg:flex-none"
+                            >
                                 Get it on Chrome
                             </button>
                             <button
                                 type="button"
-                                class="flex-1 lg:flex-none rounded-md bg-gray-100 lg:px-6 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-gray-900 shadow-lg cursor-pointer hover:outline-2 hover:outline-gray-900 hover:bg-white">
+                                class="btn btn-secondary flex-1 lg:flex-none"
+                            >
                                 Get it on Firefox
                             </button>
                         </div>
                     </div>
                 </div>
             </section>
+            <!-- Feature Section -->
             <section
                 aria-labelledby="features-title"
-                class="container mx-auto space-y-8 px-6">
-                <div class="space-y-2 text-center max-w-lg lg:mx-auto">
-                    <h2
-                        id="features-title"
-                        class="text-xl font-semibold lg:text-[32px]">
+                class="container mx-auto space-y-8 px-6"
+            >
+                <div class="max-w-lg space-y-2 text-center lg:mx-auto">
+                    <h2 id="features-title" class="section-heading">
                         Features
                     </h2>
                     <p
-                        class="text-sm lg:text-lg leading-6 tracking-wide lg:tracking-normal text-gray-400">
+                        class="section-paragraph leading-6 tracking-wide lg:tracking-normal"
+                    >
                         Our aim is to make it quick and easy for you to access
                         your favourite websites. Your bookmarks sync between
                         your devices so you can access them on the go.
                     </p>
                 </div>
-
-                <fieldset id="features-list">
-                    <legend class="sr-only">Our Features</legend>
+                <!-- Feature Tabs Button -->
+                <div id="features-list" role="tablist" aria-label="Features">
                     <div
-                        class="flex flex-col lg:flex-row *:border-b-1 *:border-gray-200 *:py-5 *:first:border-t-1 lg:*:border-none lg:justify-center">
+                        class="flex flex-col *:border-b-1 *:border-gray-200 *:py-5 *:first:border-t-1 lg:flex-row lg:justify-center lg:*:border-none"
+                    >
                         <div class="text-center">
                             <button
                                 id="button-feature-1"
                                 type="button"
-                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                class="feature-tab-btn"
+                                role="tab"
+                                aria-controls="feature-image-1"
+                            >
                                 Simple Bookmarking
                             </button>
                         </div>
@@ -184,7 +196,10 @@
                             <button
                                 id="button-feature-2"
                                 type="button"
-                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                class="feature-tab-btn"
+                                role="tab"
+                                aria-controls="feature-image-2"
+                            >
                                 Speedy Searching
                             </button>
                         </div>
@@ -192,152 +207,167 @@
                             <button
                                 id="button-feature-3"
                                 type="button"
-                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                class="feature-tab-btn"
+                                role="tab"
+                                aria-controls="feature-image-3"
+                            >
                                 Easy Sharing
                             </button>
                         </div>
                     </div>
-                </fieldset>
-                <div class="flex flex-col lg:flex-row lg:items-center gap-16">
+                </div>
+                <!-- Feature Images and Description -->
+                <div class="flex flex-col gap-16 lg:flex-row lg:items-center">
                     <div class="relative flex-1/2">
                         <div
-                            class="absolute top-1/5 -left-[750px] md:-left-[600px] h-4/5 w-[1000px] rounded-r-full bg-blue-600"></div>
+                            class="absolute top-1/5 -left-[750px] h-4/5 w-[1000px] rounded-r-full bg-blue-600 md:-left-[600px]"
+                        ></div>
                         <div class="overflow-x-hidden">
                             <div
                                 id="feature-images"
-                                class="relative z-10 flex items-center transition-transform duration-500 ease-in-out">
-                                <picture class="flex-none basis-full">
+                                class="relative z-10 flex items-center transition-transform duration-500 ease-in-out"
+                            >
+                                <div
+                                    id="feature-image-1"
+                                    aria-labelledby="button-feature-1"
+                                    role="tabpanel"
+                                    class="flex-none basis-full"
+                                >
                                     <img
                                         src="./images/illustration-features-tab-1.svg"
                                         alt=" Feature Image"
-                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
-                                </picture>
-                                <picture class="flex-none basis-full">
+                                        class="image-feature"
+                                    />
+                                </div>
+                                <div
+                                    id="feature-image-2"
+                                    aria-labelledby="button-feature-2"
+                                    role="tabpanel"
+                                    class="flex-none basis-full"
+                                >
                                     <img
                                         src="./images/illustration-features-tab-2.svg"
                                         alt=" Feature Image"
-                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
-                                </picture>
-                                <picture class="flex-none basis-full">
+                                        class="image-feature"
+                                    />
+                                </div>
+                                <div
+                                    id="feature-image-3"
+                                    aria-labelledby="button-feature-3"
+                                    role="tabpanel"
+                                    class="flex-none basis-full"
+                                >
                                     <img
                                         src="./images/illustration-features-tab-3.svg"
                                         alt=" Feature Image"
-                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
-                                </picture>
+                                        class="image-feature"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="space-y-2.5 lg:space-y-4 text-center lg:text-left flex-1/2">
+                        class="flex-1/2 space-y-2.5 text-center lg:space-y-4 lg:text-left"
+                    >
                         <h3
                             id="feature-title"
-                            class="text-xl lg:text-[32px] font-semibold transition-opacity duration-300 ease-in-out"></h3>
+                            class="text-xl font-semibold transition-opacity duration-300 ease-in-out lg:text-[32px]"
+                        ></h3>
                         <p
                             id="feature-description"
-                            class="text-sm lg:text-lg leading-7 tracking-wide text-gray-400 transition-opacity duration-300 ease-in-out"></p>
+                            class="text-sm leading-7 tracking-wide text-gray-400 transition-opacity duration-300 ease-in-out lg:text-lg"
+                        ></p>
                         <button
                             type="button"
-                            class="bg-blue-600 text-lg text-white font-semibold py-3 px-6 rounded-md cursor-pointer hidden lg:block">
+                            class="btn btn-primary hidden lg:block"
+                        >
                             More Info
                         </button>
                     </div>
                 </div>
             </section>
-            <section class="container mx-auto px-6 space-y-8">
-                <div class="text-center space-y-2.5 max-w-lg mx-auto">
-                    <h2 class="text-xl lg:text-[32px] font-semibold">
+            <!-- Download Section -->
+            <section
+                class="container mx-auto space-y-8 px-6"
+                aria-labelledby="download-title"
+            >
+                <div class="mx-auto max-w-lg space-y-2.5 text-center">
+                    <h2 id="download-title" class="section-heading">
                         Download the Extension
                     </h2>
-                    <p
-                        class="text-sm lg:text-lg leading-6 tracking-wide text-gray-400">
+                    <p class="section-paragraph leading-6 tracking-wide">
                         We’ve got more browsers in the pipeline. Please do let
                         us know if you’ve got a favourite you’d like us to
                         prioritize.
                     </p>
                 </div>
                 <div
-                    class="flex flex-col lg:flex-row lg:justify-center items-center lg:items-start gap-6">
-                    <article
-                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl">
+                    class="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:justify-center"
+                >
+                    <article class="card">
                         <img
                             src="./images/logo-chrome.svg"
                             alt="Chrome Logo"
-                            class="py-4" />
+                            class="py-4"
+                        />
 
-                        <div class="text-center space-y-1.5">
-                            <h3 class="text-lg lg:text-xl font-semibold">
-                                Add to Chrome
-                            </h3>
-                            <p
-                                class="text-sm leading-6 tracking-wide text-gray-400">
-                                Minimum version 62
-                            </p>
+                        <div class="space-y-1.5 text-center">
+                            <h3 class="card-heading">Add to Chrome</h3>
+                            <p class="card-paragraph">Minimum version 62</p>
                         </div>
                         <img src="./images/bg-dots.svg" alt="dots" />
-                        <button
-                            type="button"
-                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                        <button type="button" class="btn btn-primary">
                             Add & Install Extension
                         </button>
                     </article>
-                    <article
-                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl lg:mt-10">
+                    <article class="card lg:mt-10">
                         <img
                             src="./images/logo-firefox.svg"
                             alt="Firefox Logo"
-                            class="py-4" />
+                            class="py-4"
+                        />
 
-                        <div class="text-center space-y-1.5">
-                            <h3 class="text-lg lg:text-xl font-semibold">
-                                Add to Firefox
-                            </h3>
-                            <p
-                                class="text-sm leading-6 tracking-wide text-gray-400">
-                                Minimum version 55
-                            </p>
+                        <div class="space-y-1.5 text-center">
+                            <h3 class="card-heading">Add to Firefox</h3>
+                            <p class="card-paragraph">Minimum version 55</p>
                         </div>
                         <img src="./images/bg-dots.svg" alt="dots" />
-                        <button
-                            type="button"
-                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                        <button type="button" class="btn btn-primary">
                             Add & Install Extension
                         </button>
                     </article>
 
-                    <article
-                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl lg:mt-20">
+                    <article class="card lg:mt-20">
                         <img
                             src="./images/logo-opera.svg"
                             alt="Opera Logo"
-                            class="py-4" />
+                            class="py-4"
+                        />
 
-                        <div class="text-center space-y-1.5">
-                            <h3 class="text-lg lg:text-xl font-semibold">
-                                Add to Opera
-                            </h3>
-                            <p
-                                class="text-sm leading-6 tracking-wide text-gray-400">
-                                Minimum version 46
-                            </p>
+                        <div class="space-y-1.5 text-center">
+                            <h3 class="card-heading">Add to Opera</h3>
+                            <p class="card-paragraph">Minimum version 46</p>
                         </div>
                         <img src="./images/bg-dots.svg" alt="dots" />
-                        <button
-                            type="button"
-                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                        <button type="button" class="btn btn-primary">
                             Add & Install Extension
                         </button>
                     </article>
                 </div>
             </section>
-            <section class="container mx-auto px-6 space-y-12">
+            <!-- FAQ Section -->
+            <section
+                class="container mx-auto space-y-12 px-6"
+                aria-labelledby="faq-title"
+            >
                 <div
-                    class="text-center space-y-2.5 lg:space-y-4 max-w-lg mx-auto">
-                    <h2 class="text-lg lg:text-[32px] font-semibold">
+                    class="mx-auto max-w-lg space-y-2.5 text-center lg:space-y-4"
+                >
+                    <h2 id="faq-title" class="section-heading">
                         Frequently Asked Questions
                     </h2>
-                    <p
-                        class="text-sm lg:text-lg leading-6 tracking-wide text-gray-400">
+                    <p class="section-paragraph">
                         Here are some of our FAQs. If you have any other
                         questions you’d like answered please feel free to email
                         us.
@@ -345,23 +375,25 @@
                 </div>
 
                 <ul
-                    class="flex flex-col gap-5 *:border-b-1 *:border-gray-200 *:pb-5 lg:max-w-xl lg:mx-auto">
+                    class="flex flex-col gap-5 *:border-b-1 *:border-gray-200 *:pb-5 lg:mx-auto lg:max-w-xl"
+                >
                     <li>
                         <button
                             id="question-1"
                             type="button"
-                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
-                            aria-expanded="false">
+                            class="btn-faq"
+                            aria-expanded="false"
+                        >
                             What is Bookmark?
                             <span>
                                 <img
                                     src="./images/icon-arrow.svg"
                                     alt="arrow icon"
-                                    class="transition-transform duration-300 ease-in-out block" />
+                                    class="accordion-icon"
+                                />
                             </span>
                         </button>
-                        <p
-                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                        <p class="accordion-answer">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Fusce tincidunt justo eget ultricies
                             fringilla. Phasellus blandit ipsum quis quam ornare
@@ -372,18 +404,19 @@
                         <button
                             id="question-2"
                             type="button"
-                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
-                            aria-expanded="false">
+                            class="btn-faq"
+                            aria-expanded="false"
+                        >
                             How can I request a new browser?
                             <span>
                                 <img
                                     src="./images/icon-arrow.svg"
                                     alt="arrow icon"
-                                    class="transition-transform duration-300 ease-in-out block" />
+                                    class="accordion-icon"
+                                />
                             </span>
                         </button>
-                        <p
-                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                        <p class="accordion-answer">
                             Vivamus luctus eros aliquet convallis ultricies.
                             Mauris augue massa, ultricies non ligula.
                             Suspendisse imperdiet. Vivamus luctus eros aliquet
@@ -397,18 +430,19 @@
                         <button
                             id="question-3"
                             type="button"
-                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
-                            aria-expanded="false">
+                            class="btn-faq"
+                            aria-expanded="false"
+                        >
                             Is there a mobile app?
                             <span>
                                 <img
                                     src="./images/icon-arrow.svg"
                                     alt="arrow icon"
-                                    class="transition-transform duration-300 ease-in-out block" />
+                                    class="accordion-icon"
+                                />
                             </span>
                         </button>
-                        <p
-                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                        <p class="accordion-answer">
                             Sed consectetur quam id neque fermentum accumsan.
                             Praesent luctus vestibulum dolor, ut condimentum
                             urna vulputate eget. Cras in ligula quis est
@@ -420,18 +454,19 @@
                         <button
                             id="question-4"
                             type="button"
-                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
-                            aria-expanded="false">
+                            class="btn-faq"
+                            aria-expanded="false"
+                        >
                             What about other Chromium browsers?
                             <span>
                                 <img
                                     src="./images/icon-arrow.svg"
                                     alt="arrow icon"
-                                    class="transition-transform duration-300 ease-in-out block" />
+                                    class="accordion-icon"
+                                />
                             </span>
                         </button>
-                        <p
-                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                        <p class="accordion-answer">
                             Integer condimentum ipsum id imperdiet finibus.
                             Vivamus in placerat mi, at euismod dui. Aliquam
                             vitae neque eget nisl gravida pellentesque non ut
@@ -443,23 +478,31 @@
                 </ul>
                 <button
                     type="button"
-                    class="z-10 relative bg-blue-600 text-sm lg:text-base text-white font-semibold py-3 px-6 rounded-md cursor-pointer block mx-auto">
+                    class="btn btn-primary relative z-10 mx-auto block"
+                >
                     More Info
                 </button>
             </section>
-            <section class="bg-blue-600 py-10">
-                <div class="container mx-auto px-6 space-y-8 max-w-lg">
-                    <div class="text-center space-y-2.5 max-w-md mx-auto">
-                        <h3
-                            class="text-xs font-medium text-white tracking-[0.33rem] uppercase">
-                            35.000+ already joined
-                        </h3>
+            <!-- Stay Up to Date Section -->
+            <section
+                class="bg-blue-600 py-10"
+                aria-labelledby="stay-up-to-date"
+            >
+                <div class="container mx-auto max-w-lg space-y-8 px-6">
+                    <div class="mx-auto max-w-md space-y-2.5 text-center">
                         <p
-                            class="text-xl lg:text-[32px] text-white font-semibold tracking-[0.1rem]">
-                            Stay up-to-date with what we’re doing
+                            class="text-xs font-medium tracking-[0.33rem] text-white uppercase"
+                        >
+                            35.000+ already joined
                         </p>
+                        <h3
+                            id="stay-up-to-date"
+                            class="text-xl font-semibold tracking-[0.1rem] text-white lg:text-[32px]"
+                        >
+                            Stay up-to-date with what we’re doing
+                        </h3>
                     </div>
-                    <div class="flex flex-col lg:flex-row gap-7 lg:gap-3.5">
+                    <div class="flex flex-col gap-7 lg:flex-row lg:gap-3.5">
                         <div class="relative flex-1">
                             <label for="email" class="sr-only">Email</label>
                             <input
@@ -467,22 +510,31 @@
                                 id="email"
                                 autocomplete="email"
                                 placeholder="Enter your email address"
-                                class="bg-white rounded-md pl-4 pr-10 py-3 w-full z-20 relative" />
+                                aria-describedby="error-message"
+                                class="relative z-20 w-full rounded-md bg-white py-3 pr-10 pl-4"
+                            />
                             <span
                                 id="error-message"
-                                class="absolute w-full text-white bg-red-400 -bottom-[21px] z-10 px-2 left-0 rounded-sm text-[8px] py-1 before:bg-red-400 before:absolute before:h-10 before:bottom-0 before:-z-10 before:-left-[1.5px] before:w-1/2 before:rounded-bl-sm after:bg-red-400 after:absolute after:h-10 after:bottom-0 after:-z-10 after:-right-[1.6px] after:w-1/2 after:rounded-br-sm hidden"></span>
+                                class="error-message hidden"
+                                role="alert"
+                                aria-live="assertive"
+                            ></span>
                             <span
                                 id="error-icon"
-                                class="absolute right-3 top-1/2 -translate-y-1/2 z-20 hidden">
+                                class="absolute top-1/2 right-3 z-20 hidden -translate-y-1/2"
+                                aria-hidden="true"
+                            >
                                 <img
                                     src="./images/icon-error.svg"
-                                    alt="error icon" />
+                                    alt="error icon"
+                                />
                             </span>
                         </div>
                         <button
                             type="button"
                             id="contact-us"
-                            class="bg-red-400 text-white font-semibold py-3 px-6 rounded-md lg:w-fit cursor-pointer hover:bg-white hover:text-red-400 hover:outline-2 hover:outline-red-400">
+                            class="btn btn-red"
+                        >
                             Contact Us
                         </button>
                     </div>
@@ -492,13 +544,15 @@
 
         <footer class="bg-blue-950">
             <div
-                class="container mx-auto px-6 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                class="container mx-auto flex flex-col items-center gap-8 px-6 py-8 lg:flex-row lg:gap-12"
+            >
                 <a href="#">
                     <img src="./images/logo-bookmark.svg" alt="bookmark logo" />
                 </a>
 
                 <ul
-                    class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 text-sm font-medium lg:font-normal lg:text-base text-white uppercase">
+                    class="flex flex-col items-center gap-8 text-sm font-medium text-white uppercase lg:flex-row lg:gap-12 lg:text-base lg:font-normal"
+                >
                     <li><a href="#" class="hover:text-red-400">Features</a></li>
                     <li><a href="#" class="hover:text-red-400">Pricing</a></li>
                     <li><a href="#" class="hover:text-red-400">Contact</a></li>
