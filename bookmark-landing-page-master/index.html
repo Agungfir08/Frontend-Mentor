@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png" />
+
+        <title>Frontend Mentor | Bookmark landing page</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+
+        <script src="./script.js" defer></script>
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            body {
+                font-family: 'Rubik', sans-serif;
+            }
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+        </style>
+    </head>
+    <body>
+        <header class="fixed w-full z-20 bg-white shadow-lg">
+            <div
+                class="relative container mx-auto px-6 py-8 flex items-center justify-between">
+                <a href="#" class="z-30" id="logo">
+                    <img src="./images/logo-bookmark.svg" alt="Logo Icon" />
+                </a>
+
+                <button
+                    id="menu-button"
+                    type="button"
+                    class="z-30 lg:hidden"
+                    aria-controls="nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation menu">
+                    <img
+                        src="./images/icon-hamburger.svg"
+                        alt="Menu Icon"
+                        aria-hidden="true"
+                        class="block" />
+                </button>
+
+                <nav
+                    id="nav"
+                    class="fixed top-[-100%] left-0 z-20 flex h-screen w-full flex-col justify-between bg-blue-950/90 px-6 py-[90px] pb-8 transition-all duration-500 ease-in-out lg:static lg:h-fit lg:w-fit lg:bg-transparent lg:p-0">
+                    <ul
+                        class="flex flex-col text-center *:py-5 *:not-last:border-b-1 *:not-last:border-white/20 *:first:border-t-1 lg:flex-row lg:items-center lg:gap-8 lg:*:border-none lg:*:p-0">
+                        <li>
+                            <a
+                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
+                                href="#"
+                                >Features</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
+                                href="#"
+                                >Pricing</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="font-medium tracking-wider text-white uppercase lg:text-gray-900 hover:text-red-400 cursor-pointer"
+                                href="#"
+                                >Contact</a
+                            >
+                        </li>
+                        <li>
+                            <button
+                                type="button"
+                                class="w-full rounded-md border-2 py-3 font-medium tracking-widest text-white uppercase lg:w-fit lg:border-red-400 lg:bg-red-400 lg:px-8 lg:text-white hover:text-red-400 hover:bg-white cursor-pointer">
+                                Login
+                            </button>
+                        </li>
+                    </ul>
+                    <ul
+                        class="flex items-center justify-center gap-8 lg:hidden">
+                        <li>
+                            <a href="#">
+                                <img
+                                    src="./images/icon-facebook.svg"
+                                    alt="Facebook Icon" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img
+                                    src="./images/icon-twitter.svg"
+                                    alt="Twitter Icon" />
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="space-y-28 overflow-x-hidden">
+            <section
+                aria-labelledby="hero-title"
+                class="pt-[90px] lg:pt-[140px] container mx-auto px-6">
+                <div
+                    class="flex flex-col lg:flex-row-reverse lg:items-center lg:gap-10">
+                    <div class="relative flex-1/2">
+                        <div
+                            class="absolute top-1/5 -right-16 h-3/4 w-full rounded-l-full bg-blue-600 lg:-right-36"></div>
+                        <img
+                            src="./images/illustration-hero.svg"
+                            alt="Hero Image"
+                            class="relative z-10 block h-auto w-full" />
+                    </div>
+                    <div class="space-y-4 text-center lg:text-left flex-1/2">
+                        <h1
+                            id="hero-title"
+                            class="text-2xl lg:text-5xl font-semibold tracking-wide text-blue-950">
+                            A Simple Bookmark Manager
+                        </h1>
+                        <p
+                            class="text-sm lg:text-lg -tracking-tight lg:tracking-normal text-gray-400">
+                            A clean and simple interface to organize your
+                            favourite websites. Open a new browser tab and see
+                            your sites load instantly. Try it for free.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <button
+                                type="button"
+                                class="flex-1 lg:flex-none rounded-md bg-blue-600 lg:px-6 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-white shadow-lg cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                                Get it on Chrome
+                            </button>
+                            <button
+                                type="button"
+                                class="flex-1 lg:flex-none rounded-md bg-gray-100 lg:px-6 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-gray-900 shadow-lg cursor-pointer hover:outline-2 hover:outline-gray-900 hover:bg-white">
+                                Get it on Firefox
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                aria-labelledby="features-title"
+                class="container mx-auto space-y-8 px-6">
+                <div class="space-y-2 text-center max-w-lg lg:mx-auto">
+                    <h2
+                        id="features-title"
+                        class="text-xl font-semibold lg:text-[32px]">
+                        Features
+                    </h2>
+                    <p
+                        class="text-sm lg:text-lg leading-6 tracking-wide lg:tracking-normal text-gray-400">
+                        Our aim is to make it quick and easy for you to access
+                        your favourite websites. Your bookmarks sync between
+                        your devices so you can access them on the go.
+                    </p>
+                </div>
+
+                <fieldset id="features-list">
+                    <legend class="sr-only">Our Features</legend>
+                    <div
+                        class="flex flex-col lg:flex-row *:border-b-1 *:border-gray-200 *:py-5 *:first:border-t-1 lg:*:border-none lg:justify-center">
+                        <div class="text-center">
+                            <button
+                                id="button-feature-1"
+                                type="button"
+                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                Simple Bookmarking
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <button
+                                id="button-feature-2"
+                                type="button"
+                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                Speedy Searching
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <button
+                                id="button-feature-3"
+                                type="button"
+                                class="relative cursor-pointer text-sm lg:text-lg before:absolute before:-bottom-5 lg:before:bottom-0 before:left-1/2 before:h-1 before:w-4/5 lg:before:w-full before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300 lg:px-10 lg:py-6 lg:border-b-1 hover:text-red-400">
+                                Easy Sharing
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="flex flex-col lg:flex-row lg:items-center gap-16">
+                    <div class="relative flex-1/2">
+                        <div
+                            class="absolute top-1/5 -left-[750px] md:-left-[600px] h-4/5 w-[1000px] rounded-r-full bg-blue-600"></div>
+                        <div class="overflow-x-hidden">
+                            <div
+                                id="feature-images"
+                                class="relative z-10 flex items-center transition-transform duration-500 ease-in-out">
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-1.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
+                                </picture>
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-2.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
+                                </picture>
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-3.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:max-w-4/5" />
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="space-y-2.5 lg:space-y-4 text-center lg:text-left flex-1/2">
+                        <h3
+                            id="feature-title"
+                            class="text-xl lg:text-[32px] font-semibold transition-opacity duration-300 ease-in-out"></h3>
+                        <p
+                            id="feature-description"
+                            class="text-sm lg:text-lg leading-7 tracking-wide text-gray-400 transition-opacity duration-300 ease-in-out"></p>
+                        <button
+                            type="button"
+                            class="bg-blue-600 text-lg text-white font-semibold py-3 px-6 rounded-md cursor-pointer hidden lg:block">
+                            More Info
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="container mx-auto px-6 space-y-8">
+                <div class="text-center space-y-2.5 max-w-lg mx-auto">
+                    <h2 class="text-xl lg:text-[32px] font-semibold">
+                        Download the Extension
+                    </h2>
+                    <p
+                        class="text-sm lg:text-lg leading-6 tracking-wide text-gray-400">
+                        We’ve got more browsers in the pipeline. Please do let
+                        us know if you’ve got a favourite you’d like us to
+                        prioritize.
+                    </p>
+                </div>
+                <div
+                    class="flex flex-col lg:flex-row lg:justify-center items-center lg:items-start gap-6">
+                    <article
+                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl">
+                        <img
+                            src="./images/logo-chrome.svg"
+                            alt="Chrome Logo"
+                            class="py-4" />
+
+                        <div class="text-center space-y-1.5">
+                            <h3 class="text-lg lg:text-xl font-semibold">
+                                Add to Chrome
+                            </h3>
+                            <p
+                                class="text-sm leading-6 tracking-wide text-gray-400">
+                                Minimum version 62
+                            </p>
+                        </div>
+                        <img src="./images/bg-dots.svg" alt="dots" />
+                        <button
+                            type="button"
+                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                            Add & Install Extension
+                        </button>
+                    </article>
+                    <article
+                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl lg:mt-10">
+                        <img
+                            src="./images/logo-firefox.svg"
+                            alt="Firefox Logo"
+                            class="py-4" />
+
+                        <div class="text-center space-y-1.5">
+                            <h3 class="text-lg lg:text-xl font-semibold">
+                                Add to Firefox
+                            </h3>
+                            <p
+                                class="text-sm leading-6 tracking-wide text-gray-400">
+                                Minimum version 55
+                            </p>
+                        </div>
+                        <img src="./images/bg-dots.svg" alt="dots" />
+                        <button
+                            type="button"
+                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                            Add & Install Extension
+                        </button>
+                    </article>
+
+                    <article
+                        class="flex flex-col items-center gap-5 w-fit py-5 shadow-xl rounded-xl lg:mt-20">
+                        <img
+                            src="./images/logo-opera.svg"
+                            alt="Opera Logo"
+                            class="py-4" />
+
+                        <div class="text-center space-y-1.5">
+                            <h3 class="text-lg lg:text-xl font-semibold">
+                                Add to Opera
+                            </h3>
+                            <p
+                                class="text-sm leading-6 tracking-wide text-gray-400">
+                                Minimum version 46
+                            </p>
+                        </div>
+                        <img src="./images/bg-dots.svg" alt="dots" />
+                        <button
+                            type="button"
+                            class="text-white text-sm font-semibold bg-blue-600 px-8 py-3 rounded-md cursor-pointer hover:bg-white hover:text-blue-600 hover:outline-2 hover:outline-blue-600">
+                            Add & Install Extension
+                        </button>
+                    </article>
+                </div>
+            </section>
+            <section class="container mx-auto px-6 space-y-12">
+                <div
+                    class="text-center space-y-2.5 lg:space-y-4 max-w-lg mx-auto">
+                    <h2 class="text-lg lg:text-[32px] font-semibold">
+                        Frequently Asked Questions
+                    </h2>
+                    <p
+                        class="text-sm lg:text-lg leading-6 tracking-wide text-gray-400">
+                        Here are some of our FAQs. If you have any other
+                        questions you’d like answered please feel free to email
+                        us.
+                    </p>
+                </div>
+
+                <ul
+                    class="flex flex-col gap-5 *:border-b-1 *:border-gray-200 *:pb-5 lg:max-w-xl lg:mx-auto">
+                    <li>
+                        <button
+                            id="question-1"
+                            type="button"
+                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
+                            aria-expanded="false">
+                            What is Bookmark?
+                            <span>
+                                <img
+                                    src="./images/icon-arrow.svg"
+                                    alt="arrow icon"
+                                    class="transition-transform duration-300 ease-in-out block" />
+                            </span>
+                        </button>
+                        <p
+                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Fusce tincidunt justo eget ultricies
+                            fringilla. Phasellus blandit ipsum quis quam ornare
+                            mattis.
+                        </p>
+                    </li>
+                    <li>
+                        <button
+                            id="question-2"
+                            type="button"
+                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
+                            aria-expanded="false">
+                            How can I request a new browser?
+                            <span>
+                                <img
+                                    src="./images/icon-arrow.svg"
+                                    alt="arrow icon"
+                                    class="transition-transform duration-300 ease-in-out block" />
+                            </span>
+                        </button>
+                        <p
+                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                            Vivamus luctus eros aliquet convallis ultricies.
+                            Mauris augue massa, ultricies non ligula.
+                            Suspendisse imperdiet. Vivamus luctus eros aliquet
+                            convallis ultricies. Mauris augue massa, ultricies
+                            non ligula. Suspendisse imperdiet Vivamus luctus
+                            eros aliquet convallis ultricies. Mauris augue
+                            massa, ultricies non ligula. Suspendisse imperdiet.
+                        </p>
+                    </li>
+                    <li>
+                        <button
+                            id="question-3"
+                            type="button"
+                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
+                            aria-expanded="false">
+                            Is there a mobile app?
+                            <span>
+                                <img
+                                    src="./images/icon-arrow.svg"
+                                    alt="arrow icon"
+                                    class="transition-transform duration-300 ease-in-out block" />
+                            </span>
+                        </button>
+                        <p
+                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                            Sed consectetur quam id neque fermentum accumsan.
+                            Praesent luctus vestibulum dolor, ut condimentum
+                            urna vulputate eget. Cras in ligula quis est
+                            pharetra mattis sit amet pharetra purus. Sed
+                            sollicitudin ex et ultricies bibendum.
+                        </p>
+                    </li>
+                    <li>
+                        <button
+                            id="question-4"
+                            type="button"
+                            class="w-full font-medium text-sm lg:text-lg text-gray-900 flex items-center justify-between relative z-10 hover:text-red-400 cursor-pointer"
+                            aria-expanded="false">
+                            What about other Chromium browsers?
+                            <span>
+                                <img
+                                    src="./images/icon-arrow.svg"
+                                    alt="arrow icon"
+                                    class="transition-transform duration-300 ease-in-out block" />
+                            </span>
+                        </button>
+                        <p
+                            class="text-sm lg:text-lg text-gray-500 max-h-0 opacity-0 transition-all duration-300 ease-in-out cursor-default">
+                            Integer condimentum ipsum id imperdiet finibus.
+                            Vivamus in placerat mi, at euismod dui. Aliquam
+                            vitae neque eget nisl gravida pellentesque non ut
+                            velit. More Info 35,000+ already joined Stay
+                            up-to-date with what we’re doing Contact Us Features
+                            Pricing Contact
+                        </p>
+                    </li>
+                </ul>
+                <button
+                    type="button"
+                    class="z-10 relative bg-blue-600 text-sm lg:text-base text-white font-semibold py-3 px-6 rounded-md cursor-pointer block mx-auto">
+                    More Info
+                </button>
+            </section>
+            <section class="bg-blue-600 py-10">
+                <div class="container mx-auto px-6 space-y-8 max-w-lg">
+                    <div class="text-center space-y-2.5 max-w-md mx-auto">
+                        <h3
+                            class="text-xs font-medium text-white tracking-[0.33rem] uppercase">
+                            35.000+ already joined
+                        </h3>
+                        <p
+                            class="text-xl lg:text-[32px] text-white font-semibold tracking-[0.1rem]">
+                            Stay up-to-date with what we’re doing
+                        </p>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-7 lg:gap-3.5">
+                        <div class="relative flex-1">
+                            <label for="email" class="sr-only">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                autocomplete="email"
+                                placeholder="Enter your email address"
+                                class="bg-white rounded-md pl-4 pr-10 py-3 w-full z-20 relative" />
+                            <span
+                                id="error-message"
+                                class="absolute w-full text-white bg-red-400 -bottom-[21px] z-10 px-2 left-0 rounded-sm text-[8px] py-1 before:bg-red-400 before:absolute before:h-10 before:bottom-0 before:-z-10 before:-left-[1.5px] before:w-1/2 before:rounded-bl-sm after:bg-red-400 after:absolute after:h-10 after:bottom-0 after:-z-10 after:-right-[1.6px] after:w-1/2 after:rounded-br-sm hidden"></span>
+                            <span
+                                id="error-icon"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 z-20 hidden">
+                                <img
+                                    src="./images/icon-error.svg"
+                                    alt="error icon" />
+                            </span>
+                        </div>
+                        <button
+                            type="button"
+                            id="contact-us"
+                            class="bg-red-400 text-white font-semibold py-3 px-6 rounded-md lg:w-fit cursor-pointer hover:bg-white hover:text-red-400 hover:outline-2 hover:outline-red-400">
+                            Contact Us
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-blue-950">
+            <div
+                class="container mx-auto px-6 py-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <a href="#">
+                    <img src="./images/logo-bookmark.svg" alt="bookmark logo" />
+                </a>
+
+                <ul
+                    class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 text-sm font-medium lg:font-normal lg:text-base text-white uppercase">
+                    <li><a href="#" class="hover:text-red-400">Features</a></li>
+                    <li><a href="#" class="hover:text-red-400">Pricing</a></li>
+                    <li><a href="#" class="hover:text-red-400">Contact</a></li>
+                </ul>
+                <ul class="flex flex-row items-center gap-6 lg:ml-auto">
+                    <li>
+                        <a href="#"
+                            ><img
+                                src="./images/icon-facebook.svg"
+                                alt="Facebook Icon"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img
+                                src="./images/icon-twitter.svg"
+                                alt="Twitter Icon"
+                        /></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

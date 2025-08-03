@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+@layer components {
+    .feature-button {
+        @apply relative cursor-pointer text-sm font-medium before:absolute before:-bottom-5 before:left-1/2 before:h-1 before:w-4/5 before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300;
+    }
+}

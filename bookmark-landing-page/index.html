@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png" />
+
+        <title>Frontend Mentor | Bookmark landing page</title>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+        <script src="./script.js" defer></script>
+        <link rel="stylesheet" href="./output.css" />
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <style>
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+        </style>
+    </head>
+    <body>
+        <header
+            class="relative container mx-auto flex items-center justify-between px-6 py-8">
+            <a href="#" class="z-30">
+                <img src="./images/logo-bookmark.svg" alt="Logo Icon" />
+            </a>
+
+            <button
+                id="menu-button"
+                type="button"
+                class="z-30 lg:hidden"
+                aria-controls="nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation menu">
+                <img
+                    src="./images/icon-hamburger.svg"
+                    alt="Menu Icon"
+                    aria-hidden="true"
+                    class="block" />
+            </button>
+
+            <nav
+                id="nav"
+                class="fixed top-[-100%] left-0 z-20 flex h-screen w-full flex-col justify-between bg-blue-950/90 px-6 py-[90px] pb-8 transition-all duration-500 ease-in-out lg:static lg:h-fit lg:w-fit lg:bg-transparent lg:p-0">
+                <ul
+                    class="flex flex-col text-center *:py-5 *:not-last:border-b-1 *:not-last:border-white/20 *:first:border-t-1 lg:flex-row lg:items-center lg:gap-8 lg:*:border-none lg:*:p-0">
+                    <li>
+                        <a
+                            class="font-medium tracking-wider text-white uppercase lg:text-gray-900"
+                            href="#"
+                            >Features</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="font-medium tracking-wider text-white uppercase lg:text-gray-900"
+                            href="#"
+                            >Pricing</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="font-medium tracking-wider text-white uppercase lg:text-gray-900"
+                            href="#"
+                            >Contact</a
+                        >
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            class="w-full rounded-md border-2 py-2 font-medium tracking-widest text-white uppercase lg:w-fit lg:border-none lg:bg-red-400 lg:px-8 lg:text-white">
+                            Login
+                        </button>
+                    </li>
+                </ul>
+                <ul class="flex items-center justify-center gap-8 lg:hidden">
+                    <li>
+                        <a href="#">
+                            <img
+                                src="./images/icon-facebook.svg"
+                                alt="Facebook Icon" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img
+                                src="./images/icon-twitter.svg"
+                                alt="Twitter Icon" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="space-y-28">
+            <section aria-labelledby="hero-title">
+                <div class="overflow-x-hidden">
+                    <div class="relative">
+                        <div
+                            class="absolute top-1/5 -right-16 h-3/4 w-full rounded-l-full bg-blue-600 lg:-right-36"></div>
+                        <img
+                            src="./images/illustration-hero.svg"
+                            alt="Hero Image"
+                            class="relative z-10 block h-auto w-full" />
+                    </div>
+                    <div class="container mx-auto space-y-4 px-6 text-center">
+                        <h1
+                            id="hero-title"
+                            class="text-2xl font-semibold tracking-wide text-blue-950">
+                            A Simple Bookmark Manager
+                        </h1>
+                        <p class="text-sm -tracking-tight text-gray-400">
+                            A clean and simple interface to organize your
+                            favourite websites. Open a new browser tab and see
+                            your sites load instantly. Try it for free.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <button
+                                type="button"
+                                class="flex-1 rounded-md bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-lg">
+                                Get it on Chrome
+                            </button>
+                            <button
+                                type="button"
+                                class="flex-1 rounded-md bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-900 shadow-lg">
+                                Get it on Firefox
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                aria-labelledby="features-title"
+                class="container mx-auto space-y-12 px-6">
+                <div class="space-y-2 text-center">
+                    <h2 id="features-title" class="text-xl font-semibold">
+                        Features
+                    </h2>
+                    <p class="text-sm leading-6 tracking-wide text-gray-400">
+                        Our aim is to make it quick and easy for you to access
+                        your favourite websites. Your bookmarks sync between
+                        your devices so you can access them on the go.
+                    </p>
+                </div>
+
+                <fieldset id="features-list">
+                    <legend class="sr-only">Our Features</legend>
+                    <div
+                        class="flex flex-col *:border-b-1 *:border-gray-200 *:py-5 *:first:border-t-1">
+                        <div class="text-center">
+                            <button
+                                id="button-feature-1"
+                                type="button"
+                                class="feature-button">
+                                Simple Bookmarking
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <button
+                                id="button-feature-2"
+                                type="button"
+                                class="relative cursor-pointer text-sm font-medium before:absolute before:-bottom-5 before:left-1/2 before:h-1 before:w-4/5 before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300">
+                                Speedy Searching
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <button
+                                id="button-feature-3"
+                                type="button"
+                                class="relative cursor-pointer text-sm font-medium before:absolute before:-bottom-5 before:left-1/2 before:h-1 before:w-4/5 before:-translate-x-1/2 before:bg-red-400 before:transition-transform before:duration-300">
+                                Easy Sharing
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="flex flex-col gap-16">
+                    <div class="relative">
+                        <div
+                            class="absolute top-1/5 -left-36 h-4/5 max-h-[450px] w-full rounded-r-full bg-blue-600 lg:w-2/5"></div>
+                        <div class="overflow-x-hidden">
+                            <div
+                                id="feature-images"
+                                class="relative z-10 flex items-center transition-transform duration-500 ease-in-out">
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-1.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:m-0" />
+                                </picture>
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-2.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:m-0" />
+                                </picture>
+                                <picture class="flex-none basis-full">
+                                    <img
+                                        src="./images/illustration-features-tab-3.svg"
+                                        alt=" Feature Image"
+                                        class="mx-auto w-full max-w-fit lg:m-0" />
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 text-center">
+                        <h3
+                            id="feature-title"
+                            class="text-xl font-semibold transition-opacity duration-300 ease-in-out"></h3>
+                        <p
+                            id="feature-description"
+                            class="text-sm leading-6 tracking-wide text-gray-400 transition-opacity duration-300 ease-in-out"></p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>Download the Extension</h2>
+                    <p>
+                        We’ve got more browsers in the pipeline. Please do let
+                        us know if you’ve got a favourite you’d like us to
+                        prioritize.
+                    </p>
+                </div>
+            </section>
+        </main>
+        <!-- Features
+  Pricing
+  Contact
+  Login
+
+  A Simple Bookmark Manager
+
+  A clean and simple interface to organize your favourite websites. Open a new 
+  browser tab and see your sites load instantly. Try it for free.
+
+  Get it on Chrome
+  Get it on Firefox
+
+  Features
+
+  Our aim is to make it quick and easy for you to access your favourite websites. 
+  Your bookmarks sync between your devices so you can access them on the go.
+
+  Simple Bookmarking
+  Speedy Searching
+  Easy Sharing
+
+  Bookmark in one click
+
+  Organize your bookmarks however you like. Our simple drag-and-drop interface 
+  gives you complete control over how you manage your favourite sites.
+
+  More Info
+
+  Intelligent search
+
+  Our powerful search feature will help you find saved sites in no time at all. 
+  No need to trawl through all of your bookmarks.
+
+  More Info
+
+  Share your bookmarks
+
+  Easily share your bookmarks and collections with others. Create a shareable 
+  link that you can send at the click of a button.
+
+  More Info
+
+  Download the extension
+
+  We’ve got more browsers in the pipeline. Please do let us know if you’ve 
+  got a favourite you’d like us to prioritize.
+
+  Add to Chrome
+  Minimum version 62
+  Add & Install Extension
+
+  Add to Firefox
+  Minimum version 55
+  Add & Install Extension
+
+  Add to Opera
+  Minimum version 46
+  Add & Install Extension
+
+  Frequently Asked Questions
+  
+  Here are some of our FAQs. If you have any other questions you’d like 
+  answered please feel free to email us. -->
+
+        <!-- Question 1 -->
+        <!-- What is Bookmark? -->
+
+        <!-- Answer 1 -->
+        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt
+        justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare
+        mattis. -->
+
+        <!-- Question 2 -->
+        <!-- How can I request a new browser? -->
+
+        <!-- Answer 2 -->
+        <!-- Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa,
+        ultricies non ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet
+        convallis ultricies. Mauris augue massa, ultricies non ligula.
+        Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies.
+        Mauris augue massa, ultricies non ligula. Suspendisse imperdiet. -->
+
+        <!-- Question 3 -->
+        <!-- Is there a mobile app? -->
+
+        <!-- Answer 3 -->
+        <!-- Sed consectetur quam id neque fermentum accumsan. Praesent luctus
+        vestibulum dolor, ut condimentum urna vulputate eget. Cras in ligula
+        quis est pharetra mattis sit amet pharetra purus. Sed sollicitudin ex et
+        ultricies bibendum. -->
+
+        <!-- Question 4 -->
+        <!-- What about other Chromium browsers? -->
+
+        <!-- Answer 4 -->
+        <!-- Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi,
+        at euismod dui. Aliquam vitae neque eget nisl gravida pellentesque non
+        ut velit. More Info 35,000+ already joined Stay up-to-date with what
+        we’re doing Contact Us Features Pricing Contact -->
+
+        <footer>
+            <p class="attribution">
+                Challenge by
+                <a
+                    aria-label="Visit Frontend Mentor Websites"
+                    href="https://www.frontendmentor.io?ref=challenge"
+                    target="_blank"
+                    >Frontend Mentor</a
+                >. Coded by
+                <a
+                    aria-label="Visit Agung on Github"
+                    href="https://github.com/agungfir08/frontend-mentor"
+                    target="_blank"
+                    >Agung Firmansyah</a
+                >.
+            </p>
+        </footer>
+    </body>
+</html>
