@@ -1,0 +1,166 @@
+@use '../base/' as base;
+
+.home {
+    background-image: url('../../starter-code/assets/home/background-home-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width: base.$breakpoint-md) {
+        background-image: url('../../starter-code/assets/home/background-home-tablet.jpg');
+    }
+
+    @media (min-width: base.$breakpoint-lg) {
+        background-image: url('../../starter-code/assets/home/background-home-desktop.jpg');
+    }
+}
+
+.hero {
+    max-width: base.$breakpoint-xl;
+    margin: 0 auto;
+    padding: base.$spacing-lg;
+    min-height: calc(100vh - 88px);
+    display: flex;
+    flex-direction: column;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-lg;
+        text-align: center;
+    }
+
+    &__title {
+        @include base.font-style(
+            $family: base.$font-family-barlow-condensed,
+            $size: base.$fs-base,
+            $transform: uppercase,
+            $letter-spacing: base.$spacing-2xs
+        );
+        color: base.$color-blue-300;
+
+        &--highlight {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-9xl,
+                $transform: uppercase
+            );
+            display: block;
+            margin-top: base.$spacing-lg;
+            color: base.$color-white;
+        }
+    }
+
+    &__description {
+        @include base.font-style(
+            $family: base.$font-family-barlow,
+            $size: base.$fs-sm,
+            $line-height: calc(180 / 100 * base.$fs-sm)
+        );
+        color: base.$color-blue-300;
+    }
+
+    &__explore {
+        margin: auto 0;
+        text-align: center;
+        position: relative;
+
+        &-button {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-lg,
+                $transform: uppercase
+            );
+            background-color: base.$color-white;
+            border: none;
+            aspect-ratio: 1/1;
+            width: 9rem;
+            border-radius: 50%;
+            color: base.$color-blue-900;
+            z-index: 1;
+            position: relative;
+            cursor: pointer;
+
+            &:hover + .hero__explore-hover-overlay {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-50%) scale(1);
+            }
+        }
+
+        &-hover-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) scale(0);
+            aspect-ratio: 1/1;
+            width: 15rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        &__container {
+            gap: base.$spacing-2xl;
+            justify-content: center;
+            align-items: center;
+        }
+        &__content {
+            max-width: 32rem;
+        }
+        &__title {
+            font-size: base.$fs-3xl;
+
+            &--highlight {
+                margin-top: base.$spacing-lg;
+                font-size: base.$fs-heading;
+            }
+        }
+
+        &__description {
+            font-size: base.$fs-base;
+        }
+
+        &__explore {
+            margin: 0;
+            &-button {
+                font-size: base.$fs-4xl;
+                width: 17rem;
+            }
+
+            &-hover-overlay {
+                width: 20rem;
+            }
+        }
+    }
+
+    @media (min-width: base.$breakpoint-lg) {
+        padding: base.$spacing-7xl base.$spacing-9xl;
+
+        &__container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-height: 39.5rem;
+        }
+
+        &__content {
+            text-align: left;
+            max-width: 33.75rem;
+        }
+
+        &__description {
+            font-size: base.$fs-lg;
+        }
+        &__explore {
+            margin-bottom: 2rem;
+        }
+    }
+}

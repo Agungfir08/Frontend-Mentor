@@ -1,0 +1,237 @@
+@use '../base' as base;
+
+.dest {
+    background-image: url('../../starter-code/assets/destination/background-destination-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width: base.$breakpoint-md) {
+        background-image: url('../../starter-code/assets/destination/background-destination-tablet.jpg');
+    }
+
+    @media (min-width: base.$breakpoint-lg) {
+        background-image: url('../../starter-code/assets/destination/background-destination-desktop.jpg');
+    }
+}
+
+.destination {
+    max-width: base.$breakpoint-xl;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: base.$spacing-lg;
+    padding: base.$spacing-lg;
+    min-height: calc(100vh - 88px);
+    &__title {
+        @include base.font-style(
+            $family: base.$font-family-barlow,
+            $size: base.$fs-base,
+            $weight: base.$fw-bold,
+            $transform: uppercase,
+            $letter-spacing: base.$spacing-2xs
+        );
+        color: base.$color-white;
+        text-align: center;
+
+        &--highlight {
+            font-weight: base.$fw-normal;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        gap: base.$spacing-xl;
+    }
+
+    &__image {
+        width: 100%;
+        max-width: 9.375rem;
+        height: auto;
+        padding-block: base.$spacing-lg;
+        margin: 0 auto;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-lg;
+        text-align: center;
+
+        &--info {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-md;
+        }
+
+        &--title {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-6xl,
+                $weight: base.$fw-normal,
+                $transform: uppercase
+            );
+            color: base.$color-white;
+        }
+
+        &--description {
+            @include base.font-style(
+                $family: base.$font-family-barlow,
+                $size: base.$fs-sm,
+                $line-height: calc(180 / 100 * base.$fs-sm)
+            );
+            color: base.$color-blue-300;
+        }
+
+        &--stats {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-lg;
+        }
+
+        &--distance,
+        &--time {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-sm;
+        }
+
+        &--label {
+            @include base.font-style(
+                $family: base.$font-family-barlow-condensed,
+                $size: base.$fs-xs,
+                $transform: uppercase
+            );
+            color: base.$color-blue-300;
+        }
+
+        &--value {
+            @include base.font-style(
+                $family: base.$font-family-barlow,
+                $size: base.$fs-2xl,
+                $transform: uppercase
+            );
+            color: base.$color-white;
+        }
+    }
+
+    &__buttons-wrapper {
+        display: flex;
+        align-items: center;
+        gap: base.$spacing-xl;
+        margin: 0 auto;
+    }
+
+    &__button {
+        @include base.font-style(
+            $family: base.$font-family-barlow-condensed,
+            $size: base.$fs-xs,
+            $transform: uppercase,
+            $letter-spacing: base.$spacing-2xs
+        );
+        background-color: transparent;
+        border: none;
+        color: base.$color-white;
+        padding-bottom: base.$spacing-sm;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0.1rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            background-color: base.$color-white;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        &--active::before,
+        &:hover::before {
+            transform: scaleX(1);
+        }
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        padding: base.$spacing-xxl;
+
+        &__title {
+            font-size: base.$fs-xl;
+            text-align: left;
+        }
+
+        &__image {
+            max-width: 18.75rem;
+            padding-block: base.$spacing-xxl;
+        }
+
+        &__details {
+            max-width: 32.125rem;
+            margin: 0 auto;
+            &--title {
+                font-size: base.$fs-9xl;
+            }
+
+            &--description {
+                font-size: base.$fs-base;
+            }
+
+            &--stats {
+                flex-direction: row;
+            }
+
+            &--distance,
+            &--time {
+                flex: 1;
+            }
+
+            &--value {
+                font-size: base.$fs-3xl;
+            }
+        }
+
+        &__button {
+            font-size: base.$fs-base;
+        }
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        padding: base.$spacing-2xl base.$spacing-9xl;
+
+        &__title {
+            font-size: base.$fs-3xl;
+        }
+
+        &__content {
+            flex: 1;
+            flex-direction: row;
+            align-items: center;
+            max-height: 45.875rem;
+        }
+
+        &__image {
+            max-width: 30rem;
+        }
+
+        &__details {
+            text-align: left;
+            max-width: 27.8125rem;
+
+            &--title {
+                font-size: base.$fs-10xl;
+            }
+
+            &--description {
+                font-size: base.$fs-lg;
+            }
+        }
+
+        &__buttons-wrapper {
+            margin: 0;
+        }
+    }
+}

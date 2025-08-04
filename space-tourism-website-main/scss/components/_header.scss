@@ -1,0 +1,162 @@
+@use '../base' as base;
+
+.header {
+    background-color: transparent;
+    max-width: base.$breakpoint-xl;
+    margin: 0 auto;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding: base.$spacing-lg;
+        overflow-x: hidden;
+    }
+
+    &__logo {
+        aspect-ratio: 1/1;
+        width: 2.5rem;
+    }
+
+    &__logo,
+    &__menu-icon {
+        display: block;
+    }
+
+    &__menu-button {
+        position: relative;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 5;
+    }
+
+    &__nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: rgb(11, 13, 23, 0.15);
+        backdrop-filter: blur(1.25rem);
+        -webkit-backdrop-filter: blur(1.25rem);
+        z-index: 2;
+        padding-left: base.$spacing-xl;
+        padding-top: base.$spacing-7xl;
+        transition: right 0.3s ease-in-out;
+
+        &--closed {
+            right: -70%;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-xl;
+            list-style: none;
+        }
+
+        &-item {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 0.2rem;
+                background-color: base.$color-white;
+                display: none;
+            }
+
+            &--active::before {
+                display: block;
+            }
+        }
+
+        &-link {
+            @include base.font-style(
+                $family: base.$font-family-barlow-condensed,
+                $size: base.$fs-base,
+                $weight: base.$fw-bold,
+                $transform: uppercase,
+                $letter-spacing: base.$spacing-2xs
+            );
+            color: base.$color-white;
+            text-transform: uppercase;
+            text-decoration: none;
+
+            &--name {
+                font-weight: base.$fw-normal;
+                margin-left: 0.1rem;
+            }
+        }
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        &__container {
+            gap: base.$spacing-lg;
+            padding-block: 0;
+            padding-right: 0;
+        }
+
+        &__menu-button {
+            display: none;
+        }
+
+        &__nav-container {
+            flex: 1;
+            padding-block: calc(base.$spacing-xl + 2px);
+            padding-right: base.$spacing-lg;
+            max-width: 46rem;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        &__nav {
+            position: static;
+            padding: 0;
+            height: fit-content;
+            width: fit-content;
+            justify-self: end;
+            background-color: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+
+            &-list {
+                flex-direction: row;
+                gap: base.$spacing-2xl;
+            }
+
+            &-item {
+                position: relative;
+
+                &::before {
+                    display: block;
+                    top: unset;
+                    bottom: -2rem;
+                    height: 0.2rem;
+                    width: 100%;
+                    transform: scaleX(0);
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                &--active::before,
+                &:hover::before {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+    @media (min-width: base.$breakpoint-lg) {
+        padding-top: base.$spacing-xxl;
+        &__container {
+            padding-left: base.$spacing-3xl;
+        }
+        &__nav-container {
+            padding-right: base.$spacing-3xl;
+            max-width: 46rem;
+        }
+    }
+}
