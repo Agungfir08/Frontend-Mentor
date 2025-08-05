@@ -48,7 +48,7 @@
         &--highlight {
             @include base.font-style(
                 $family: base.$font-family-bellafair,
-                $size: base.$fs-9xl,
+                $size: base.$fs-10xl,
                 $transform: uppercase
             );
             display: block;

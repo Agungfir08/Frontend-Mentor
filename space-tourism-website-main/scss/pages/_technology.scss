@@ -1,0 +1,175 @@
+@use '../base' as base;
+
+.tech {
+    background-image: url('../../starter-code/assets/technology/background-technology-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width: base.$breakpoint-md) {
+        background-image: url('../../starter-code/assets/technology/background-technology-tablet.jpg');
+    }
+
+    @media (min-width: base.$breakpoint-lg) {
+        background-image: url('../../starter-code/assets/technology/background-technology-desktop.jpg');
+    }
+}
+
+.technology {
+    display: flex;
+    flex-direction: column;
+    gap: base.$spacing-lg;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-xl;
+    }
+
+    &__image {
+        width: 100vw;
+        height: auto;
+        max-height: 18.75rem;
+        object-fit: cover;
+        padding-top: base.$spacing-3xl;
+        margin-left: calc(-1 * base.$spacing-lg);
+        margin-right: calc(-1 * base.$spacing-lg);
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-xxl;
+        text-align: center;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: base.$spacing-md;
+        margin: 0 auto;
+    }
+
+    &__button {
+        background-color: transparent;
+        aspect-ratio: 1/1;
+        width: 2.5rem;
+        border-radius: 50%;
+        border: 1px solid base.$color-white;
+        color: base.$color-white;
+        @include base.font-style(
+            $family: base.$font-family-bellafair,
+            $size: base.$fs-lg
+        );
+        cursor: pointer;
+
+        &--active,
+        &:hover {
+            background-color: base.$color-white;
+            color: base.$color-blue-900;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-md;
+
+        &--header {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-xs;
+            color: base.$color-white;
+        }
+
+        &--term {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-lg,
+                $transform: uppercase
+            );
+            opacity: 0.5;
+        }
+
+        &--title {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-2xl,
+                $transform: uppercase
+            );
+        }
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        &__image {
+            padding-top: base.$spacing-3xl;
+            max-height: 22.25rem; //357px in rem
+            margin-left: calc(-1 * base.$spacing-xxl);
+            margin-right: calc(-1 * base.$spacing-xxl);
+        }
+
+        &__info {
+            max-width: 32rem;
+            margin: 0 auto;
+            &--term {
+                font-size: base.$fs-2xl;
+            }
+
+            &--title {
+                font-size: base.$fs-5xl;
+            }
+        }
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        padding-right: 0;
+        // margin: 0;
+        &__content {
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: start;
+        }
+
+        &__image-container {
+            flex: 1;
+            padding-block: base.$spacing-3xl;
+        }
+
+        &__image {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            max-height: none;
+            margin: 0;
+        }
+
+        &__details {
+            flex-direction: row;
+            gap: base.$spacing-3xl;
+            text-align: left;
+            align-items: center;
+        }
+
+        &__buttons {
+            flex-direction: column;
+            gap: base.$spacing-xl;
+            margin: 0;
+        }
+
+        &__button {
+            width: 5rem;
+            font-size: base.$fs-4xl;
+        }
+
+        &__info {
+            max-width: 30.6875rem;
+            margin: 0;
+            gap: base.$spacing-lg;
+            &--term {
+                font-size: base.$fs-4xl;
+            }
+
+            &--title {
+                font-size: base.$fs-7xl;
+            }
+        }
+    }
+}
