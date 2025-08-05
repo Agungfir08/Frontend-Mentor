@@ -1,7 +1,9 @@
+@use './spacing' as spacing;
+@use './colors' as color;
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bellefair&display=swap');
 
 // -----------------
-// Typography
+// Typography variables
 // -----------------
 $font-family-bellafair: 'Bellefair', serif;
 $font-family-barlow-condensed: 'Barlow Condensed', sans-serif;
@@ -14,12 +16,13 @@ $fs-xl: 1.25rem; // 20px
 $fs-2xl: 1.5rem; // 24px
 $fs-3xl: 1.75rem; // 28px
 $fs-4xl: 2rem; // 32px
-$fs-5xl: 3rem; // 48px
-$fs-6xl: 3.5rem; // 56px
-$fs-7xl: 4rem; // 64px
-$fs-8xl: 4.5rem; // 72px
-$fs-9xl: 5rem; // 80px
-$fs-10xl: 6rem; // 96px
+$fs-5xl: 2.5rem; // 40px
+$fs-6xl: 3rem; // 48px
+$fs-7xl: 3.5rem; // 56px
+$fs-8xl: 4rem; // 64px
+$fs-9xl: 4.5rem; // 72px
+$fs-10xl: 5rem; // 80px
+$fs-11xl: 6rem; // 96px
 $fs-subheading: 6.25rem; // 100px
 $fs-heading: 9rem; // 144px
 $fw-normal: 400; // Normal
@@ -44,4 +47,27 @@ $fw-bold: 700; // Bold
     line-height: $line-height;
     text-transform: $transform;
     letter-spacing: $letter-spacing;
+}
+
+// -----------------
+// Typography Presets
+// -----------------
+%page-title {
+    @include font-style(
+        $family: $font-family-barlow,
+        $size: $fs-base,
+        $weight: $fw-bold,
+        $transform: uppercase,
+        $letter-spacing: spacing.$spacing-2xs
+    );
+    color: color.$color-white;
+}
+
+%paragraph-description {
+    @include font-style(
+        $family: $font-family-barlow,
+        $size: $fs-sm,
+        $line-height: calc(180 / 100 * $fs-sm)
+    );
+    color: color.$color-blue-300;
 }

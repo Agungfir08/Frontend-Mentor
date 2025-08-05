@@ -15,28 +15,9 @@
 }
 
 .destination {
-    max-width: base.$breakpoint-xl;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: base.$spacing-lg;
-    padding: base.$spacing-lg;
-    min-height: calc(100vh - 88px);
-    &__title {
-        @include base.font-style(
-            $family: base.$font-family-barlow,
-            $size: base.$fs-base,
-            $weight: base.$fw-bold,
-            $transform: uppercase,
-            $letter-spacing: base.$spacing-2xs
-        );
-        color: base.$color-white;
-        text-align: center;
-
-        &--highlight {
-            font-weight: base.$fw-normal;
-        }
-    }
 
     &__content {
         display: flex;
@@ -76,12 +57,7 @@
         }
 
         &--description {
-            @include base.font-style(
-                $family: base.$font-family-barlow,
-                $size: base.$fs-sm,
-                $line-height: calc(180 / 100 * base.$fs-sm)
-            );
-            color: base.$color-blue-300;
+            @extend %paragraph-description;
         }
 
         &--stats {
@@ -157,13 +133,6 @@
     }
 
     @media (min-width: base.$breakpoint-md) {
-        padding: base.$spacing-xxl;
-
-        &__title {
-            font-size: base.$fs-xl;
-            text-align: left;
-        }
-
         &__image {
             max-width: 18.75rem;
             padding-block: base.$spacing-xxl;
@@ -200,12 +169,6 @@
     }
 
     @media (min-width: base.$breakpoint-xl) {
-        padding: base.$spacing-2xl base.$spacing-9xl;
-
-        &__title {
-            font-size: base.$fs-3xl;
-        }
-
         &__content {
             flex: 1;
             flex-direction: row;

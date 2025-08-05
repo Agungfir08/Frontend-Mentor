@@ -1,0 +1,184 @@
+@use '../base' as base;
+
+.cre {
+    background-image: url('../../starter-code/assets/crew/background-crew-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width: base.$breakpoint-md) {
+        background-image: url('../../starter-code/assets/crew/background-crew-tablet.jpg');
+    }
+
+    @media (min-width: base.$breakpoint-lg) {
+        background-image: url('../../starter-code/assets/crew/background-crew-desktop.jpg');
+    }
+}
+
+.crew {
+    display: flex;
+    flex-direction: column;
+    gap: base.$spacing-lg;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-xl;
+    }
+
+    &__details {
+        padding-top: base.$spacing-xxl;
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-lg;
+        max-width: 32rem;
+        margin: 0 auto;
+    }
+
+    &__member {
+        display: flex;
+        flex-direction: column;
+        gap: base.$spacing-lg;
+        text-align: center;
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-xs;
+            color: base.$color-white;
+        }
+
+        &--role {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-lg,
+                $transform: uppercase
+            );
+            opacity: 0.5;
+        }
+
+        &--name {
+            @include base.font-style(
+                $family: base.$font-family-bellafair,
+                $size: base.$fs-2xl,
+                $transform: uppercase
+            );
+        }
+
+        &--bio {
+            height: 10.25rem;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        align-items: center;
+        gap: base.$spacing-md;
+        margin: 0 auto;
+
+        &-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            &--active .crew__pagination-dot {
+                background-color: base.$color-white;
+            }
+        }
+
+        &-dot {
+            background-color: rgb(255, 255, 255, 0.17);
+            aspect-ratio: 1 / 1;
+            width: 0.625rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__image-container {
+        padding: base.$spacing-2xs base.$spacing-lg;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        display: block;
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 75%,
+            transparent 100%
+        );
+        mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+
+        -webkit-mask-composite: destination-in;
+        mask-composite: intersect;
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        &__details {
+            margin: 0 auto;
+        }
+
+        &__member {
+            &-info {
+                gap: base.$spacing-md;
+            }
+
+            &--role {
+                font-size: base.$fs-2xl;
+            }
+
+            &--name {
+                font-size: base.$fs-5xl;
+            }
+
+            &--bio {
+                height: 7.3125rem;
+            }
+        }
+
+        &__image-container {
+            padding: 0 base.$spacing-7xl;
+        }
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        &__content {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        &__details {
+            flex: 1;
+            margin: 0;
+            gap: base.$spacing-xxl;
+        }
+
+        &__member {
+            text-align: left;
+
+            &-info {
+                gap: base.$spacing-md;
+            }
+
+            &--role {
+                font-size: base.$fs-4xl;
+            }
+
+            &--name {
+                font-size: base.$fs-7xl;
+            }
+
+            &--bio {
+                height: fit-content;
+            }
+        }
+
+        &__pagination {
+            margin: 0;
+        }
+
+        &__image-container {
+            padding: base.$spacing-lg base.$spacing-3xs;
+            flex: 1;
+        }
+    }
+}

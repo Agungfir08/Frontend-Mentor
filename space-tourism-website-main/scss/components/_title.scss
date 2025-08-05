@@ -1,0 +1,19 @@
+@use '../base' as base;
+
+.page-title {
+    @extend %page-title;
+    text-align: center;
+
+    &--highlight {
+        font-weight: base.$fw-normal;
+    }
+
+    @media (min-width: base.$breakpoint-md) {
+        font-size: base.$fs-xl;
+        text-align: left;
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        font-size: base.$fs-3xl;
+    }
+}

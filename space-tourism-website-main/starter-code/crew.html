@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon-32x32.png" />
+        <link rel="stylesheet" href="../dist/styles.css" />
+        <script src="../js/navigation.js" defer></script>
+        <title>Frontend Mentor | Space tourism website</title>
+    </head>
+    <body class="cre">
+        <header class="header">
+            <div class="header__container">
+                <a href="./index.html">
+                    <img
+                        src="./assets/shared/logo.svg"
+                        alt="Logo Icon"
+                        class="header__logo" />
+                </a>
+
+                <div class="header__nav-container">
+                    <button
+                        id="navigation-button"
+                        type="button"
+                        class="header__menu-button"
+                        aria-controls="navigation"
+                        aria-expanded="false"
+                        aria-label="Toggle Navigation">
+                        <img
+                            src="./assets/shared/icon-hamburger.svg"
+                            alt="Menu Icon"
+                            class="header__menu-icon" />
+                    </button>
+                    <nav
+                        id="navigation"
+                        class="header__nav header__nav--closed">
+                        <ul class="header__nav-list">
+                            <li class="header__nav-item">
+                                <a href="./index.html" class="header__nav-link"
+                                    >00
+                                    <span class="header__nav-link--name"
+                                        >Home</span
+                                    ></a
+                                >
+                            </li>
+                            <li class="header__nav-item">
+                                <a
+                                    href="./destination.html"
+                                    class="header__nav-link"
+                                    >01
+                                    <span class="header__nav-link--name"
+                                        >Destination</span
+                                    ></a
+                                >
+                            </li>
+                            <li
+                                class="header__nav-item header__nav-item--active">
+                                <a href="#" class="header__nav-link"
+                                    >02
+                                    <span class="header__nav-link--name"
+                                        >Crew</span
+                                    ></a
+                                >
+                            </li>
+                            <li class="header__nav-item">
+                                <a href="#" class="header__nav-link"
+                                    >03
+                                    <span class="header__nav-link--name"
+                                        >Technology</span
+                                    ></a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="crew container">
+                <h1 class="page-title">
+                    02
+                    <span class="page-title--highlight">Meet your crew</span>
+                </h1>
+                <div class="crew__content">
+                    <div class="crew__details">
+                        <div class="crew__member">
+                            <div class="crew__member-info">
+                                <p class="crew__member--role">Commander</p>
+                                <h2 class="crew__member--name">
+                                    Douglas Hurley
+                                </h2>
+                            </div>
+                            <p class="crew__member--bio page-paragraph">
+                                Douglas Gerald Hurley is an American engineer,
+                                former Marine Corps pilot and former NASA
+                                astronaut. He launched into space for the third
+                                time as commander of Crew Dragon Demo-2.
+                            </p>
+                        </div>
+                        <div class="crew__pagination">
+                            <button
+                                class="crew__pagination-button crew__pagination-button--active"
+                                aria-label="Select Douglas Hurley">
+                                <div class="crew__pagination-dot"></div>
+                            </button>
+                            <button
+                                class="crew__pagination-button"
+                                aria-label="Select Mark Shuttleworth">
+                                <div class="crew__pagination-dot"></div>
+                            </button>
+                            <button
+                                class="crew__pagination-button"
+                                aria-label="Select Victor Glover">
+                                <div class="crew__pagination-dot"></div>
+                            </button>
+                            <button
+                                class="crew__pagination-button"
+                                aria-label="Select Anousheh Ansari">
+                                <div class="crew__pagination-dot"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="crew__image-container">
+                        <img
+                            src="./assets/crew/image-douglas-hurley.webp"
+                            alt="Douglas Hurley"
+                            class="crew__image" />
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 00 Home
+  01 Destination
+  02 Crew
+  03 Technology
+
+  02 Meet your crew
+
+  Commander
+  Douglas Hurley
+
+  Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
+  and former NASA astronaut. He launched into space for the third time as 
+  commander of Crew Dragon Demo-2. -->
+    </body>
+</html>

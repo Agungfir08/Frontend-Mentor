@@ -1,0 +1,13 @@
+@use '../base' as base;
+
+.page-paragraph {
+    @extend %paragraph-description;
+
+    @media (min-width: base.$breakpoint-md) {
+        font-size: base.$fs-base;
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        font-size: base.$fs-lg;
+    }
+}

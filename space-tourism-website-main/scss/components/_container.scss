@@ -1,0 +1,17 @@
+@use '../base' as base;
+
+.container {
+    max-width: base.$breakpoint-xl;
+    margin: 0 auto;
+    padding: base.$spacing-lg;
+    min-height: calc(100vh - 88px);
+
+    @media (min-width: base.$breakpoint-md) {
+        padding: base.$spacing-xxl;
+    }
+
+    @media (min-width: base.$breakpoint-xl) {
+        min-height: calc(100vh - 128px);
+        padding: base.$spacing-2xl base.$spacing-9xl;
+    }
+}
