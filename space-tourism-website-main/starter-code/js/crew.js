@@ -135,7 +135,7 @@ function updateContent(index) {
         .join('-')
         .toLowerCase()}`;
 
-    animation();
+    // animation();
 }
 
 function renderButtons() {
@@ -158,9 +158,10 @@ function renderButtons() {
         dot.setAttribute('aria-hidden', 'true');
         button.appendChild(dot);
         button.addEventListener('click', () => {
-            updateActiveButton(button);
             index = i;
+            updateActiveButton(button);
             updateContent(index);
+            createImageElement(index);
         });
         buttonsWrapper.appendChild(button);
     });
@@ -182,6 +183,11 @@ function createImageElement(index) {
     image.alt = `Image of ${data[index].name}`;
     image.src = data[index].images.webp;
 
+    image.addEventListener('load', () => {
+        animation();
+    });
+
+    imageWrapper.innerHTML = '';
     imageWrapper.appendChild(image);
 }
 
@@ -196,8 +202,8 @@ async function init() {
         data = json.crew;
 
         renderButtons();
-        createImageElement(index);
         updateContent(index);
+        createImageElement(index);
         animationTitle();
     } catch (error) {
         console.error(

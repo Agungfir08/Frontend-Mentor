@@ -34,7 +34,7 @@ function updateContent(index) {
         `destination-tab-${destination.name.toLowerCase()}`
     );
 
-    animation();
+    // animation();
 }
 
 function animation() {
@@ -190,9 +190,10 @@ function renderButtons() {
         button.textContent = destination.name;
         button.dataset.destination = destination.name.toLowerCase();
         button.addEventListener('click', () => {
-            updateActiveButton(button);
             index = i;
+            updateActiveButton(button);
             updateContent(index);
+            createImageElement(index);
         });
         buttonsWrapper.appendChild(button);
     });
@@ -214,6 +215,10 @@ function createImageElement(index) {
     img.alt = data[index].name;
     img.classList.add('destination__image');
 
+    img.addEventListener('load', () => {
+        animation();
+    });
+    contentWrapper.innerHTML = ''; // Clear previous content
     contentWrapper.prepend(img);
 }
 
@@ -228,8 +233,8 @@ async function init() {
         data = json.destinations;
 
         renderButtons();
-        createImageElement(index);
         updateContent(index);
+        createImageElement(index);
         animationTitle();
     } catch (err) {
         console.error('Fetch error:', err);
