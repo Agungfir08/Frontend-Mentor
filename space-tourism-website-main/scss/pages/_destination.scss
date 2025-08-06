@@ -1,16 +1,16 @@
 @use '../base' as base;
 
 .dest {
-    background-image: url('../../starter-code/assets/destination/background-destination-mobile.jpg');
+    background-image: url('../assets/destination/background-destination-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 
     @media (min-width: base.$breakpoint-md) {
-        background-image: url('../../starter-code/assets/destination/background-destination-tablet.jpg');
+        background-image: url('../assets/destination/background-destination-tablet.jpg');
     }
 
     @media (min-width: base.$breakpoint-lg) {
-        background-image: url('../../starter-code/assets/destination/background-destination-desktop.jpg');
+        background-image: url('../assets/destination/background-destination-desktop.jpg');
     }
 }
 

@@ -219,7 +219,7 @@ function createImageElement(index) {
 
 async function init() {
     try {
-        const response = await fetch('../starter-code/data.json');
+        const response = await fetch('../data.json');
         if (!response.ok) {
             window.alert('Failed to fetch data. Please try again later.');
             throw new Error('Network response was not ok');
