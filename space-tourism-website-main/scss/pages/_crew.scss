@@ -96,12 +96,14 @@
 
     &__image-container {
         padding: base.$spacing-2xs base.$spacing-lg;
+        margin: 0 auto;
     }
 
     &__image {
         width: 100%;
         height: auto;
-        display: block;
+        max-height: 20.5rem;
+
         -webkit-mask-image: linear-gradient(
             to bottom,
             black 75%,
@@ -139,11 +141,16 @@
         &__image-container {
             padding: 0 base.$spacing-7xl;
         }
+
+        &__image {
+            max-height: 27.5rem;
+        }
     }
 
     @media (min-width: base.$breakpoint-xl) {
         &__content {
             flex-direction: row;
+            margin: auto 0;
         }
 
         &__details {
@@ -187,7 +194,10 @@
 
         &__image-container {
             padding: base.$spacing-lg base.$spacing-3xs;
-            flex: 1;
+        }
+
+        &__image {
+            max-height: 37.625rem;
         }
     }
 }

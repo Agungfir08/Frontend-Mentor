@@ -40,6 +40,12 @@
         gap: base.$spacing-lg;
         text-align: center;
 
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: base.$spacing-lg;
+        }
+
         &--info {
             display: flex;
             flex-direction: column;
@@ -145,10 +151,6 @@
                 font-size: base.$fs-10xl;
             }
 
-            &--description {
-                font-size: base.$fs-base;
-            }
-
             &--stats {
                 flex-direction: row;
             }
@@ -186,10 +188,6 @@
 
             &--title {
                 font-size: base.$fs-11xl;
-            }
-
-            &--description {
-                font-size: base.$fs-lg;
             }
         }
 

@@ -11,6 +11,9 @@
             href="./assets/favicon-32x32.png" />
         <link rel="stylesheet" href="../dist/styles.css" />
         <script src="../js/navigation.js" defer></script>
+        <script src="../js/tech.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
         <title>Frontend Mentor | Space tourism website</title>
     </head>
     <body class="tech">
@@ -24,6 +27,7 @@
                 </a>
 
                 <div class="header__nav-container">
+                    <div class="header__line"></div>
                     <button
                         id="navigation-button"
                         type="button"
@@ -83,59 +87,26 @@
             </div>
         </header>
         <main>
-            <section class="technology container">
-                <h1 class="page-title">
+            <section class="technology container" aria-labelledby="tech-title">
+                <h1 class="page-title" id="tech-title">
                     03
                     <span class="page-title--highlight">Space launch 101</span>
                 </h1>
                 <div class="technology__content">
-                    <picture class="technology__image-container">
-                        <source
-                            media="(max-width: 767px)"
-                            srcset="
-                                ./assets/technology/image-launch-vehicle-landscape.jpg
-                            " />
-                        <source
-                            media="(min-width: 768px and max-width: 1440px)"
-                            srcset="
-                                ./assets/technology/image-launch-vehicle-portrait.jpg
-                            " />
-                        <img
-                            src="./assets/technology/image-launch-vehicle-portrait.jpg"
-                            alt=" Launch Vehicle"
-                            class="technology__image" />
-                    </picture>
                     <div class="technology__details">
-                        <div class="technology__buttons">
-                            <button
-                                type="button"
-                                class="technology__button technology__button--active">
-                                1</button
-                            ><button type="button" class="technology__button">
-                                2</button
-                            ><button type="button" class="technology__button">
-                                3
-                            </button>
-                        </div>
-                        <div class="technology__info">
+                        <div
+                            class="technology__buttons"
+                            role="tablist"
+                            aria-label="Select Technology"></div>
+                        <div class="technology__info" role="tabpanel">
                             <div class="technology__info--header">
                                 <p class="technology__info--term">
                                     The Terminology
                                 </p>
-                                <h2 class="technology__info--title">
-                                    Launch Vehicle
-                                </h2>
+                                <h2 class="technology__info--title"></h2>
                             </div>
                             <p
-                                class="technology__info--description page-paragraph">
-                                A launch vehicle or carrier rocket is a
-                                rocket-propelled vehicle used to carry a payload
-                                from Earth's surface to space, usually to Earth
-                                orbit or beyond. Our WEB-X carrier rocket is the
-                                most powerful in operation. Standing 150 metres
-                                tall, it's quite an awe-inspiring sight on the
-                                launch pad!
-                            </p>
+                                class="technology__info--description page-paragraph"></p>
                         </div>
                     </div>
                 </div>

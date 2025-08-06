@@ -11,7 +11,9 @@
             href="./assets/favicon-32x32.png" />
         <link rel="stylesheet" href="../dist/styles.css" />
         <script src="../js/navigation.js" defer></script>
-
+        <script src="../js/destination.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
         <title>Frontend Mentor | Space tourism website</title>
     </head>
     <body class="dest">
@@ -25,6 +27,7 @@
                 </a>
 
                 <div class="header__nav-container">
+                    <div class="header__line"></div>
                     <button
                         id="navigation-button"
                         type="button"
@@ -42,7 +45,10 @@
                         class="header__nav header__nav--closed">
                         <ul class="header__nav-list">
                             <li class="header__nav-item">
-                                <a href="./index.html" class="header__nav-link"
+                                <a
+                                    aria-label="Home"
+                                    href="./index.html"
+                                    class="header__nav-link"
                                     >00
                                     <span class="header__nav-link--name"
                                         >Home</span
@@ -52,6 +58,7 @@
                             <li
                                 class="header__nav-item header__nav-item--active">
                                 <a
+                                    aria-label="Destination"
                                     href="./destination.html"
                                     class="header__nav-link"
                                     >01
@@ -61,7 +68,10 @@
                                 >
                             </li>
                             <li class="header__nav-item">
-                                <a href="./crew.html" class="header__nav-link"
+                                <a
+                                    aria-label="Crew"
+                                    href="./crew.html"
+                                    class="header__nav-link"
                                     >02
                                     <span class="header__nav-link--name"
                                         >Crew</span
@@ -70,6 +80,7 @@
                             </li>
                             <li class="header__nav-item">
                                 <a
+                                    aria-label="Technology"
                                     href="./technology.html"
                                     class="header__nav-link"
                                     >03
@@ -84,69 +95,44 @@
             </div>
         </header>
         <main>
-            <section class="destination container">
-                <h1 class="page-title">
+            <section
+                class="destination container"
+                aria-labelledby="destination-title">
+                <h1 class="page-title" id="destination-title">
                     01
                     <span class="page-title--highlight"
                         >Pick your destination</span
                     >
                 </h1>
                 <div class="destination__content">
-                    <img
-                        src="./assets/destination/image-moon.webp"
-                        alt="Moon"
-                        class="destination__image" />
-
                     <div class="destination__details">
-                        <div class="destination__buttons-wrapper">
-                            <button
-                                class="destination__button destination__button--active"
-                                data-destination="moon">
-                                Moon
-                            </button>
-                            <button
-                                class="destination__button"
-                                data-destination="mars">
-                                Mars
-                            </button>
-                            <button
-                                class="destination__button"
-                                data-destination="europa">
-                                Europa
-                            </button>
-                            <button
-                                class="destination__button"
-                                data-destination="titan">
-                                Titan
-                            </button>
-                        </div>
-                        <div class="destination__details--info">
-                            <h2 class="destination__details--title">Moon</h2>
-                            <p class="page-paragraph">
-                                See our planet as you’ve never seen it before. A
-                                perfect relaxing trip away to help regain
-                                perspective and come back refreshed. While
-                                you’re there, take in some history by visiting
-                                the Luna 2 and Apollo 11 landing sites.
-                            </p>
-                        </div>
-                        <hr />
-                        <div class="destination__details--stats">
-                            <div class="destination__details--distance">
-                                <span class="destination__details--label"
-                                    >Avg. distance</span
-                                >
-                                <span class="destination__details--value"
-                                    >384,400 km</span
-                                >
+                        <div
+                            class="destination__buttons-wrapper"
+                            role="tablist"
+                            aria-label="Destination options"></div>
+                        <div
+                            class="destination__details-wrapper"
+                            role="tabpanel">
+                            <div class="destination__details--info">
+                                <h2 class="destination__details--title"></h2>
+                                <p class="page-paragraph"></p>
                             </div>
-                            <div class="destination__details--time">
-                                <span class="destination__details--label"
-                                    >Est. travel time</span
-                                >
-                                <span class="destination__details--value"
-                                    >3 days</span
-                                >
+                            <hr id="line-break" />
+                            <div class="destination__details--stats">
+                                <div class="destination__details--distance">
+                                    <span class="destination__details--label"
+                                        >Avg. distance</span
+                                    >
+                                    <span
+                                        class="destination__details--value"></span>
+                                </div>
+                                <div class="destination__details--time">
+                                    <span class="destination__details--label"
+                                        >Est. travel time</span
+                                    >
+                                    <span
+                                        class="destination__details--value"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
