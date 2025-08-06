@@ -189,6 +189,7 @@ async function init() {
     try {
         const response = await fetch('../starter-code/data.json');
         if (!response.ok) {
+            window.alert('Failed to fetch data');
             throw new Error('Network response was not ok');
         }
         const json = await response.json();
