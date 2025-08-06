@@ -135,7 +135,7 @@ function updateContent(index) {
         .join('-')
         .toLowerCase()}`;
 
-    // animation();
+    animation();
 }
 
 function renderButtons() {
@@ -158,10 +158,9 @@ function renderButtons() {
         dot.setAttribute('aria-hidden', 'true');
         button.appendChild(dot);
         button.addEventListener('click', () => {
-            index = i;
             updateActiveButton(button);
+            index = i;
             updateContent(index);
-            createImageElement(index);
         });
         buttonsWrapper.appendChild(button);
     });
@@ -183,17 +182,12 @@ function createImageElement(index) {
     image.alt = `Image of ${data[index].name}`;
     image.src = data[index].images.webp;
 
-    image.addEventListener('load', () => {
-        animation();
-    });
-
-    imageWrapper.innerHTML = '';
     imageWrapper.appendChild(image);
 }
 
 async function init() {
     try {
-        const response = await fetch('../data.json');
+        const response = await fetch('./data.json');
         if (!response.ok) {
             window.alert('Failed to fetch data');
             throw new Error('Network response was not ok');
@@ -202,8 +196,8 @@ async function init() {
         data = json.crew;
 
         renderButtons();
-        updateContent(index);
         createImageElement(index);
+        updateContent(index);
         animationTitle();
     } catch (error) {
         console.error(

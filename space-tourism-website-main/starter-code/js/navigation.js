@@ -1,5 +1,3 @@
-//-----Navigation.js------
-
 const navigationButton = document.getElementById('navigation-button');
 const navigation = document.getElementById('navigation');
 
@@ -18,5 +16,4 @@ function toggleNavigation() {
         navigationButton.setAttribute('aria-expanded', 'false');
     }
 }
-console.log(navigationButton);
 navigationButton.addEventListener('click', toggleNavigation);

@@ -34,7 +34,7 @@ function updateContent(index) {
         `destination-tab-${destination.name.toLowerCase()}`
     );
 
-    // animation();
+    animation();
 }
 
 function animation() {
@@ -190,10 +190,9 @@ function renderButtons() {
         button.textContent = destination.name;
         button.dataset.destination = destination.name.toLowerCase();
         button.addEventListener('click', () => {
-            index = i;
             updateActiveButton(button);
+            index = i;
             updateContent(index);
-            createImageElement(index);
         });
         buttonsWrapper.appendChild(button);
     });
@@ -215,16 +214,12 @@ function createImageElement(index) {
     img.alt = data[index].name;
     img.classList.add('destination__image');
 
-    img.addEventListener('load', () => {
-        animation();
-    });
-    contentWrapper.innerHTML = ''; // Clear previous content
     contentWrapper.prepend(img);
 }
 
 async function init() {
     try {
-        const response = await fetch('../data.json');
+        const response = await fetch('./data.json');
         if (!response.ok) {
             window.alert('Failed to fetch data. Please try again later.');
             throw new Error('Network response was not ok');
@@ -232,9 +227,11 @@ async function init() {
         const json = await response.json();
         data = json.destinations;
 
+        console.log('Data fetched successfully:', data);
+
         renderButtons();
-        updateContent(index);
         createImageElement(index);
+        updateContent(index);
         animationTitle();
     } catch (err) {
         console.error('Fetch error:', err);

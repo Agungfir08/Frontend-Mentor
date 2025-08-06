@@ -150,7 +150,7 @@ function updateContent(index) {
         .join('-')
         .toLowerCase()}`;
 
-    // animation();
+    animation();
 }
 
 function createImageElement(index) {
@@ -182,12 +182,6 @@ function createImageElement(index) {
     picture.appendChild(sourcexl);
     picture.appendChild(image);
 
-    image.addEventListener('load', () => {
-        animation();
-    });
-
-    contentWrapper.innerHTML = ''; // Clear previous content
-
     contentWrapper.prepend(picture);
 }
 
@@ -212,10 +206,9 @@ function renderButtons() {
             .join('-')
             .toLowerCase();
         button.addEventListener('click', () => {
-            index = i;
             updateActiveButton(button);
+            index = i;
             updateContent(index);
-            createImageElement(index);
         });
         buttonsWrapper.appendChild(button);
     });
@@ -233,7 +226,7 @@ function updateActiveButton(activeButton) {
 
 async function init() {
     try {
-        const response = await fetch('../data.json');
+        const response = await fetch('./data.json');
         if (!response.ok) {
             window.alert('Failed to fetch data');
             throw new Error('Network response was not ok');
@@ -242,9 +235,9 @@ async function init() {
         data = json.technology;
 
         renderButtons();
-        updateContent(index);
         createImageElement(index);
         animationTitle();
+        updateContent(index);
     } catch (error) {
         console.error(
             'There has been a problem with your fetch operation:',
