@@ -207,4 +207,6 @@ async function init() {
     }
 }
 
-init();
+window.addEventListener('load', () => {
+    init();
+});
