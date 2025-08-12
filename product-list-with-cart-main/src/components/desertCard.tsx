@@ -60,7 +60,7 @@ export default function DesertCard({
                     )}
                 </div>
             </div>
-            <div className="font-red-hat flex flex-col gap-1 ">
+            <div className=" flex flex-col gap-1 ">
                 <span className="text-md tracking-tight text-rose-400">
                     {category}
                 </span>

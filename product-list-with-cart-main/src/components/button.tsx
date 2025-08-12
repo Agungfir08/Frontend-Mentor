@@ -9,7 +9,7 @@ export function RegularButton({ text, onClick }: RegularButtonProps) {
     return (
         <button
             type="button"
-            className="w-full rounded-full py-2.5 bg-red font-red-hat font-semibold text-base text-white lg:hover:bg-red-50 cursor-pointer transition-colors ease-in-out duration-300"
+            className="w-full rounded-full py-2.5 bg-red  font-semibold text-base text-white lg:hover:bg-red-50 cursor-pointer transition-colors ease-in-out duration-300"
             onClick={onClick}>
             {text}
         </button>
@@ -26,7 +26,7 @@ export function AddToCartButton({
     return (
         <button
             type="button"
-            className="flex items-center gap-[0.4375rem] py-3 px-7 border border-rose-400 rounded-full bg-white font-red-hat font-semibold text-rose-900 text-md tracking-tight cursor-pointer"
+            className="flex items-center gap-[0.4375rem] py-3 px-7 border border-rose-400 rounded-full bg-white  font-semibold text-rose-900 text-md tracking-tight cursor-pointer"
             onClick={onCart}
             aria-label={`Add the ${productName
                 .replace(/\s+/g, '-')
@@ -54,7 +54,7 @@ export function QuantityButton({
         <div
             role="group"
             aria-labelledby="quantity-label"
-            className="flex items-center justify-between py-3 px-3.5 w-40 rounded-full bg-red font-red-hat font-semibold text-white">
+            className="flex items-center justify-between py-3 px-3.5 w-40 rounded-full bg-red  font-semibold text-white">
             <span id="quantity-label" className="sr-only">
                 Quantity
             </span>

@@ -39,3 +39,9 @@
     font-weight: 700;
     font-display: swap;
 }
+
+@layer base {
+    body {
+        @apply bg-rose-50 font-red-hat;
+    }
+}

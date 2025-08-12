@@ -8,9 +8,9 @@ import ModalCard from './components/modalCard';
 export default function App() {
     const { isModalOpen } = useContext(cartContext);
     return (
-        <main className="w-full min-h-dvh bg-rose-50 max-w-7xl mx-auto p-6 flex flex-col gap-7 md:flex-row">
+        <main className="w-full min-h-dvh max-w-7xl mx-auto p-6 flex flex-col gap-7 md:flex-row">
             <section className="md:basis-2/3">
-                <h1 className="font-red-hat font-bold text-4.5xl text-rose-900 mb-2.5">
+                <h1 className=" font-bold text-4.5xl text-rose-900 mb-2.5">
                     Desert
                 </h1>
                 <div className="grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3">

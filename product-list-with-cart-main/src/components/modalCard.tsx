@@ -17,7 +17,7 @@ export default function ModalCard() {
                 className="bg-white p-6 w-full md:max-w-xl rounded-2xl space-y-5"
                 onClick={(e) => e.stopPropagation()}>
                 <img src={CheckIcon} alt="confirm icon" aria-hidden="true" />
-                <div className="font-red-hat">
+                <div className="">
                     <h1 id="modal-title" className="text-4.5xl font-bold ">
                         Order Confirmed
                     </h1>
@@ -32,7 +32,7 @@ export default function ModalCard() {
                         {cart.map((item) => (
                             <li
                                 key={item.name}
-                                className="flex justify-between items-center font-red-hat gap-3 border-b border-rose-400 pb-3">
+                                className="flex justify-between items-center  gap-3 border-b border-rose-400 pb-3">
                                 <div className="flex items-center gap-3.5">
                                     <img
                                         src={item.image.thumbnail}
