@@ -5,6 +5,16 @@ export function Currency(value: number) {
     });
 }
 
+export function kebabCase(text: string) {
+    return text.replace(/\s+/g, '-').toLowerCase();
+}
+
+export function camelCase(text: string) {
+    return text
+        .toLowerCase()
+        .replace(/[-_\s]+(.)?/g, (_, char) => (char ? char.toUpperCase() : ''));
+}
+
 export function calculateMonthlyRepayment(
     principal: number,
     term: number,

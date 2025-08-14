@@ -1,4 +1,5 @@
 import IconBox from './iconBox';
+import { camelCase, kebabCase } from '../utils/utils';
 
 type IconPosition = 'left' | 'right';
 
@@ -19,15 +20,8 @@ export default function InputNumber({
     onChange,
     error,
 }: InputProps) {
-    const inputId = name.replace(/\s+/g, '-').toLowerCase();
-    const inputName = name
-        .split(' ')
-        .map((word, index) =>
-            index === 0
-                ? word.toLowerCase()
-                : word.charAt(0).toUpperCase() + word.slice(1)
-        )
-        .join('');
+    const inputId = kebabCase(name);
+    const inputName = camelCase(name);
     return (
         <div className="flex flex-col gap-3">
             <label

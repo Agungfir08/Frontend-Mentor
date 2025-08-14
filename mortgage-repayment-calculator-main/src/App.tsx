@@ -7,6 +7,7 @@ import {
     calculateMonthlyRepayment,
     calculateTotalRepayment,
 } from './utils/utils';
+import RadioButton from './components/radioButton';
 
 interface MortgageFormData {
     mortgageAmount: string;
@@ -141,33 +142,22 @@ export default function App() {
                                 Mortgage Type
                             </legend>
                             <div className="grid grid-cols-1 gap-3">
-                                <label className="border border-slate-500 rounded-md font-bold text-slate-900 text-lg py-3 pl-5 has-checked:bg-lime/20 has-checked:border-lime lg:hover:border-lime cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="mortgageType"
-                                        value="repayment"
-                                        onChange={handleChange}
-                                        checked={
-                                            value.mortgageType === 'repayment'
-                                        }
-                                        className="mr-3.5 "
-                                    />
-                                    Repayment
-                                </label>
-                                <label className="border border-slate-500 rounded-md font-bold text-slate-900 text-lg py-3 pl-5 has-checked:bg-lime/20 has-checked:border-lime lg:hover:border-lime cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="mortgageType"
-                                        value="interestOnly"
-                                        onChange={handleChange}
-                                        checked={
-                                            value.mortgageType ===
-                                            'interestOnly'
-                                        }
-                                        className="mr-3.5 "
-                                    />
-                                    Interest Only
-                                </label>
+                                <RadioButton
+                                    name="mortgageType"
+                                    value="repayment"
+                                    onChange={handleChange}
+                                    checked={value.mortgageType === 'repayment'}
+                                    label="Repayment"
+                                />
+                                <RadioButton
+                                    name="mortgageType"
+                                    value="interestOnly"
+                                    onChange={handleChange}
+                                    checked={
+                                        value.mortgageType === 'interestOnly'
+                                    }
+                                    label="Interest Only"
+                                />
                             </div>
                             {errors.mortgageType && (
                                 <p className="text-red text-sm">
