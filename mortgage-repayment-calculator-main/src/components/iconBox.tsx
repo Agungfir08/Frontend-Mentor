@@ -6,7 +6,7 @@ export default function IconBox({
     className?: string;
 }) {
     return (
-        <div className={` font-bold  w-fit px-4 py-3 ${className}`}>
+        <div className={` font-bold text-lg w-fit px-4 py-3 ${className}`}>
             <span>{text}</span>
         </div>
     );

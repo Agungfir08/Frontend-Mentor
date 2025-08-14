@@ -96,8 +96,8 @@ export default function App() {
 
     return (
         <main className="flex justify-center items-center min-h-dvh">
-            <section className="grid grid-cols-1 lg:grid-cols-2 lg:rounded-2xl lg:overflow-hidden lg:w-fit max-w-5xl bg-white">
-                <div className="bg-white p-6 space-y-7">
+            <section className="grid grid-cols-1 lg:grid-cols-2 lg:rounded-2xl lg:overflow-hidden lg:w-fit max-w-[1008px] bg-white">
+                <div className="p-6 lg:p-10 space-y-7">
                     <div className="flex flex-col gap-2.5 items-start lg:flex-row lg:justify-between lg:items-center">
                         <h1 className="text-2xl font-bold text-slate-900">
                             Mortgage Calculator
@@ -118,7 +118,7 @@ export default function App() {
                             onChange={handleChange}
                             error={errors.mortgageAmount}
                         />
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5.5 ">
                             <InputNumber
                                 iconPosition="right"
                                 iconText="years"
@@ -195,7 +195,9 @@ export default function App() {
                             totalRepayment={totalRepayment}
                         />
                     ) : (
-                        <Empty />
+                        <div className="flex justify-center items-center h-full">
+                            <Empty />
+                        </div>
                     )}
                 </div>
             </section>
