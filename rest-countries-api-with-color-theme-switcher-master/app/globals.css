@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+    --color-blue-900: hsl(209, 23%, 22%); /* (Dark Mode Elements) */
+    --color-blue-950: hsl(207, 26%, 17%); /* (Dark Mode Background) */
+    --color-grey-950: hsl(200, 15%, 8%); /* (Light Mode Text) */
+    --color-grey-400: hsl(0, 0%, 50%); /* (Light Mode Input) */
+    --color-grey-50: hsl(0, 0%, 99%); /* (Light Mode Background) */
+    --color-white: hsl(
+        0,
+        100%,
+        100%
+    ); /* (Dark Mode Text & Light Mode Elements) */
+    --text-md: 0.9375rem; /* (Medium Text) */
+    --spacing-4.5: 1.125rem; /* 18px */
+}
+@layer components {
+    .wrapper {
+        @apply max-w-7xl mx-auto px-5 md:px-8 lg:px-20;
+    }
+}
