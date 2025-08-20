@@ -18,3 +18,13 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
         totalPages,
     ];
 };
+
+export const getNativeName = (countryName: CountryName) => {
+    const nativeNames = Object.values(countryName.nativeName);
+    return nativeNames.length > 0 ? nativeNames[0].common : countryName.common;
+};
+
+export const getCurrency = (currency: Currency) => {
+    const currencies = Object.values(currency);
+    return currencies.length > 0 ? currencies[0].name : '';
+};

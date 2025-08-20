@@ -1,74 +1,72 @@
+'use server';
+
+const url = 'https://restcountries.com/v3.1';
+
 export async function getCountries(
-    country: string,
     page: number,
-    region: string
+    country?: string,
+    region?: string
 ) {
     try {
-        const url = new URL(
-            `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api`
-        );
+        const pageSize = 8;
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
 
-        url.searchParams.set('country', country);
-        url.searchParams.set('page', page.toString());
-        url.searchParams.set('region', region);
+        const fields = [
+            'name',
+            'capital',
+            'region',
+            'population',
+            'flags',
+        ].join(',');
 
-        const res = await fetch(url.toString(), {
-            cache: 'no-store',
+        const res = await fetch(`${url}/all?fields=${fields}`, {
+            next: { revalidate: 86400 },
+        });
+        const allCountries = await res.json();
+
+        const data = allCountries.filter((countryData: Country) => {
+            const countryName = (
+                countryData.name.common.toLowerCase() || ''
+            ).includes(country?.toLowerCase() || '');
+            const regionName = (
+                countryData.region.toLowerCase() || ''
+            ).includes(region?.toLowerCase() || '');
+            return countryName && regionName;
         });
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch: ${res.status}`);
-        }
+        const countries = data.slice(startIndex, endIndex);
+        const totalPages = Math.ceil(data.length / pageSize);
 
-        const data = await res.json();
-
-        return data;
+        return { data: countries, totalPages };
     } catch (error) {
         console.error('Error fetching countries:', error);
-        return { data: [], total: 0, page: 1, totalPages: 0 };
+        return { data: [], totalPages: 0 };
     }
 }
 
 export async function getCountryByName(name: string) {
     try {
-        const url = new URL(
-            `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api`
-        );
-
-        url.searchParams.set('country', name);
-
-        const res = await fetch(url.toString(), {
-            cache: 'no-store',
-        });
-
-        if (!res.ok) {
-            throw new Error(`Failed to fetch country: ${res.status}`);
-        }
+        const res = await fetch(`${url}/name/${name}`);
+        if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
 
         const data = await res.json();
-
-        return data.data?.[0] || null;
+        return data[0];
     } catch (error) {
         console.error('Error fetching country by name:', error);
         throw new Error('Failed to fetch country by name');
     }
 }
 
-export async function getCountryByAlpha3Code(code: string) {
+export async function getCountryByAlphaCode(code: string) {
     try {
-        const url = new URL(
-            `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api`
-        );
-        url.searchParams.set('alpha3Code', code);
-
-        const res = await fetch(url.toString(), { cache: 'no-store' });
-
+        const res = await fetch(`${url}/alpha/${code}`);
         if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
 
         const data = await res.json();
-        return data.data?.[0] || null;
+        return data[0];
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error('Error fetching country by name:', error);
+        throw new Error('Failed to fetch country by name');
     }
 }

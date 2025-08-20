@@ -1,11 +1,10 @@
 import { DropDownButton } from '@/components/button';
-import Card from '@/components/country/card';
 import { SearchInput } from '@/components/input';
 import { getCountries } from '../lib/action';
 import { Suspense } from 'react';
 import { CardSkeleton } from '@/components/skeleton';
-import Pagination from '@/components/pagination';
 import NotFound from './not-found';
+import CountriesGrid from '@/components/countriesGrid';
 
 export default async function Home(props: {
     searchParams?: Promise<{
@@ -18,11 +17,6 @@ export default async function Home(props: {
     const country = searchParams?.country || '';
     const region = searchParams?.region || '';
     const page = Number(searchParams?.page) || 1;
-    const { data: countries, totalPages } = await getCountries(
-        country,
-        page,
-        region
-    );
 
     return (
         <div className="py-8">
@@ -31,30 +25,17 @@ export default async function Home(props: {
                 <DropDownButton />
             </div>
 
-            {countries.length === 0 ? (
-                <div className="flex min-h-[calc(100vh-331px)] md:min-h-[calc(100vh-296px)] lg:min-h-[calc(100vh-204px)] justify-center">
-                    <NotFound />
-                </div>
-            ) : (
-                <>
+            <Suspense
+                key={`countries-grid-${page}-${country}-${region}`}
+                fallback={
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10">
-                        {countries?.map((country: Country, index: number) => (
-                            <Suspense key={index} fallback={<CardSkeleton />}>
-                                <Card
-                                    flag={country.flag}
-                                    name={country.name}
-                                    population={country.population}
-                                    region={country.region}
-                                    capital={country.capital}
-                                />
-                            </Suspense>
+                        {Array.from({ length: 8 }).map((_, index) => (
+                            <CardSkeleton key={index} />
                         ))}
                     </div>
-                    <div className="mt-8 flex w-full justify-center">
-                        <Pagination totalPages={totalPages} />
-                    </div>
-                </>
-            )}
+                }>
+                <CountriesGrid page={page} country={country} region={region} />
+            </Suspense>
         </div>
     );
 }

@@ -1,34 +1,50 @@
-interface Country {
-    flag: string;
-    name: string;
-    population: number;
-    region: string;
-    capital: string | undefined;
+interface NativeName {
+    [key: string]: {
+        common: string;
+        official: string;
+    };
 }
 
-interface Currency {
-    code: string;
-    name: string;
-    symbol: string;
+interface CountryName {
+    common: string;
+    official: string;
+    nativeName: NativeName;
+}
+
+interface CountryFlag {
+    svg: string;
+    png: string;
+    alt: string;
+}
+
+interface Country {
+    flags: CountryFlag;
+    name: CountryName;
+    population: number;
+    region: string;
+    capital: string[];
 }
 
 interface Language {
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
+    [key: string]: string;
+}
+
+interface Currency {
+    [key: string]: {
+        symbol: string;
+        name: string;
+    };
 }
 
 interface CountryDetail {
-    flag: string;
-    name: string;
-    nativeName: string;
+    flags: CountryFlag;
+    name: CountryName;
     population: number;
     region: string;
     subregion: string;
-    capital: string;
-    topLevelDomain: string[];
-    currencies: Currency[];
-    languages: Language[];
+    capital: string[];
+    tld: string[];
+    currencies: Currency;
+    languages: Language;
     borders: string[];
 }

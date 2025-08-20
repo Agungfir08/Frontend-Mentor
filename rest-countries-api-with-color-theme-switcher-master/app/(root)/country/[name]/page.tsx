@@ -12,6 +12,7 @@ export default async function Page({
     const countryName = decodeURIComponent((await params).name);
 
     const country = await getCountryByName(countryName);
+    // console.log(country);
 
     return (
         <div className="pb-8 pt-20 space-y-20">

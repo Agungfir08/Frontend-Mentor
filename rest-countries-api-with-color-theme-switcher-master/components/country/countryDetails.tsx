@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import InfoItem from './infoItem';
 import CountryButton from './countryButton';
+import { getCurrency, getNativeName } from '@/app/lib/utils';
 
 export default function CountryDetails({
     country,
@@ -10,8 +11,8 @@ export default function CountryDetails({
     return (
         <div className="flex flex-col xl:flex-row lg:items-center gap-20 lg:gap-32 ">
             <Image
-                src={country?.flag}
-                alt={`Flag of ${country?.name}`}
+                src={country.flags.svg}
+                alt={country.flags.alt || `${country.name.official} flag`}
                 width={200}
                 height={100}
                 className="w-full max-w-[640px] mx-auto lg:max-w-[560px] h-auto lg:max-h-[400px] object-cover shadow-lg"
@@ -19,13 +20,13 @@ export default function CountryDetails({
 
             <div className="w-full space-y-12 lg:space-y-7">
                 <h2 className="text-3xl md:text-[44px] lg:text-[32px] font-extrabold tracking-tight">
-                    {country?.name}
+                    {country?.name?.official}
                 </h2>
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between text-xl md:text-[28px] lg:text-base gap-20 lg:gap-10">
                     <div className="space-y-7 lg:space-y-2.5">
                         <InfoItem
                             label="Native Name"
-                            value={country?.nativeName}
+                            value={getNativeName(country?.name)}
                         />
                         <InfoItem
                             label="Population"
@@ -36,24 +37,20 @@ export default function CountryDetails({
                             label="Sub Region"
                             value={country?.subregion}
                         />
-                        <InfoItem label="Capital" value={country?.capital} />
+                        <InfoItem label="Capital" value={country?.capital[0]} />
                     </div>
                     <div className="space-y-7 lg:space-y-2.5">
                         <InfoItem
                             label="Top Level Domain"
-                            value={country?.topLevelDomain?.join(', ')}
+                            value={country?.tld[0]}
                         />
                         <InfoItem
                             label="Currencies"
-                            value={country?.currencies
-                                ?.map((currency: Currency) => currency.name)
-                                .join(', ')}
+                            value={getCurrency(country?.currencies)}
                         />
                         <InfoItem
                             label="Languages"
-                            value={country?.languages
-                                ?.map((language: Language) => language.name)
-                                .join(', ')}
+                            value={Object.values(country?.languages).join(', ')}
                         />
                     </div>
                 </div>
