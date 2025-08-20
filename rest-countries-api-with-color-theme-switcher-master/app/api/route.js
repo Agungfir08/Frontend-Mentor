@@ -5,8 +5,9 @@ export async function GET(request) {
     try {
         const { searchParams } = new URL(request.url);
 
-        const query = searchParams.get('query')?.toLowerCase() || '';
+        const country = searchParams.get('country')?.toLowerCase() || '';
         const alpha3Code = searchParams.get('alpha3Code')?.toLowerCase() || '';
+        const region = searchParams.get('region')?.toLowerCase() || '';
         const page = Number(searchParams.get('page')) || 1;
 
         const pageSize = 12;
@@ -18,12 +19,15 @@ export async function GET(request) {
             filteredCountries = countriesData.filter((country) => {
                 return country.alpha3Code?.toLowerCase() === alpha3Code;
             });
-        } else if (query) {
-            filteredCountries = countriesData.filter((country) => {
-                const name = (country.name?.toLowerCase() || '').includes(
-                    query
+        } else if (country || region) {
+            filteredCountries = countriesData.filter((countryData) => {
+                const name = (countryData.name?.toLowerCase() || '').includes(
+                    country
                 );
-                return name;
+                const regionMatch = (
+                    countryData.region?.toLowerCase() || ''
+                ).includes(region);
+                return name && regionMatch;
             });
         }
 

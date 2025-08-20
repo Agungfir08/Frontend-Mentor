@@ -4,11 +4,7 @@ import clsx from 'clsx';
 import { Moon, Sun, ChevronDown, ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { useRouter } from 'next/navigation';
-
-interface DropDownButtonProps {
-    items: { title: string }[];
-}
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export function DarkModeButton() {
     const [mounted, setMounted] = useState<boolean>(false);
@@ -23,7 +19,7 @@ export function DarkModeButton() {
     }
     return (
         <button
-            className="flex items-center text-md font-semibold text-gray-950 dark:text-white cursor-pointer"
+            className="flex items-center text-md lg:text-base font-semibold text-gray-950 dark:text-white cursor-pointer"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'dark' ? (
                 <Sun className="mr-2 size-4" />
@@ -35,8 +31,40 @@ export function DarkModeButton() {
     );
 }
 
-export function DropDownButton({ items }: DropDownButtonProps) {
+export function DropDownButton() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const regions = [
+        'All Regions',
+        'Africa',
+        'Americas',
+        'Asia',
+        'Europe',
+        'Oceania',
+    ];
+
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const isActiveFilter = (region: string) => {
+        return (
+            searchParams.get('region') === region ||
+            (region === 'all regions' && !searchParams.get('region'))
+        );
+    };
+
+    const handleRegionFilterChange = (region: string) => {
+        const params = new URLSearchParams(searchParams);
+        params.set('page', '1');
+        if (region && region !== 'all regions') {
+            params.set('region', region);
+        } else {
+            params.delete('region');
+        }
+        replace(`${pathname}?${params.toString()}`);
+        setIsOpen(false);
+    };
+
     return (
         <div className="relative w-[248px]">
             <button
@@ -61,12 +89,21 @@ export function DropDownButton({ items }: DropDownButtonProps) {
                         'scale-y-100 opacity-100': isOpen,
                     }
                 )}>
-                <ul className="w-full h-auto shadow-md rounded-md px-7 py-4.5 bg-white dark:bg-blue-900 space-y-2">
-                    {items.map((item, index) => (
+                <ul className="w-full h-auto shadow-md rounded-md px-7 py-4.5 bg-white dark:bg-blue-900 space-y-1">
+                    {regions.map((title, index) => (
                         <li
                             key={index}
-                            className={`text-base font-semibold cursor-pointer`}>
-                            {item.title}
+                            className={clsx(
+                                `text-base font-semibold cursor-pointer hover:bg-gray-100 dark:hover:bg-grey-50/10 py-1.5 px-2 rounded-sm`,
+                                {
+                                    'bg-gray-100 dark:bg-grey-50/10':
+                                        isActiveFilter(title.toLowerCase()),
+                                }
+                            )}
+                            onClick={() =>
+                                handleRegionFilterChange(title.toLowerCase())
+                            }>
+                            {title}
                         </li>
                     ))}
                 </ul>
@@ -80,7 +117,7 @@ export function BackButton() {
 
     return (
         <button
-            className="flex items-center text-base font-semibold text-grey-950 dark:text-white cursor-pointer py-2 px-10 bg-white dark:bg-blue-900 rounded-md shadow-md"
+            className="flex items-center text-base  md:text-[28px] lg:text-base font-semibold text-grey-950 dark:text-white cursor-pointer py-2 px-10 bg-white dark:bg-blue-900 rounded-md shadow-md w-fit"
             onClick={() => router.back()}>
             <ArrowLeft className="mr-2 size-4" />
             Back

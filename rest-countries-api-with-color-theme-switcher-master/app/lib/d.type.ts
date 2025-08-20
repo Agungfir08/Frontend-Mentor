@@ -18,3 +18,17 @@ interface Language {
     name: string;
     nativeName: string;
 }
+
+interface CountryDetail {
+    flag: string;
+    name: string;
+    nativeName: string;
+    population: number;
+    region: string;
+    subregion: string;
+    capital: string;
+    topLevelDomain: string[];
+    currencies: Currency[];
+    languages: Language[];
+    borders: string[];
+}

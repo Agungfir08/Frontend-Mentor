@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import InfoItem from './infoItem';
 
 export default function Card({
     flag,
@@ -10,14 +11,14 @@ export default function Card({
 }: Country) {
     return (
         <Link href={`/country/${name}`}>
-            <article className="bg-white dark:bg-blue-900 text-grey-950 dark:text-white shadow-sm rounded-md max-w-[328px] md:max-w-[284px] overflow-hidden cursor-pointer">
+            <article className="bg-white dark:bg-blue-900 text-grey-950 dark:text-white shadow-lg rounded-md overflow-hidden cursor-pointer">
                 <div>
                     <Image
                         src={flag}
                         alt={`${name} flag`}
                         width={330}
                         height={200}
-                        className="w-full h-[200px] md:h-[160px] object-cover"
+                        className="w-full h-[200px] md:h-[180px] object-cover"
                         priority
                     />
                 </div>
@@ -25,25 +26,13 @@ export default function Card({
                     <h2 className="text-2xl tracking-tighter font-extrabold mb-5 w-full truncate">
                         {name}
                     </h2>
-                    <div className="space-y-2">
-                        <p className="text-base">
-                            <span className="font-semibold tracking-wide">
-                                Population:
-                            </span>{' '}
-                            {population.toLocaleString()}
-                        </p>
-                        <p className="text-base">
-                            <span className="font-semibold tracking-wide">
-                                Region:
-                            </span>{' '}
-                            {region}
-                        </p>
-                        <p className="text-base">
-                            <span className="font-semibold tracking-wide">
-                                Capital:
-                            </span>{' '}
-                            {capital}
-                        </p>
+                    <div className="space-y-2 text-base">
+                        <InfoItem
+                            label="Population"
+                            value={population.toLocaleString()}
+                        />
+                        <InfoItem label="Region" value={region} />
+                        <InfoItem label="Capital" value={capital || '-'} />
                     </div>
                 </div>
             </article>

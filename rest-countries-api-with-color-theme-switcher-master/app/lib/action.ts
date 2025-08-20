@@ -1,11 +1,16 @@
-export async function getCountries(query: string, page: number) {
+export async function getCountries(
+    country: string,
+    page: number,
+    region: string
+) {
     try {
         const url = new URL(
             `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api`
         );
 
-        url.searchParams.set('query', query);
+        url.searchParams.set('country', country);
         url.searchParams.set('page', page.toString());
+        url.searchParams.set('region', region);
 
         const res = await fetch(url.toString(), {
             cache: 'no-store',
@@ -15,7 +20,9 @@ export async function getCountries(query: string, page: number) {
             throw new Error(`Failed to fetch: ${res.status}`);
         }
 
-        return await res.json();
+        const data = await res.json();
+
+        return data;
     } catch (error) {
         console.error('Error fetching countries:', error);
         return { data: [], total: 0, page: 1, totalPages: 0 };
@@ -28,7 +35,7 @@ export async function getCountryByName(name: string) {
             `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api`
         );
 
-        url.searchParams.set('query', name);
+        url.searchParams.set('country', name);
 
         const res = await fetch(url.toString(), {
             cache: 'no-store',
