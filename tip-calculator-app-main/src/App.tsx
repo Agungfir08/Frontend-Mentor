@@ -20,6 +20,8 @@ export default function App() {
         people: '',
     };
 
+    const TIP_PERCENTAGES = [5, 10, 15, 25, 50];
+
     const [data, setData] = useState<DataInput>(INITIAL_DATA);
     const [error, setError] = useState<string | null>(null);
     const [selectedTipPercentage, setSelectedTipPercentage] = useState<
@@ -52,7 +54,17 @@ export default function App() {
     const handleReset = () => {
         setData(INITIAL_DATA);
         setSelectedTipPercentage(null);
+        setError(null);
     };
+
+    const calculateTotal = CalculateAmount(
+        Number(data.bill),
+        Number(data.tip),
+        Number(data.people)
+    );
+
+    const isFormIncomplete = !data.bill || !data.tip || !data.people || !!error;
+    console.log(data);
 
     return (
         <article className="flex flex-col items-center lg:justify-center min-h-dvh">
@@ -71,41 +83,16 @@ export default function App() {
                     <fieldset>
                         <legend className="text-grey-500">Select Tip %</legend>
                         <div className="grid grid-cols-3 max-md:grid-cols-2 items-center gap-4 mt-1.5">
-                            <InputRadio
-                                id="five-percent"
-                                name="tip"
-                                value={5}
-                                onChange={handleRadioChange}
-                                checked={selectedTipPercentage === 5}
-                            />
-                            <InputRadio
-                                id="ten-percent"
-                                name="tip"
-                                value={10}
-                                onChange={handleRadioChange}
-                                checked={selectedTipPercentage === 10}
-                            />
-                            <InputRadio
-                                id="fifteen-percent"
-                                name="tip"
-                                value={15}
-                                onChange={handleRadioChange}
-                                checked={selectedTipPercentage === 15}
-                            />
-                            <InputRadio
-                                id="twenty-five-percent"
-                                name="tip"
-                                value={25}
-                                onChange={handleRadioChange}
-                                checked={selectedTipPercentage === 25}
-                            />
-                            <InputRadio
-                                id="fifthy-percent"
-                                name="tip"
-                                value={50}
-                                onChange={handleRadioChange}
-                                checked={selectedTipPercentage === 50}
-                            />
+                            {TIP_PERCENTAGES.map((value) => (
+                                <InputRadio
+                                    key={value}
+                                    id={`${value}-percent`}
+                                    name="tip"
+                                    value={value}
+                                    onChange={handleRadioChange}
+                                    checked={selectedTipPercentage === value}
+                                />
+                            ))}
                             <InputNumber
                                 id="custom-tip-input"
                                 name="tip"
@@ -133,34 +120,17 @@ export default function App() {
                 </section>
                 <section className="bg-green-900 px-6 py-9 rounded-xl flex flex-col gap-4 basis-1/2">
                     <ResultDisplay
-                        result={
-                            CalculateAmount(
-                                Number(data.bill),
-                                Number(data.tip),
-                                Number(data.people)
-                            )?.tipAmount || 0
-                        }
+                        result={calculateTotal?.tipAmount}
                         text="tip amount"
                     />
                     <ResultDisplay
-                        result={
-                            CalculateAmount(
-                                Number(data.bill),
-                                Number(data.tip),
-                                Number(data.people)
-                            )?.totalAmount || 0
-                        }
+                        result={calculateTotal?.totalAmount}
                         text="total"
                     />
                     <button
                         className="w-full bg-green-400 rounded-md uppercase text-green-900 text-xl py-2.5 disabled:bg-green-400/30 lg:mt-auto cursor-pointer"
                         onClick={handleReset}
-                        disabled={
-                            data.bill === '' ||
-                            data.tip === '' ||
-                            data.people === '' ||
-                            !!error
-                        }>
+                        disabled={isFormIncomplete}>
                         Reset
                     </button>
                 </section>

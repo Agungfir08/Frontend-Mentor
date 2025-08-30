@@ -1,6 +1,6 @@
 interface ResultDisplayProps {
     text: string;
-    result: string | number;
+    result: string;
 }
 
 const ResultDisplay = ({ text, result }: ResultDisplayProps) => {
