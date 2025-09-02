@@ -2,12 +2,10 @@ import { randomUUID } from 'crypto';
 import { relations } from 'drizzle-orm';
 import {
     AnyPgColumn,
-    foreignKey,
     integer,
     pgTable,
     text,
     timestamp,
-    unique,
     uuid,
     varchar,
 } from 'drizzle-orm/pg-core';

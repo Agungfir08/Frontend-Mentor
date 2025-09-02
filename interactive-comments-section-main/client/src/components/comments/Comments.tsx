@@ -1,3 +1,4 @@
+import { CURRENT_USER } from '../../lib/constant';
 import { formatTimeAgo } from '../../lib/utils';
 import Badges from '../Badges';
 import { ButtonUpvote } from '../Button';
@@ -11,11 +12,12 @@ interface UserInfo {
 interface CommentsProps {
     id: string;
     content: string;
-    updatedAt: string;
+    createdAt: string;
     upvoted: number;
     user: UserInfo;
     replyingUser: UserInfo | null;
     commentParentId: string | null;
+    replies: CommentsProps[];
 }
 
 type CardCommentProps = Omit<CommentsProps, 'id' | 'commentParentId'>;
@@ -24,7 +26,7 @@ function Comments({ comment }: { comment: CommentsProps }) {
     return (
         <div>
             <CardComment {...comment} />
-            {/* {comment.replies.length > 0 && (
+            {comment.replies.length > 0 && (
                 <div className="flex mt-5">
                     <div className="bg-grey-100 w-1 mr-8 lg:mx-10" />
                     <div className="space-y-5">
@@ -33,18 +35,19 @@ function Comments({ comment }: { comment: CommentsProps }) {
                         ))}
                     </div>
                 </div>
-            )} */}
+            )}
         </div>
     );
 }
 
 function CardComment({
     user,
-    updatedAt: createdAt,
+    createdAt,
     content,
     replyingUser: replyingTo,
     upvoted: score,
 }: CardCommentProps) {
+    const isCurrentUser = user.username === CURRENT_USER.userInfo.username
     return (
         <div className="bg-white flex flex-col-reverse lg:flex-row gap-6 p-4 lg:p-6 rounded-xl">
             <ButtonUpvote
@@ -63,7 +66,7 @@ function CardComment({
                         <p className="text-grey-800 font-semibold">
                             {user.username}
                         </p>
-                        {/* {isCurrentUser && <Badges />} */}
+                        {isCurrentUser && <Badges />}
                     </div>
                     <p className="font-normal text-grey-500">
                         {formatTimeAgo(createdAt)}

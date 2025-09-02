@@ -8,14 +8,14 @@ export async function getAllComments(req: Request, res: Response) {
         // First get only top-level comments (with no parent)
         const topLevelComments = await db.query.comments.findMany({
             where: isNull(comments.commentParentId),
+            columns: {
+                id:true,
+                content:true,
+                upvoted:true,
+                createdAt:true,
+            },
             with: {
-                user: {
-                    columns: {
-                        id: true,
-                        username: true,
-                        userImage: true,
-                    },
-                },
+                user: true
             },
         });
 
@@ -24,21 +24,15 @@ export async function getAllComments(req: Request, res: Response) {
             topLevelComments.map(async (comment) => {
                 const replies = await db.query.comments.findMany({
                     where: eq(comments.commentParentId, comment.id),
+                    columns: {
+                        id:true,
+                        content: true,
+                        upvoted:true,
+                        createdAt:true,
+                    },
                     with: {
-                        user: {
-                            columns: {
-                                id: true,
-                                username: true,
-                                userImage: true,
-                            },
-                        },
-                        replyingUser: {
-                            columns: {
-                                id: true,
-                                username: true,
-                                userImage: true,
-                            },
-                        },
+                        user: true,
+                        replyingUser: true,
                     },
                 });
 

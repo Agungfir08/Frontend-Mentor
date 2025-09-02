@@ -3,7 +3,6 @@ import { db } from '../index';
 import { comments, users } from '../schema';
 import { COMMENTS, USERS } from '../../lib/constant';
 import dotenv from 'dotenv';
-import { eq } from 'drizzle-orm';
 
 dotenv.config();
 
@@ -65,8 +64,8 @@ async function seedComments(
             content: comment.content,
             userId: userMapping[comment.user.id],
             upvoted: comment.score,
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            createdAt: comment.createdAt,
+            updatedAt: comment.createdAt,
         });
 
         commentMapping[comment.id] = commentId;
