@@ -2,28 +2,34 @@ import clsx from 'clsx';
 import DeleteIcon from '../assets/icon-delete.svg';
 import EditIcon from '../assets/icon-edit.svg';
 import ReplyIcon from '../assets/icon-reply.svg';
-import { PlusIcon, MinusIcon } from './Icon';
+import {MinusIcon, PlusIcon} from './Icon';
 
 type ButtonType = 'normal' | 'delete' | 'cancel';
 
 interface ButtonProps {
     text: string;
     type?: ButtonType;
-    onClick: () => void;
+    onClick?: () => void;
+    disabled?: boolean;
+    htmlType?: 'button' | 'submit' | 'reset';
 }
 
-function Button({ text, onClick, type = 'normal' }: ButtonProps) {
+function Button({text, onClick, type = 'normal', disabled, htmlType = 'button'}: ButtonProps) {
     return (
         <button
+            type={htmlType}
             className={clsx(
-                'py-3.5 w-26 h-fit shrink-0 text-white uppercase tracking-sm rounded-lg font-medium cursor-pointer hover:opacity-50',
+                'py-3.5 w-26 h-fit shrink-0 text-white uppercase tracking-sm rounded-lg font-medium hover:opacity-50',
                 {
                     'bg-purple-600': type === 'normal',
                     'bg-red-600': type === 'delete',
                     'bg-grey-500': type === 'cancel',
+                    'cursor-not-allowed opacity-50': disabled,
+                    'cursor-pointer': !disabled
                 }
             )}
-            onClick={onClick}>
+            onClick={onClick}
+            disabled={disabled}>
             {text}
         </button>
     );
@@ -36,7 +42,7 @@ interface ButtonIconProps {
     type: ButtonIconType;
 }
 
-function ButtonIcon({ onClick, type }: ButtonIconProps) {
+function ButtonIcon({onClick, type}: ButtonIconProps) {
     let iconSrc, altText, buttonText;
     switch (type) {
         case 'edit':
@@ -66,7 +72,7 @@ function ButtonIcon({ onClick, type }: ButtonIconProps) {
                 }
             )}
             onClick={onClick}>
-            <img src={iconSrc} alt={altText} />
+            <img src={iconSrc} alt={altText}/>
             <span className="capitalize font-medium">{buttonText}</span>
         </button>
     );
@@ -76,20 +82,29 @@ interface ButtonUpvote {
     text: number;
     onClickPlus: () => void;
     onClickMinus: () => void;
+    disabledPlus: boolean;
+    disabledMinus: boolean;
 }
 
-function ButtonUpvote({ text = 0, onClickPlus, onClickMinus }: ButtonUpvote) {
+function ButtonUpvote({text = 0, onClickPlus, onClickMinus, disabledPlus, disabledMinus}: ButtonUpvote) {
     return (
-        <div className="flex lg:flex-col shrink-0 items-center gap-5 w-fit lg:w-10 h-fit max-lg:px-3.5 py-2 bg-grey-100 border-2 border-purple-200/10 rounded-xl">
-            <button className="cursor-pointer group" onClick={onClickPlus}>
-                <PlusIcon className="group-hover:fill-purple-600" />
+        <div
+            className="flex lg:flex-col shrink-0 items-center gap-5 w-fit lg:w-10 h-fit max-lg:px-3.5 py-2 bg-grey-100 border-2 border-purple-200/10 rounded-xl">
+            <button className={clsx("group", {
+                'cursor-not-allowed': disabledPlus,
+                'cursor-pointer': !disabledPlus,
+            })} onClick={onClickPlus}>
+                <PlusIcon className="group-hover:fill-purple-600"/>
             </button>
             <span className="font-medium text-purple-600">{text}</span>
-            <button className="cursor-pointer group" onClick={onClickMinus}>
-                <MinusIcon className="group-hover:fill-purple-600" />
+            <button className={clsx("group", {
+                'cursor-not-allowed': disabledMinus,
+                'cursor-pointer': !disabledMinus,
+            })} onClick={onClickMinus}>
+                <MinusIcon className="group-hover:fill-purple-600"/>
             </button>
         </div>
     );
 }
 
-export { Button, ButtonIcon, ButtonUpvote };
+export {Button, ButtonIcon, ButtonUpvote};

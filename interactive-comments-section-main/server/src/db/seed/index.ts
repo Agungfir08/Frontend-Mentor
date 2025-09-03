@@ -1,7 +1,7 @@
-import { randomUUID } from 'crypto';
-import { db } from '../index';
-import { comments, users } from '../schema';
-import { COMMENTS, USERS } from '../../lib/constant';
+import {randomUUID} from 'crypto';
+import {db} from '../index';
+import {comments, users} from '../schema';
+import {COMMENTS, USERS} from '../../lib/constant';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -45,7 +45,7 @@ async function seedUsers(): Promise<{
         usernameMapping[username] = userId;
     }
 
-    return { userMapping, usernameMapping };
+    return {userMapping, usernameMapping};
 }
 
 async function seedComments(
@@ -64,8 +64,8 @@ async function seedComments(
             content: comment.content,
             userId: userMapping[comment.user.id],
             upvoted: comment.score,
-            createdAt: comment.createdAt,
             updatedAt: comment.createdAt,
+            createdAt: comment.createdAt,
         });
 
         commentMapping[comment.id] = commentId;
@@ -85,9 +85,11 @@ async function seedComments(
                     upvoted: reply.score,
                     commentParentId: commentId,
                     replyingTo: replyingToUserId,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
+                    createdAt: reply.createdAt,
+                    updatedAt: reply.createdAt,
                 });
+
+
             }
         }
     }
@@ -99,7 +101,7 @@ async function seed() {
     try {
         await clearDatabase();
 
-        const { userMapping, usernameMapping } = await seedUsers();
+        const {userMapping, usernameMapping} = await seedUsers();
         await seedComments(userMapping, usernameMapping);
 
         console.log('Seeding completed successfully!');

@@ -1,4 +1,4 @@
-import { daysAgo, monthsAgo, weeksAgo } from './utils';
+import {daysAgo, monthsAgo, weeksAgo} from './utils';
 
 export interface User {
     id: number;
@@ -14,7 +14,7 @@ export interface User {
 export interface CommentBase {
     id: number;
     content: string;
-    createdAt: Date | string;
+    createdAt: Date;
     score: number;
     user: User;
 }
@@ -84,7 +84,7 @@ export const COMMENTS: Comment[] = [
         id: 2,
         content:
             "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
-        createdAt: monthsAgo(2),
+        createdAt: weeksAgo(2),
         score: 5,
         user: USERS[2],
         replies: [

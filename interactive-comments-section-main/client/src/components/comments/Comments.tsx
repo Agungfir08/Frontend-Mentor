@@ -1,86 +1,25 @@
-import { CURRENT_USER } from '../../lib/constant';
-import { formatTimeAgo } from '../../lib/utils';
-import Badges from '../Badges';
-import { ButtonUpvote } from '../Button';
+import type {Comment, UserInfo} from "../../types/Comment.ts";
+import CardComment from "./CardComment.tsx";
 
-interface UserInfo {
-    id: string;
-    username: string;
-    userImage: string;
-}
-
-interface CommentsProps {
-    id: string;
-    content: string;
-    createdAt: string;
-    upvoted: number;
-    user: UserInfo;
-    replyingUser: UserInfo | null;
-    commentParentId: string | null;
-    replies: CommentsProps[];
-}
-
-type CardCommentProps = Omit<CommentsProps, 'id' | 'commentParentId'>;
-
-function Comments({ comment }: { comment: CommentsProps }) {
+function Comments({comment, activeUser}: {
+    comment: Comment,
+    activeUser: UserInfo | undefined,
+}) {
     return (
         <div>
-            <CardComment {...comment} />
+            <CardComment {...comment} activeUser={activeUser}/>
             {comment.replies.length > 0 && (
-                <div className="flex mt-5">
-                    <div className="bg-grey-100 w-1 mr-8 lg:mx-10" />
+                <div className='mt-5 flex'>
+                    <div className='flex w-24 lg:w-52 lg:justify-center'>
+                        <div className='w-0.5 h-full bg-grey-100'></div>
+                    </div>
                     <div className="space-y-5">
                         {comment.replies.map((reply) => (
-                            <CardComment key={reply.id} {...reply} />
+                            <CardComment key={reply.id} {...reply} activeUser={activeUser}/>
                         ))}
                     </div>
                 </div>
             )}
-        </div>
-    );
-}
-
-function CardComment({
-    user,
-    createdAt,
-    content,
-    replyingUser: replyingTo,
-    upvoted: score,
-}: CardCommentProps) {
-    const isCurrentUser = user.username === CURRENT_USER.userInfo.username
-    return (
-        <div className="bg-white flex flex-col-reverse lg:flex-row gap-6 p-4 lg:p-6 rounded-xl">
-            <ButtonUpvote
-                text={score}
-                onClickPlus={() => {}}
-                onClickMinus={() => {}}
-            />
-            <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                    <img
-                        src={user.userImage}
-                        alt="User Avatar"
-                        className="size-8"
-                    />
-                    <div className="flex items-center gap-2">
-                        <p className="text-grey-800 font-semibold">
-                            {user.username}
-                        </p>
-                        {isCurrentUser && <Badges />}
-                    </div>
-                    <p className="font-normal text-grey-500">
-                        {formatTimeAgo(createdAt)}
-                    </p>
-                </div>
-                <p className="font-normal text-grey-500 tracking-wide leading-6">
-                    {replyingTo && (
-                        <span className="text-purple-600 font-semibold">
-                            @{replyingTo.username}
-                        </span>
-                    )}{' '}
-                    {content}
-                </p>
-            </div>
         </div>
     );
 }

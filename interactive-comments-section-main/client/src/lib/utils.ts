@@ -23,7 +23,7 @@ export function formatTimeAgo(date: Date | string | number): string {
     }
 
     const weeks = Math.floor(days / 7);
-    if (weeks < 5) {
+    if (weeks < 4) {
         return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
     }
 
