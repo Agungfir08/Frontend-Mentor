@@ -81,7 +81,7 @@ export default function CardComment({
     }
 
     return (
-        <div className={clsx({'space-y-5': isReplying,})}>
+        <div data-testid={`card-${id}`} className={clsx({'space-y-5': isReplying,})}>
             <div className="bg-white flex flex-col-reverse lg:flex-row gap-6 p-4 lg:p-6 rounded-xl">
                 <div className='max-lg:flex max-lg:items-center max-lg:justify-between'>
                     <ButtonUpvote
