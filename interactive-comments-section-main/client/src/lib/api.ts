@@ -17,7 +17,9 @@ async function request<TBody, TResponse>(path: string, method: HttpMethod, body?
         throw new Error('Network response was not ok')
     }
 
-    return response.json() as Promise<TResponse>;
+    const data = response.json()
+
+    return data as Promise<TResponse>;
 }
 
 export const api = {

@@ -12,9 +12,10 @@ interface ButtonProps {
     onClick?: () => void;
     disabled?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
+    grow?: boolean;
 }
 
-function Button({text, onClick, type = 'normal', disabled, htmlType = 'button'}: ButtonProps) {
+function Button({text, onClick, type = 'normal', disabled, htmlType = 'button', grow = false}: ButtonProps) {
     return (
         <button
             type={htmlType}
@@ -25,7 +26,8 @@ function Button({text, onClick, type = 'normal', disabled, htmlType = 'button'}:
                     'bg-red-600': type === 'delete',
                     'bg-grey-500': type === 'cancel',
                     'cursor-not-allowed opacity-50': disabled,
-                    'cursor-pointer': !disabled
+                    'cursor-pointer': !disabled,
+                    'grow': grow
                 }
             )}
             onClick={onClick}

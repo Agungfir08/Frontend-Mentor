@@ -1,6 +1,6 @@
 import type {UserInfo} from "../../types/Comment.ts";
 import {Button} from '../Button';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import clsx from "clsx";
 
 interface CommentFormProps {
@@ -9,18 +9,31 @@ interface CommentFormProps {
     loading?: boolean;
     isEditing?: boolean;
     initialValue?: string
+    isSuccess?: boolean;
 }
 
-function CommentForm({user, submitForm, loading, isEditing = false, initialValue = ''}: CommentFormProps) {
+function CommentForm({
+                         user,
+                         submitForm,
+                         loading,
+                         isEditing = false,
+                         initialValue = '',
+                         isSuccess
+                     }: CommentFormProps) {
 
     const [comment, setComment] = useState<string>(initialValue)
+
+    useEffect(() => {
+        if (isSuccess) {
+            setComment('');
+        }
+    }, [isSuccess]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const trim = comment.trim();
         if (!trim) return;
         submitForm(trim);
-        setComment(initialValue ? comment : '');
     }
 
     const buttonIsDisabled = loading || comment.trim().length === 0;

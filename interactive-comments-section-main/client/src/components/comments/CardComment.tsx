@@ -5,8 +5,9 @@ import {ButtonIcon, ButtonUpvote} from "../Button.tsx";
 import Badges from "../Badges.tsx";
 import {formatTimeAgo} from "../../lib/utils.ts";
 import CommentForm from "./CommentForm.tsx";
-import {useDeleteComment, useEditComment, useReplyComment, useUpvote} from "../../hooks/mutation.ts";
+import {useEditComment, useReplyComment, useUpvote} from "../../hooks/mutation.ts";
 import {getLocalStorage, removeLocalStorage, setLocalStorage} from "../../hooks/useLocalStorage.ts";
+import {useModalContext} from "../../hooks/useModalContext.tsx";
 
 export default function CardComment({
                                         id,
@@ -23,14 +24,10 @@ export default function CardComment({
     const isCurrentUser = activeUser?.id === user.id
     const dataLocalStorage = getLocalStorage(id)
     const isUpvoted = dataLocalStorage === 'upvote'
-    const {mutate: deleteComment} = useDeleteComment()
     const {mutate: replyComment, isPending: replyLoading} = useReplyComment()
     const {mutate: editComment, isPending: updateLoading} = useEditComment()
     const {mutate: upvoteComment} = useUpvote()
-
-    const handleDeleteComment = () => {
-        deleteComment({commentId: id})
-    }
+    const {openModal} = useModalContext()
 
     const handleReplyComment = (commentContent: string) => {
         if (!activeUser) return;
@@ -98,7 +95,7 @@ export default function CardComment({
                         {
                             isCurrentUser ? (
                                     <div className='flex items-center gap-3.5'>
-                                        <ButtonIcon onClick={handleDeleteComment} type='delete'/>
+                                        <ButtonIcon onClick={() => openModal(id)} type='delete'/>
                                         <ButtonIcon onClick={() => setIsEditing((prev) => !prev)} type='edit'/>
                                     </div>
                                 ) :
@@ -128,7 +125,7 @@ export default function CardComment({
                             {
                                 isCurrentUser ? (
                                         <div className='flex items-center gap-6'>
-                                            <ButtonIcon onClick={handleDeleteComment} type='delete'/>
+                                            <ButtonIcon onClick={() => openModal(id)} type='delete'/>
                                             <ButtonIcon onClick={() => setIsEditing((prev) => !prev)} type='edit'/>
                                         </div>
                                     ) :
