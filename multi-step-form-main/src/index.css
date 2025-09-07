@@ -27,7 +27,8 @@
 @theme inline {
     /*primary color*/
     --color-blue-950: hsl(213, 96%, 18%);
-    --color-Purple-600: hsl(243, 100%, 62%);
+    --color-blue-800: hsl(214, 72%, 32%);
+    --color-purple-600: hsl(243, 100%, 62%);
     --color-blue-300: hsl(228, 100%, 84%);
     --color-blue-200: hsl(206, 94%, 87%);
     --color-red-500: hsl(354, 84%, 57%);
