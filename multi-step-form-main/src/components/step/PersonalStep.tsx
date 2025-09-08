@@ -1,10 +1,10 @@
 import {Label} from "@/components/ui/label.tsx";
 import {Input} from "@/components/ui/input.tsx";
-import CardStep from "@/components/CardStep.tsx";
+import StepCard from "@/components/StepCard.tsx";
 
 function PersonalStep() {
     return (
-        <CardStep title='Personal Information' description='Please provide your name, email address, and phone number.'>
+        <StepCard title='Personal Information' description='Please provide your name, email address, and phone number.'>
             <form className='space-y-4'>
                 <div className='space-y-1'>
                     <Label htmlFor='name' className='text-blue-950'>Name</Label>
@@ -19,7 +19,7 @@ function PersonalStep() {
                     <Input id='phoneNumber' type='number' placeholder='e.g. +1 234 567 890'/>
                 </div>
             </form>
-        </CardStep>
+        </StepCard>
     );
 }
 

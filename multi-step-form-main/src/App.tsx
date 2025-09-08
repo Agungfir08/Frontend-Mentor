@@ -1,19 +1,17 @@
 import FooterButton from "@/components/FooterButton.tsx";
-import ThankYouCard from "@/components/ThankYouCard.tsx";
 import PersonalStep from "@/components/step/PersonalStep.tsx";
-import PlanStep from "@/components/step/PlanStep.tsx";
-import AddOnStep from "@/components/step/AddOnStep.tsx";
-import SummaryStep from "@/components/step/SummaryStep.tsx";
+import Stepper from "@/components/Stepper.tsx";
 
 const App = () => {
     return (
-        <div className='space-y-4 flex flex-col items-center'>
-            <SummaryStep/>
-            <AddOnStep/>
-            <PlanStep/>
-            <PersonalStep/>
-            <ThankYouCard/>
-            <FooterButton/>
+        <div className='flex flex-col items-center max-lg:py-[100px] h-screen'>
+            <Stepper/>
+            <div className='z-10'>
+                <PersonalStep/>
+            </div>
+            <div className='fixed bottom-0 left-0 w-full z-20'>
+                <FooterButton/>
+            </div>
         </div>
     );
 };

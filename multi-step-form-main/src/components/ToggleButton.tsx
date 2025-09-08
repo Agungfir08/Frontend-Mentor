@@ -11,12 +11,12 @@ function ToggleButton({checked, onCheckedChange}: ToggleButtonProps) {
 
     return (
         <div className='flex items-center justify-center gap-6 bg-blue-50 rounded-md py-4'>
-            <Label htmlFor='subcription-plan' className={cn('text-[15px] font-medium tracking-tight', {
+            <Label htmlFor='subcription-plan' className={cn('text-[15px] font-medium tracking-tight cursor-pointer', {
                 'text-blue-950': !checked,
                 'text-grey-500': checked,
             })}>Monthly</Label>
             <Switch id='subcription-plan' checked={checked} onCheckedChange={onCheckedChange}/>
-            <Label htmlFor='subcription-plan' className={cn('text-[15px] font-medium tracking-tight', {
+            <Label htmlFor='subcription-plan' className={cn('text-[15px] font-medium tracking-tight cursor-pointer', {
                 'text-blue-950': checked,
                 'text-grey-500': !checked,
             })}>Yearly</Label>

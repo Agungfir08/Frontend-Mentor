@@ -1,15 +1,19 @@
-import CardStep from "@/components/CardStep.tsx";
+import StepCard from "@/components/StepCard.tsx";
 import AddOnCheckBox from "@/components/AddOnCheckBox.tsx";
+import {ADDONS} from "@/lib/constant.ts";
+import {useFormContext} from "@/hooks/useFormContext.ts";
 
 function AddOnStep() {
+    const {yearlySubs} = useFormContext()
     return (
-        <CardStep title='Pick add-ons' description='Add-ons help enhance your gaming experience.'>
+        <StepCard title='Pick add-ons' description='Add-ons help enhance your gaming experience.'>
             <div className='space-y-3.5'>
-                <AddOnCheckBox/>
-                <AddOnCheckBox/>
-                <AddOnCheckBox/>
+                {ADDONS.map(adds => (
+                    <AddOnCheckBox key={adds.name} title={adds.name} description={adds.description}
+                                   price={yearlySubs ? adds.priceYearly : adds.priceMonthly}/>
+                ))}
             </div>
-        </CardStep>
+        </StepCard>
     );
 }
 

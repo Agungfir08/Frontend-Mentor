@@ -1,18 +1,14 @@
-import CardStep from "@/components/CardStep.tsx";
+import StepCard from "@/components/StepCard.tsx";
 import PlanCard from "@/components/RadioPlan.tsx";
 import {PLANS} from "@/lib/constant.ts";
 import ToggleButton from "@/components/ToggleButton.tsx";
-import {useState} from "react";
+import {useFormContext} from "@/hooks/useFormContext.ts";
 
 function PlanStep() {
-    const [yearlySubs, setYearlySubs] = useState<boolean>(false)
-
-    const handleYearlySubs = () => {
-        setYearlySubs(prev => !prev)
-    }
+    const {yearlySubs, toggleYearlySubs} = useFormContext()
 
     return (
-        <CardStep title='Select your plan' description='You have the option of monthly or yearly billing.'>
+        <StepCard title='Select your plan' description='You have the option of monthly or yearly billing.'>
             <div className='space-y-6'>
                 <div className='space-y-3.5'>
                     {PLANS.map(plan => (
@@ -22,9 +18,9 @@ function PlanStep() {
                     ))}
 
                 </div>
-                <ToggleButton checked={yearlySubs} onCheckedChange={handleYearlySubs}/>
+                <ToggleButton checked={yearlySubs} onCheckedChange={toggleYearlySubs}/>
             </div>
-        </CardStep>
+        </StepCard>
     );
 }
 
