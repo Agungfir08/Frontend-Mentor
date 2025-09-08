@@ -4,19 +4,19 @@ import ProIcon from '../assets/icon-pro.svg'
 
 export const STEPS = [
     {
-        step: 'step 1',
+        step: 'steps 1',
         title: 'your info'
     },
     {
-        step: 'step 2',
+        step: 'steps 2',
         title: 'select plan'
     },
     {
-        step: 'step 3',
+        step: 'steps 3',
         title: 'add-ons'
     },
     {
-        step: 'step 4',
+        step: 'steps 4',
         title: 'summary'
     }
 ]

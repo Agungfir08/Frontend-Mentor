@@ -1,9 +1,8 @@
-import StepCard from "@/components/StepCard.tsx";
 import {Separator} from "@/components/ui/separator.tsx";
 
 function SummaryStep() {
     return (
-        <StepCard title='Finishing up' description='Double-check everything looks OK before confirming.'>
+        <>
             <div className='bg-blue-300/15 rounded-md px-4 py-[18.5px] space-y-3.5'>
                 <div className='flex items-center justify-between'>
                     <div>
@@ -26,7 +25,7 @@ function SummaryStep() {
                 <p className='text-grey-500'>Total (per month)</p>
                 <p className='text-purple-600 font-medium'>+12/mo</p>
             </div>
-        </StepCard>
+        </>
     );
 }
 
