@@ -2,22 +2,18 @@ import {createContext} from "react";
 
 export interface FormContextType {
     stepIndex: number;
-    yearlySubs: boolean;
+    yearlySubscription: boolean;
     isFirstStep: boolean;
     isLastStep: boolean;
-    toggleYearlySubs: () => void;
     nextStep: () => void;
     prevStep: () => void;
 }
 
 const INITIAL_STATE: FormContextType = {
     stepIndex: 1,
-    yearlySubs: false,
+    yearlySubscription: false,
     isFirstStep: true,
     isLastStep: false,
-    toggleYearlySubs: () => {
-    }
-    ,
     nextStep: () => {
     },
     prevStep: () => {

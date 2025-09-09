@@ -2,7 +2,7 @@ import ArcadeIcon from '../assets/icon-arcade.svg'
 import AdvancedIcon from '../assets/icon-advanced.svg'
 import ProIcon from '../assets/icon-pro.svg'
 
-export const STEPS = [
+export const STEPPERS = [
     {
         step: 'steps 1',
         title: 'your info'

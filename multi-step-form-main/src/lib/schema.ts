@@ -1,9 +1,13 @@
 import {z} from "zod";
 
+const phoneRegex = new RegExp(
+    /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
+
 export const PersonalInfoSchema = z.object({
-    name: z.string().min(3, {message: "Name must be at least 3 characters"}),
-    email: z.email({message: "Invalid email"}),
-    phoneNumber: z.e164()
+    name: z.string().min(3, {message: "Name must be at least 3 characters"}).nonempty({message: "This field is required"}),
+    email: z.email({message: "Invalid email"}).nonempty({message: "This field is required"}),
+    phoneNumber: z.string().regex(phoneRegex, {message: "Invalid phone number"}).nonempty({message: "This field is required"}),
 })
 
 export const PlanSchema = z.object({

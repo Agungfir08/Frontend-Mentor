@@ -1,4 +1,4 @@
-import {STEPS} from "@/lib/constant.ts";
+import {STEPPERS} from "@/lib/constant.ts";
 import {useFormContext} from "@/hooks/useFormContext.ts";
 import {cn} from "@/lib/utils.ts";
 
@@ -8,7 +8,7 @@ function Stepper() {
         <div
             className='bg-[url(/bg-sidebar-mobile.svg)] w-full h-[172px] bg-cover py-8 max-lg:absolute max-lg:top-0 max-lg:left-0'>
             <div className='flex items-center justify-center gap-3.5'>
-                {STEPS.map(({step, title}, index) => (
+                {STEPPERS.map(({step, title}, index) => (
                     <button key={step} type='button'
                             className={cn('size-9 border border-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300', {
                                 'bg-blue-200': stepIndex === index + 1,
