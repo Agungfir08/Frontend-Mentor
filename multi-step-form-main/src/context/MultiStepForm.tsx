@@ -14,18 +14,17 @@ export function MultiStepForm({step}: { step: STEPS[] }) {
     const currentStep = step[stepIndex - 1]
     const isFirstStep = stepIndex === 1
     const isLastStep = stepIndex === STEPPERS.length
-    const {formData, setFormData} = useFormStore()
-
+    const {formData, setFormData, resetFormData} = useFormStore()
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            name: formData.name,
-            email: formData.email,
-            phoneNumber: formData.phoneNumber,
+            name: formData.name || '',
+            email: formData.email || '',
+            phoneNumber: formData.phoneNumber || '',
             plan: formData.plan,
-            yearlySubscription: formData.yearlySubscription,
-            addOns: formData.addOns
+            yearlySubscription: formData.yearlySubscription || false,
+            addOns: formData.addOns || []
         }
     });
 
@@ -48,8 +47,10 @@ export function MultiStepForm({step}: { step: STEPS[] }) {
         setStepIndex(prev => prev - 1)
     }
 
-    const submitForm = (data: z.infer<typeof FormSchema>) => {
-        console.log(data)
+    const submitForm = () => {
+        resetFormData()
+        form.reset()
+        setStepIndex(1)
     }
 
     const value = {
@@ -65,7 +66,8 @@ export function MultiStepForm({step}: { step: STEPS[] }) {
         <FormContext.Provider value={value}>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(submitForm)}>
-                    <PhoneLayout/>
+                    <PhoneLayout title={currentStep.title} description={currentStep.description}
+                                 component={currentStep.component}/>
                 </form>
             </FormProvider>
         </FormContext.Provider>

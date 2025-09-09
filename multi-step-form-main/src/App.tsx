@@ -12,21 +12,18 @@ const App = () => {
             title: 'Personal info',
             description: 'Please provide your name, email address, and phone number.',
             component: <PersonalStep/>,
-            validation: PersonalInfoSchema,
             fields: Object.keys(PersonalInfoSchema.shape)
         },
         {
             title: 'Select your plan',
             description: 'You have the option of monthly or yearly billing.',
             component: <PlanStep/>,
-            validation: PlanSchema,
             fields: Object.keys(PlanSchema.shape)
         },
         {
             title: 'Pick add-ons',
             description: 'Add-ons help enhance your experience.',
             component: <AddOnStep/>,
-            validation: AddOnSchema,
             fields: Object.keys(AddOnSchema.shape)
         },
         {

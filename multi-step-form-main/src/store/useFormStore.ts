@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import {persist} from "zustand/middleware";
+import {createJSONStorage, persist} from "zustand/middleware";
 import type {FormDataType} from "@/lib/schema.ts";
 
 interface FormStore {
@@ -29,7 +29,8 @@ export const useFormStore = create<FormStore>()(
             })
         }),
         {
-            name: 'multi-step-form'
+            name: 'multi-step-form',
+            storage: createJSONStorage(() => sessionStorage)
         }
     )
 )

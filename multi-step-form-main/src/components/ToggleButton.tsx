@@ -18,7 +18,7 @@ function ToggleButton() {
                                'text-blue-950': !field.value,
                                'text-grey-500': field.value,
                            })}>Monthly</Label>
-                    <Switch id='subcription-plan' value={field.value} onCheckedChange={field.onChange}/>
+                    <Switch id='subcription-plan' checked={field.value} onCheckedChange={field.onChange}/>
                     <Label htmlFor='subcription-plan'
                            className={cn('text-[15px] font-medium tracking-tight cursor-pointer', {
                                'text-blue-950': field.value,

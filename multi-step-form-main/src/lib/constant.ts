@@ -21,6 +21,32 @@ export const STEPPERS = [
     }
 ]
 
+export const PLAN_PRICES = {
+    monthly: {
+        'Arcade': 9,
+        'Advanced': 12,
+        'Pro': 15,
+    },
+    yearly: {
+        'Arcade': 90,
+        'Advanced': 120,
+        'Pro': 150,
+    }
+};
+
+export const ADDON_PRICES = {
+    monthly: {
+        'online service': 1,
+        'larger storage': 2,
+        'customizable profile': 2,
+    },
+    yearly: {
+        'online service': 10,
+        'larger storage': 20,
+        'customizable profile': 20,
+    }
+};
+
 export const PLANS = [
     {
         image: ArcadeIcon,

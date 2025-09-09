@@ -1,29 +1,43 @@
 import {Separator} from "@/components/ui/separator.tsx";
+import {useFormStore} from "@/store/useFormStore.ts";
+import {ADDON_PRICES, PLAN_PRICES} from "@/lib/constant.ts";
 
 function SummaryStep() {
+    const {formData} = useFormStore()
+    const {plan, yearlySubscription, addOns} = formData
+
+    const subscriptionType = yearlySubscription ? 'yearly' : 'monthly'
+    const subscriptionAbbr = yearlySubscription ? 'yr' : 'mo'
+
+    const planPrice = PLAN_PRICES[subscriptionType][plan as keyof typeof PLAN_PRICES[typeof subscriptionType]]
+    const addOnTotalPrice = addOns?.reduce((acc, addOn) => acc + ADDON_PRICES[subscriptionType][addOn as keyof typeof ADDON_PRICES[typeof subscriptionType]], 0) || 0
+
+    const totalPrice = planPrice + addOnTotalPrice
     return (
         <>
             <div className='bg-blue-300/15 rounded-md px-4 py-[18.5px] space-y-3.5'>
                 <div className='flex items-center justify-between'>
                     <div>
-                        <p className='text-sm text-blue-950 font-medium'>Arcade (monthly)</p>
+                        <p className='text-sm text-blue-950 font-medium'>{`${plan} (${subscriptionType})`}</p>
                         <p className='text-sm text-grey-500 font-medium underline'>Change</p>
                     </div>
-                    <p className='text-sm text-blue-950 font-medium'>$9/mo</p>
+                    <p className='text-sm text-blue-950 font-medium'>{`+${planPrice}/${subscriptionAbbr}`}</p>
                 </div>
                 <Separator/>
-                <div className='flex items-center justify-between'>
-                    <p className='text-sm text-grey-500'>Online service</p>
-                    <p className='text-sm text-blue-950'>+$1/mo</p>
-                </div>
-                <div className='flex items-center justify-between'>
-                    <p className='text-sm text-grey-500'>Large storage</p>
-                    <p className='text-sm text-blue-950'>+2/mo</p>
-                </div>
+                {addOns && addOns.map(addOn => {
+                        const addOnPrice = ADDON_PRICES[subscriptionType][addOn as keyof typeof ADDON_PRICES[typeof subscriptionType]]
+                        return (
+                            <div key={addOn} className='flex items-center justify-between'>
+                                <p className='text-sm text-grey-500 capitalize'>{addOn}</p>
+                                <p className='text-sm text-blue-950'>{`+${addOnPrice}/${subscriptionAbbr}`}</p>
+                            </div>
+                        )
+                    }
+                )}
             </div>
             <div className='flex items-center justify-between mt-6 px-4'>
-                <p className='text-grey-500'>Total (per month)</p>
-                <p className='text-purple-600 font-medium'>+12/mo</p>
+                <p className='text-grey-500'>{`Total (per ${subscriptionType.replace('ly', '')})`}</p>
+                <p className='text-purple-600 font-medium'>{`+${totalPrice}/${subscriptionAbbr}`}</p>
             </div>
         </>
     );
