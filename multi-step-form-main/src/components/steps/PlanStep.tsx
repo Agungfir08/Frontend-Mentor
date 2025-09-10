@@ -1,23 +1,29 @@
-import PlanCard from "@/components/RadioPlan.tsx";
-import {PLANS} from "@/lib/constant.ts";
-import {useFormContext} from "@/hooks/useFormContext.ts";
-import ToggleButton from "@/components/ToggleButton.tsx";
+import RadioButton from '@/components/RadioButton';
+import { PLANS } from '@/lib/constant.ts';
+import SwitchButton from '@/components/SwitchButton';
+import { useMultiStepContext } from '@/hooks/useMultiStepContext';
 
 function PlanStep() {
-    const {yearlySubscription} = useFormContext()
-    console.log(yearlySubscription)
+    const { yearlySubscription } = useMultiStepContext();
 
     return (
-        <div className='space-y-6'>
-            <div className='space-y-3.5'>
-                {PLANS.map(plan => (
-                    <PlanCard key={plan.name} image={plan.image} name={plan.name}
-                              price={yearlySubscription ? plan.priceYearly : plan.priceMonthly}
-                              yearlySubscription={yearlySubscription}/>
+        <div className="space-y-6">
+            <div className="space-y-3.5">
+                {PLANS.map((plan) => (
+                    <RadioButton
+                        key={plan.name}
+                        image={plan.image}
+                        name={plan.name}
+                        price={
+                            yearlySubscription
+                                ? plan.priceYearly
+                                : plan.priceMonthly
+                        }
+                        yearlySubscription={yearlySubscription}
+                    />
                 ))}
-
             </div>
-            <ToggleButton/>
+            <SwitchButton />
         </div>
     );
 }
