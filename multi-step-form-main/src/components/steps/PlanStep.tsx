@@ -8,7 +8,7 @@ function PlanStep() {
 
     return (
         <div className="space-y-6">
-            <div className="space-y-3.5">
+            <div className="flex flex-col lg:flex-row gap-3.5 lg:gap-[18px] ">
                 {PLANS.map((plan) => (
                     <RadioButton
                         key={plan.name}

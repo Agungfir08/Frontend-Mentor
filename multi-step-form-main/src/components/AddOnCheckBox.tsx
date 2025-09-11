@@ -20,7 +20,7 @@ function AddOnCheckBox({ title, description, price }: AddOnCheckBoxProps) {
             render={({ field }) => (
                 <Label
                     htmlFor={titleKebabCase}
-                    className="flex items-center gap-4 border border-purple-200 px-4 py-3 rounded-md has-[[aria-checked=true]]:bg-blue-300/15 has-[[aria-checked=true]]:outline-purple-600 has-[[aria-checked=true]]:outline cursor-pointer">
+                    className="flex items-center gap-4 border border-purple-200 px-4 lg:px-6 py-3 lg:py-[18px] rounded-md has-[[aria-checked=true]]:bg-blue-300/15 has-[[aria-checked=true]]:outline-purple-600 has-[[aria-checked=true]]:outline cursor-pointer">
                     <Checkbox
                         id={titleKebabCase}
                         value={title.toLowerCase()}
@@ -43,10 +43,10 @@ function AddOnCheckBox({ title, description, price }: AddOnCheckBoxProps) {
                     />
                     <div className="flex items-center justify-between w-full">
                         <div>
-                            <h3 className="text-blue-950 text-sm font-medium">
+                            <h3 className="text-blue-950 text-sm lg:text-base font-medium">
                                 {title}
                             </h3>
-                            <p className="text-grey-500 text-xs ">
+                            <p className="text-grey-500 text-xs lg:text-[15px]">
                                 {description}
                             </p>
                         </div>

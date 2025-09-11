@@ -5,7 +5,7 @@ import { ADDONS } from '@/lib/constant.ts';
 function AddOnStep() {
     const { yearlySubscription } = useMultiStepContext();
     return (
-        <div className="space-y-3.5">
+        <div className="space-y-3.5 lg:space-y-4">
             {ADDONS.map(({ name, description, priceMonthly, priceYearly }) => (
                 <AddOnCheckBox
                     key={name}

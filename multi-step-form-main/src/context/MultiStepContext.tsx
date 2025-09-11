@@ -11,6 +11,7 @@ export interface MultiStepContextType {
     currentStep: STEPS;
     nextStep: () => Promise<void>;
     prevStep: () => void;
+    goToStep: (index: number) => void;
     submitForm: (data: FormDataType) => void;
 }
 
@@ -28,6 +29,7 @@ const INITIAL_STATE: MultiStepContextType = {
     },
     nextStep: async () => {},
     prevStep: () => {},
+    goToStep: () => {},
     submitForm: () => {},
 };
 

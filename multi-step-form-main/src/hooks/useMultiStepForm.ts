@@ -10,11 +10,9 @@ interface useMultiStepFormProps {
 }
 
 export function useMultiStepForm({ steps, form }: useMultiStepFormProps) {
-    const [stepIndex, setStepIndex] = useState<number>(1);
+    const [stepIndex, setStepIndex] = useState<number>(0);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-    const currentStep = steps[stepIndex - 1];
-    const isFirstStep = stepIndex === 1;
-    const isLastStep = stepIndex === steps.length;
+    const currentStep = steps[stepIndex];
     const { setFormData, resetFormData } = useFormStore();
 
     const nextStep = async () => {
@@ -24,39 +22,44 @@ export function useMultiStepForm({ steps, form }: useMultiStepFormProps) {
 
         setFormData(form.getValues());
 
-        if (stepIndex < steps.length) {
+        if (stepIndex < steps.length - 1) {
             setStepIndex((prev) => prev + 1);
         }
     };
 
     const prevStep = () => {
-        if (stepIndex > 1) {
+        if (stepIndex > 0) {
             setStepIndex((prev) => prev - 1);
         }
     };
 
-    const submitForm = (data: FormDataType) => {
-        console.log('submit form', data);
+    const goToStep = (index: number) => {
+        if (index >= 0 && index < steps.length) {
+            setStepIndex(index);
+        }
+    };
 
+    const submitForm = async (data: FormDataType) => {
+        console.log('Form submitted successfully:', data);
         setIsSubmitted(true);
-        setFormData(data);
 
         setTimeout(() => {
             resetFormData();
             form.reset();
             setIsSubmitted(false);
-            setStepIndex(1);
+            setStepIndex(0);
         }, 4000);
     };
 
     return {
         stepIndex,
         currentStep,
-        isFirstStep,
-        isLastStep,
+        isFirstStep: stepIndex === 0,
+        isLastStep: stepIndex === steps.length - 1,
         isSubmitted,
         nextStep,
         prevStep,
+        goToStep,
         submitForm,
         yearlySubscription: !!form.watch('yearlySubscription'),
     };

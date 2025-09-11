@@ -5,6 +5,7 @@ import SummaryStep from '@/components/steps/SummaryStep.tsx';
 import { AddOnSchema, PersonalInfoSchema, PlanSchema } from '@/lib/schema.ts';
 import type { STEPS } from '@/lib/types';
 import MultiStepFormLayout from './components/layout/MultiStepFormLayout';
+// import { MultiStepForm } from './components/layout/MultiStepForm';
 
 const App = () => {
     const STEPS: STEPS[] = [
@@ -37,6 +38,7 @@ const App = () => {
     return (
         <main>
             <MultiStepFormLayout steps={STEPS} />
+            {/* <MultiStepForm steps={STEPS} /> */}
         </main>
     );
 };
