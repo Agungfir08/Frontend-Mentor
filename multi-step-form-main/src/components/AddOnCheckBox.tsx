@@ -19,6 +19,7 @@ function AddOnCheckBox({ title, description, price }: AddOnCheckBoxProps) {
             name={'addOns'}
             render={({ field }) => (
                 <Label
+                    data-testid="addon-checkbox"
                     htmlFor={titleKebabCase}
                     className="flex items-center gap-4 border border-purple-200 px-4 lg:px-6 py-3 lg:py-[18px] rounded-md has-[[aria-checked=true]]:bg-blue-300/15 has-[[aria-checked=true]]:outline-purple-600 has-[[aria-checked=true]]:outline cursor-pointer">
                     <Checkbox

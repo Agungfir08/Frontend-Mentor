@@ -24,6 +24,7 @@ function SwitchButton() {
                         Monthly
                     </Label>
                     <Switch
+                        data-testid="switch-button"
                         id="subcription-plan"
                         checked={field.value}
                         onCheckedChange={field.onChange}

@@ -11,6 +11,7 @@ function RadioPlan({ image, name, price, yearlySubscription }: RadioPlanProps) {
     const { register } = useFormContext();
     return (
         <label
+            data-testid="radio-plan"
             htmlFor={`${name.toLowerCase()}`}
             className="flex lg:flex-col lg:w-full items-start gap-3.5 lg:gap-[42px] border border-purple-200 rounded-md p-4 has-checked:bg-blue-300/15 has-checked:outline-purple-600 has-checked:outline cursor-pointer">
             <input

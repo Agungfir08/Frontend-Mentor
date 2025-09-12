@@ -42,7 +42,7 @@ function SummaryStep() {
                             Change
                         </button>
                     </div>
-                    <p className="text-sm lg:text-base text-blue-950 font-medium">{`+${planPrice}/${subscriptionAbbr}`}</p>
+                    <p className="text-sm lg:text-base text-blue-950 font-medium">{`+$${planPrice}/${subscriptionAbbr}`}</p>
                 </div>
                 <Separator />
                 {addOns &&
@@ -58,7 +58,7 @@ function SummaryStep() {
                                 <p className="text-sm lg:text-base text-grey-500 capitalize lg:tracking-tighter">
                                     {addOn}
                                 </p>
-                                <p className="text-sm text-blue-950">{`+${addOnPrice}/${subscriptionAbbr}`}</p>
+                                <p className="text-sm text-blue-950">{`+$${addOnPrice}/${subscriptionAbbr}`}</p>
                             </div>
                         );
                     })}
@@ -68,7 +68,7 @@ function SummaryStep() {
                     'ly',
                     ''
                 )})`}</p>
-                <p className="text-[20px] text-purple-600 font-medium">{`+${totalPrice}/${subscriptionAbbr}`}</p>
+                <p className="text-[20px] text-purple-600 font-medium">{`+$${totalPrice}/${subscriptionAbbr}`}</p>
             </div>
         </>
     );
