@@ -29,7 +29,7 @@ const INITIAL_STATE: MultiStepContextType = {
     },
     nextStep: async () => {},
     prevStep: () => {},
-    goToStep: (index: number) => {},
+    goToStep: (_index: number): void => {},
     submitForm: () => {},
 };
 
