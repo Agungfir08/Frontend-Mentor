@@ -21,6 +21,8 @@
     font-style: normal;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
     /* Neutral */
     --color-neutral-900: hsl(227, 75%, 14%);

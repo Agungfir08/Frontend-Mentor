@@ -1,9 +1,11 @@
 import Header from './components/Header';
 import RadioButton from './components/RadioButton';
-import data from '../data.json';
 import ExtensionCard from './components/ExtensionCard';
+import useExtensionContext from './hook/useExtensionContext';
 
 function App() {
+    const { data } = useExtensionContext();
+
     return (
         <main className="max-w-[1440px] mx-auto px-4 py-6 xl:px-[135px] xl:py-10">
             <Header />
@@ -13,18 +15,19 @@ function App() {
                 </h1>
                 <fieldset className="space-x-3">
                     <legend className="sr-only">Filter Button</legend>
-                    <RadioButton text="All" id="filter-all" checked />
+                    <RadioButton text="All" id="filter-all" />
                     <RadioButton text="Active" id="filter-active" />
                     <RadioButton text="Inactive" id="filter-inactive" />
                 </fieldset>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
-                {data.map(({ name, description, logo }) => (
+                {data.map(({ name, description, logo, isActive }) => (
                     <ExtensionCard
                         key={name}
                         image={logo}
                         name={name}
                         description={description}
+                        active={isActive}
                     />
                 ))}
             </div>
