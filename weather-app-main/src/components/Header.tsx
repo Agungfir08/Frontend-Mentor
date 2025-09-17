@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { DropdownButton } from './DropdownButton';
 import { Button } from './ui/button';
 import {
@@ -7,10 +6,17 @@ import {
     DropdownMenuRadioItem,
     DropdownMenuSeparator,
 } from './ui/dropdown-menu';
+import { useCtx } from '@/hooks/useCtx';
 
 function Header() {
-    const [temperature, setTemperature] = useState('celcius');
-    const [wind, setWind] = useState('km/h');
+    const {
+        temperature,
+        windSpeed,
+        precipitation,
+        setTemperature,
+        setWindSpeed,
+        setPrecipitation,
+    } = useCtx();
 
     return (
         <header className="flex items-center justify-between px-1">
@@ -39,11 +45,13 @@ function Header() {
                 }>
                 <DropdownMenuRadioGroup
                     value={temperature}
-                    onValueChange={setTemperature}>
+                    onValueChange={(value) =>
+                        setTemperature(value as 'celsius' | 'fahrenheit')
+                    }>
                     <DropdownMenuLabel className="mb-2">
                         Temperature
                     </DropdownMenuLabel>
-                    <DropdownMenuRadioItem value="celcius">
+                    <DropdownMenuRadioItem value="celsius">
                         Celcius (&#8451;)
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="fahrenheit">
@@ -51,15 +59,35 @@ function Header() {
                     </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={wind} onValueChange={setWind}>
+                <DropdownMenuRadioGroup
+                    value={windSpeed}
+                    onValueChange={(value) =>
+                        setWindSpeed(value as 'kmh' | 'mph')
+                    }>
                     <DropdownMenuLabel className="mb-2">
                         Wind Speed
                     </DropdownMenuLabel>
-                    <DropdownMenuRadioItem value="km/h">
+                    <DropdownMenuRadioItem value="kmh">
                         km/h
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="mph">
                         mph
+                    </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                    value={precipitation}
+                    onValueChange={(value) =>
+                        setPrecipitation(value as 'mm' | 'inch')
+                    }>
+                    <DropdownMenuLabel className="mb-2">
+                        Precipitation
+                    </DropdownMenuLabel>
+                    <DropdownMenuRadioItem value="mm">
+                        Millimetes (mm)
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="inch">
+                        Inches (in)
                     </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
             </DropdownButton>

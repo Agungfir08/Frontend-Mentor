@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
 interface LocationState {
-    lat: number | null;
-    long: number | null;
+    latitude: number;
+    longitude: number;
 }
 
 function useLocation() {
     const [location, setLocation] = useState<LocationState>({
-        lat: null,
-        long: null,
+        latitude: 0,
+        longitude: 0,
     });
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -21,8 +21,8 @@ function useLocation() {
 
     const success = (position: GeolocationPosition) => {
         setLocation({
-            lat: position.coords.latitude,
-            long: position.coords.longitude,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
         });
         setLoading(false);
     };
