@@ -1,4 +1,18 @@
-function WeatherInfoCard() {
+import { getWeatherImage } from '@/lib/utils';
+
+interface WeatherInfoCardProps {
+    temperature: number;
+    weatherCode: number;
+    date: string;
+}
+
+function WeatherInfoCard({
+    temperature,
+    weatherCode,
+    date,
+}: WeatherInfoCardProps) {
+    const { src: imgSrc, alt: altImg } = getWeatherImage(weatherCode);
+
     return (
         <div className="relative h-[286px] w-full flex flex-col items-center overflow-hidden rounded-[20px] max-md:py-[41px] px-6">
             <div className="absolute inset-0 m-0 h-full w-full overflow-hidden bg-transparent bg-[url('/images/bg-today-small.svg')] md:bg-[url('/images/bg-today-large.svg')] bg-no-repeat bg-cover bg-center"></div>
@@ -7,17 +21,13 @@ function WeatherInfoCard() {
                     <h2 className="heading-4 text-neutral-0">
                         Berlin, Germany
                     </h2>
-                    <p className="body-lg text-neutral-0/80">
-                        Tuesday, Aug 5, 2025
-                    </p>
+                    <p className="body-lg text-neutral-0/80">{date}</p>
                 </div>
                 <div className="flex items-center gap-5">
-                    <img
-                        src="/images/icon-sunny.webp"
-                        alt="sunny icon"
-                        className="size-[120px]"
-                    />
-                    <h2 className="heading text-neutral-0">20&deg;</h2>
+                    <img src={imgSrc} alt={altImg} className="size-[120px]" />
+                    <h2 className="heading text-neutral-0">{`${Math.round(
+                        temperature
+                    )}°`}</h2>
                 </div>
             </div>
         </div>

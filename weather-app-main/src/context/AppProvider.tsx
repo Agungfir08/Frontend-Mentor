@@ -1,32 +1,44 @@
 import { useMemo, useState } from 'react';
-import {
-    AppContext,
-    type PrecipitationType,
-    type SelectedLocationType,
-    type TemperatureType,
-    type WindSpeedType,
-} from './AppContext';
+import { AppContext, type SelectedLocationType } from './AppContext';
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
+    const METRIC_STATE_SETTINGS: UnitSettings = {
+        temperature: 'celsius',
+        windSpeed: 'kmh',
+        precipitation: 'mm',
+    };
+
+    const IMPERIAL_STATE_SETTINGS: UnitSettings = {
+        temperature: 'fahrenheit',
+        windSpeed: 'mph',
+        precipitation: 'inch',
+    };
+
     const [selectedLocation, setSelectedLocation] =
         useState<SelectedLocationType | null>(null);
+    const [unitSettings, setUnitSettings] = useState<UnitSettings>(
+        METRIC_STATE_SETTINGS
+    );
+    const isImperial =
+        JSON.stringify(unitSettings) ===
+        JSON.stringify(IMPERIAL_STATE_SETTINGS);
 
-    const [temperature, setTemperature] = useState<TemperatureType>('celsius');
-    const [windSpeed, setWindSpeed] = useState<WindSpeedType>('kmh');
-    const [precipitation, setPrecipitation] = useState<PrecipitationType>('mm');
+    const toggleImperial = () => {
+        setUnitSettings(
+            isImperial ? METRIC_STATE_SETTINGS : IMPERIAL_STATE_SETTINGS
+        );
+    };
 
     const value = useMemo(
         () => ({
             selectedLocation,
-            temperature,
-            windSpeed,
-            precipitation,
+            isImperial,
+            unitSettings,
             setSelectedLocation,
-            setTemperature,
-            setWindSpeed,
-            setPrecipitation,
+            setUnitSettings,
+            toggleImperial,
         }),
-        [temperature, windSpeed, precipitation]
+        [selectedLocation, isImperial, unitSettings]
     );
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

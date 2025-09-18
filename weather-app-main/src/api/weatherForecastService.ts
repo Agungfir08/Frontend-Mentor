@@ -1,14 +1,8 @@
 import { fetchWeatherApi } from 'openmeteo';
 import { API_CONFIG } from './apiConfig';
-import type {
-    PrecipitationType,
-    TemperatureType,
-    WindSpeedType,
-} from '@/context/AppContext';
 
 export const fetchWeatherForecast = async (
-    lat: number,
-    long: number,
+    coordinate: Coordinate,
     temperature: TemperatureType,
     windSpeed: WindSpeedType,
     precipitation: PrecipitationType
@@ -16,13 +10,9 @@ export const fetchWeatherForecast = async (
     const api = `${API_CONFIG.WEATHER_FORECAST_URL}`;
 
     const params = {
-        latitude: lat,
-        longitude: long,
-        daily: [
-            'weather_code',
-            'temperature_2m_max',
-            'apparent_temperature_max',
-        ],
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+        daily: ['weather_code', 'temperature_2m_max', 'temperature_2m_min'],
         hourly: ['temperature_2m', 'weather_code'],
         current: [
             'temperature_2m',
@@ -30,6 +20,7 @@ export const fetchWeatherForecast = async (
             'weather_code',
             'wind_speed_10m',
             'apparent_temperature',
+            'relative_humidity_2m',
         ],
         wind_speed_unit: windSpeed,
         temperature_unit: temperature,
@@ -53,6 +44,7 @@ export const fetchWeatherForecast = async (
             weather_code: current.variables(2)!.value(),
             wind_speed_10m: current.variables(3)!.value(),
             apparent_temperature: current.variables(4)!.value(),
+            humidity: current.variables(5)!.value(),
         },
         hourly: {
             time: [

@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useCtx } from './useCtx';
-import type { SelectedLocationType } from '@/context/AppContext';
 import { fetchWeatherForecast } from '@/api/weatherForecastService';
 
-export function useWeather(
-    coordinate: Pick<SelectedLocationType, 'latitude' | 'longitude'>
-) {
-    const { temperature, windSpeed, precipitation } = useCtx();
+export function useWeather(coordinate: Coordinate) {
+    const { unitSettings } = useCtx();
+    const { temperature, windSpeed, precipitation } = unitSettings;
 
     return useQuery({
         queryKey: [
@@ -19,8 +17,7 @@ export function useWeather(
         queryFn: () =>
             coordinate
                 ? fetchWeatherForecast(
-                      coordinate.latitude,
-                      coordinate.longitude,
+                      coordinate,
                       temperature,
                       windSpeed,
                       precipitation

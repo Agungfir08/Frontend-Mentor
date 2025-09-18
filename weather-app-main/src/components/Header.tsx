@@ -1,22 +1,19 @@
 import { DropdownButton } from './DropdownButton';
+import DropdownRadioButton from './DropdownRadioButton';
 import { Button } from './ui/button';
-import {
-    DropdownMenuLabel,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
-    DropdownMenuSeparator,
-} from './ui/dropdown-menu';
+import { DropdownMenuSeparator } from './ui/dropdown-menu';
 import { useCtx } from '@/hooks/useCtx';
 
 function Header() {
-    const {
-        temperature,
-        windSpeed,
-        precipitation,
-        setTemperature,
-        setWindSpeed,
-        setPrecipitation,
-    } = useCtx();
+    const { unitSettings, setUnitSettings, isImperial, toggleImperial } =
+        useCtx();
+
+    const handleChangeUnit = (key: keyof UnitSettings, value: string) => {
+        setUnitSettings((prevUnitSetting) => ({
+            ...prevUnitSetting,
+            [key]: value,
+        }));
+    };
 
     return (
         <header className="flex items-center justify-between px-1">
@@ -43,53 +40,43 @@ function Header() {
                         />
                     </Button>
                 }>
-                <DropdownMenuRadioGroup
-                    value={temperature}
-                    onValueChange={(value) =>
-                        setTemperature(value as 'celsius' | 'fahrenheit')
-                    }>
-                    <DropdownMenuLabel className="mb-2">
-                        Temperature
-                    </DropdownMenuLabel>
-                    <DropdownMenuRadioItem value="celsius">
-                        Celcius (&#8451;)
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="fahrenheit">
-                        Fahrenheit (&#8457;)
-                    </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
+                <Button
+                    variant="setting"
+                    onClick={toggleImperial}>{`Switch to ${
+                    isImperial ? 'Metric' : 'Imperial'
+                }`}</Button>
+                <DropdownRadioButton
+                    label="Temperature"
+                    value={unitSettings.temperature}
+                    settingKey="temperature"
+                    onValueChange={handleChangeUnit}
+                    options={[
+                        { value: 'celsius', label: 'Celcius (°C)' },
+                        { value: 'fahrenheit', label: 'Fahrenheit (°F)' },
+                    ]}
+                />
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup
-                    value={windSpeed}
-                    onValueChange={(value) =>
-                        setWindSpeed(value as 'kmh' | 'mph')
-                    }>
-                    <DropdownMenuLabel className="mb-2">
-                        Wind Speed
-                    </DropdownMenuLabel>
-                    <DropdownMenuRadioItem value="kmh">
-                        km/h
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="mph">
-                        mph
-                    </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
+                <DropdownRadioButton
+                    label="Wind Speed"
+                    value={unitSettings.windSpeed}
+                    settingKey="windSpeed"
+                    onValueChange={handleChangeUnit}
+                    options={[
+                        { value: 'kmh', label: 'km/h' },
+                        { value: 'mph', label: 'mph' },
+                    ]}
+                />
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup
-                    value={precipitation}
-                    onValueChange={(value) =>
-                        setPrecipitation(value as 'mm' | 'inch')
-                    }>
-                    <DropdownMenuLabel className="mb-2">
-                        Precipitation
-                    </DropdownMenuLabel>
-                    <DropdownMenuRadioItem value="mm">
-                        Millimetes (mm)
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="inch">
-                        Inches (in)
-                    </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
+                <DropdownRadioButton
+                    label="Precipitation"
+                    value={unitSettings.precipitation}
+                    settingKey="precipitation"
+                    onValueChange={handleChangeUnit}
+                    options={[
+                        { value: 'mm', label: 'Millimeters (mm)' },
+                        { value: 'inch', label: 'Inches (in)' },
+                    ]}
+                />
             </DropdownButton>
         </header>
     );

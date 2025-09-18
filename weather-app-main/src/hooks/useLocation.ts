@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 
-interface LocationState {
-    latitude: number;
-    longitude: number;
-}
-
 function useLocation() {
-    const [location, setLocation] = useState<LocationState>({
+    const [location, setLocation] = useState<Coordinate>({
         latitude: 0,
         longitude: 0,
     });
-    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
     const options = {
@@ -24,7 +18,6 @@ function useLocation() {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
         });
-        setLoading(false);
     };
 
     const failed = (err: GeolocationPositionError) => {
@@ -45,15 +38,11 @@ function useLocation() {
                 errMsg = 'An unknown error occurred.';
         }
         setError(errMsg);
-        setLoading(false);
     };
 
     const getLocation = () => {
-        setLoading(true);
-
         if (!navigator.geolocation) {
             setError('Geolocation is not supported by your browser.');
-            setLoading(false);
             return;
         }
 
@@ -64,7 +53,7 @@ function useLocation() {
         getLocation();
     }, []);
 
-    return { location, loading, error };
+    return { location, error, getLocation };
 }
 
 export default useLocation;

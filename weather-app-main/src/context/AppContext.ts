@@ -1,8 +1,5 @@
-import { createContext } from 'react';
+import { createContext, type SetStateAction } from 'react';
 
-export type TemperatureType = 'celsius' | 'fahrenheit';
-export type WindSpeedType = 'kmh' | 'mph';
-export type PrecipitationType = 'mm' | 'inch';
 export interface SelectedLocationType {
     latitude: number;
     longitude: number;
@@ -12,13 +9,11 @@ export interface SelectedLocationType {
 
 interface AppContextType {
     selectedLocation: SelectedLocationType | null;
-    temperature: TemperatureType;
-    windSpeed: WindSpeedType;
-    precipitation: PrecipitationType;
+    unitSettings: UnitSettings;
+    isImperial: boolean;
     setSelectedLocation: (location: SelectedLocationType | null) => void;
-    setTemperature: (temp: TemperatureType) => void;
-    setWindSpeed: (wind: WindSpeedType) => void;
-    setPrecipitation: (precipitation: PrecipitationType) => void;
+    setUnitSettings: (setting: SetStateAction<UnitSettings>) => void;
+    toggleImperial: () => void;
 }
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
