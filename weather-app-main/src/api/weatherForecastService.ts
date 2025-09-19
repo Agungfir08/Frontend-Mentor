@@ -81,7 +81,7 @@ export const fetchWeatherForecast = async (
             ),
             weather_code: daily.variables(0)!.valuesArray(),
             temperature_2m_max: daily.variables(1)!.valuesArray(),
-            apparent_temperature_max: daily.variables(2)!.valuesArray(),
+            temperature_2m_min: daily.variables(2)!.valuesArray(),
         },
     };
 

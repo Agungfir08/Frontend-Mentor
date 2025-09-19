@@ -8,11 +8,13 @@ function Header() {
     const { unitSettings, setUnitSettings, isImperial, toggleImperial } =
         useCtx();
 
-    const handleChangeUnit = (key: keyof UnitSettings, value: string) => {
-        setUnitSettings((prevUnitSetting) => ({
-            ...prevUnitSetting,
-            [key]: value,
-        }));
+    const handleChangeUnit = (key: keyof UnitSettings) => {
+        return (value: string) => {
+            setUnitSettings((prev) => ({
+                ...prev,
+                [key]: value,
+            }));
+        };
     };
 
     return (
@@ -42,14 +44,14 @@ function Header() {
                 }>
                 <Button
                     variant="setting"
+                    align="start"
                     onClick={toggleImperial}>{`Switch to ${
                     isImperial ? 'Metric' : 'Imperial'
                 }`}</Button>
                 <DropdownRadioButton
                     label="Temperature"
                     value={unitSettings.temperature}
-                    settingKey="temperature"
-                    onValueChange={handleChangeUnit}
+                    onValueChange={handleChangeUnit('temperature')}
                     options={[
                         { value: 'celsius', label: 'Celcius (°C)' },
                         { value: 'fahrenheit', label: 'Fahrenheit (°F)' },
@@ -59,8 +61,7 @@ function Header() {
                 <DropdownRadioButton
                     label="Wind Speed"
                     value={unitSettings.windSpeed}
-                    settingKey="windSpeed"
-                    onValueChange={handleChangeUnit}
+                    onValueChange={handleChangeUnit('windSpeed')}
                     options={[
                         { value: 'kmh', label: 'km/h' },
                         { value: 'mph', label: 'mph' },
@@ -70,8 +71,7 @@ function Header() {
                 <DropdownRadioButton
                     label="Precipitation"
                     value={unitSettings.precipitation}
-                    settingKey="precipitation"
-                    onValueChange={handleChangeUnit}
+                    onValueChange={handleChangeUnit('precipitation')}
                     options={[
                         { value: 'mm', label: 'Millimeters (mm)' },
                         { value: 'inch', label: 'Inches (in)' },

@@ -41,6 +41,8 @@ function useLocation() {
     };
 
     const getLocation = () => {
+        setError(null);
+
         if (!navigator.geolocation) {
             setError('Geolocation is not supported by your browser.');
             return;

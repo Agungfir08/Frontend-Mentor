@@ -18,6 +18,87 @@ export function formatDate(dateInput: Date | string): string {
     return date.toLocaleDateString('en-Us', options);
 }
 
+export function getDay(
+    dateInput: Date | string,
+    options: 'short' | 'long' = 'short'
+): string {
+    const date = new Date(dateInput);
+    return date.toLocaleDateString('en-US', { weekday: options });
+}
+
+export function getTime(dateInput: Date | string): string {
+    const date = new Date(dateInput);
+
+    return date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        hour12: true,
+    });
+}
+
+export function getArrayOfDaysName(datesInput: Date[]): string[] {
+    const dates = datesInput.map((dateInput) => {
+        return getDay(dateInput, 'long');
+    });
+
+    return [...new Set(dates)];
+}
+
+export function reformatHourlyData(
+    data: WeatherData['hourly']
+): HourlyDataReformat {
+    const times = data.time;
+    const temperatures = Array.from(data.temperature_2m ?? []);
+    const weatherCodes = Array.from(data.weather_code ?? []);
+
+    if (
+        times.length !== temperatures.length ||
+        times.length !== weatherCodes.length
+    ) {
+        console.error('the length are not equals');
+        return { time: [], temperature_2m: [], weather_code: [] };
+    }
+
+    const groupedByDate: Record<
+        string,
+        {
+            time: Date[];
+            temperature_2m: number[];
+            weather_code: number[];
+        }
+    > = {};
+
+    times.forEach((time, idx) => {
+        const date = new Date(time);
+        const key = date.toISOString().split('T')[0];
+
+        if (!groupedByDate[key]) {
+            groupedByDate[key] = {
+                time: [],
+                temperature_2m: [],
+                weather_code: [],
+            };
+        }
+
+        groupedByDate[key].time.push(date);
+        groupedByDate[key].temperature_2m.push(temperatures[idx]);
+        groupedByDate[key].weather_code.push(weatherCodes[idx]);
+    });
+
+    const finalResult: HourlyDataReformat = {
+        time: [],
+        temperature_2m: [],
+        weather_code: [],
+    };
+
+    Object.values(groupedByDate).forEach((dayData) => {
+        finalResult.time.push(dayData.time);
+        finalResult.temperature_2m.push(dayData.temperature_2m);
+        finalResult.weather_code.push(dayData.weather_code);
+    });
+
+    return finalResult;
+}
+
 export function getWeatherImage(weatherCode: number): {
     src: string;
     alt: string;
@@ -51,4 +132,16 @@ export function getWeatherImage(weatherCode: number): {
     }
 
     return { src: '/images/icon-sunny.webp', alt: 'sunny icon' };
+}
+
+export function formatLocationName(data: GeocodingResult) {
+    const parts: string[] = [];
+
+    if (data.admin4) parts.push(data.admin4);
+    if (data.admin3) parts.push(data.admin3);
+    if (data.admin2) parts.push(data.admin2);
+    if (data.admin1) parts.push(data.admin1);
+    if (data.country) parts.push(data.country);
+
+    return parts.join(', ');
 }

@@ -10,24 +10,20 @@ interface Option {
 }
 
 interface DropdownRadioButtonProps {
-    label: string;
+    label?: string;
     value: string;
-    settingKey: keyof UnitSettings;
     options: Option[];
-    onValueChange: (key: keyof UnitSettings, value: string) => void;
+    onValueChange: (value: string) => void;
 }
 
 function DropdownRadioButton({
     label,
     value,
     options,
-    settingKey,
     onValueChange,
 }: DropdownRadioButtonProps) {
     return (
-        <DropdownMenuRadioGroup
-            value={value}
-            onValueChange={(value) => onValueChange(settingKey, value)}>
+        <DropdownMenuRadioGroup value={value} onValueChange={onValueChange}>
             <DropdownMenuLabel className="mb-2">{label}</DropdownMenuLabel>
             {options.map((option) => (
                 <DropdownMenuRadioItem key={option.value} value={option.value}>
