@@ -25,11 +25,15 @@ function DropdownRadioButton({
     return (
         <DropdownMenuRadioGroup value={value} onValueChange={onValueChange}>
             <DropdownMenuLabel className="mb-2">{label}</DropdownMenuLabel>
-            {options.map((option) => (
-                <DropdownMenuRadioItem key={option.value} value={option.value}>
-                    {option.label}
-                </DropdownMenuRadioItem>
-            ))}
+            <div className="space-y-1">
+                {options.map((option) => (
+                    <DropdownMenuRadioItem
+                        key={option.value}
+                        value={option.value}>
+                        {option.label}
+                    </DropdownMenuRadioItem>
+                ))}
+            </div>
         </DropdownMenuRadioGroup>
     );
 }

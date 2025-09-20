@@ -4,28 +4,28 @@ import { fetchWeatherForecast } from '@/api/weatherForecastService';
 import { fetchReverseGeocoding } from '@/api/reverseGeocodingService';
 import { fetchGeocoding } from '@/api/geocodingService';
 
-export function useWeather(coordinate: Coordinate) {
-    const { unitSettings } = useCtx();
+export function useWeather() {
+    const { selectedLocation, unitSettings } = useCtx();
     const { temperature, windSpeed, precipitation } = unitSettings;
 
     return useQuery({
         queryKey: [
             'Weather',
-            coordinate,
+            selectedLocation,
             temperature,
             windSpeed,
             precipitation,
         ],
         queryFn: () =>
-            coordinate
+            selectedLocation
                 ? fetchWeatherForecast(
-                      coordinate,
+                      selectedLocation,
                       temperature,
                       windSpeed,
                       precipitation
                   )
                 : null,
-        enabled: !!coordinate,
+        enabled: !!selectedLocation?.latitude && !!selectedLocation.longitude,
     });
 }
 
@@ -37,10 +37,12 @@ export function useLocationSearch(query: string) {
     });
 }
 
-export function useReverseGeocoding(coordinate: Coordinate) {
+export function useReverseGeocoding() {
+    const { selectedLocation } = useCtx();
     return useQuery({
-        queryKey: ['Location', coordinate],
-        queryFn: () => fetchReverseGeocoding(coordinate),
-        enabled: !!coordinate,
+        queryKey: ['Location', selectedLocation],
+        queryFn: () =>
+            selectedLocation ? fetchReverseGeocoding(selectedLocation) : null,
+        enabled: !!selectedLocation?.latitude && !!selectedLocation.longitude,
     });
 }

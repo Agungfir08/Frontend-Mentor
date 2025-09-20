@@ -141,6 +141,8 @@ export function formatLocationName(data: GeocodingResult) {
     if (data.admin3) parts.push(data.admin3);
     if (data.admin2) parts.push(data.admin2);
     if (data.admin1) parts.push(data.admin1);
+
+    parts.push(data.name);
     if (data.country) parts.push(data.country);
 
     return parts.join(', ');

@@ -14,8 +14,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         precipitation: 'inch',
     };
 
+    const INITIAL_LOCATION_STATE: SelectedLocationType = {
+        latitude: 0,
+        longitude: 0,
+        name: '',
+        country: '',
+    };
+
     const [selectedLocation, setSelectedLocation] =
-        useState<SelectedLocationType | null>(null);
+        useState<SelectedLocationType>(INITIAL_LOCATION_STATE);
     const [unitSettings, setUnitSettings] = useState<UnitSettings>(
         METRIC_STATE_SETTINGS
     );

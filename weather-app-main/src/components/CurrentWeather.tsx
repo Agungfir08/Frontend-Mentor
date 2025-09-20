@@ -22,7 +22,7 @@ function CurrentWeather({ isLoading, data, location }: CurrentWeatherProps) {
                     {Array.from({ length: 4 }).map((_, idx) => (
                         <Skeleton
                             key={idx}
-                            className="h-[120px] w-full rounded-[20px] bg-neutral-800 border border-neutral-700"
+                            className="h-[135px] w-full rounded-[20px] bg-neutral-800 border border-neutral-700"
                         />
                     ))}
                 </div>
