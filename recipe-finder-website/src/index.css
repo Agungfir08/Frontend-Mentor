@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-VariableFont_wght.ttf')
+        format('truetype');
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf')
+        format('truetype');
+    font-style: italic;
+    font-weight: 200 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('./assets/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf')
+        format('truetype');
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('./assets/fonts/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf')
+        format('truetype');
+    font-style: italic;
+    font-weight: 200 800;
+    font-display: swap;
+}
+
+@theme {
+    /* Neutral Color */
+    --color-neutral-900: #163a34;
+    --color-neutral-600: #395852;
+    --color-neutral-300: #d0dcd9;
+    --color-neutral-200: #e0e6e3;
+    --color-neutral-100: #f6f5f1;
+    --color-neutral-0: #ffffff;
+
+    /* Orange Color */
+    --color-orange-500: #fe9f6b;
+
+    /* Teal Color */
+    --color-teal-500: #49ac9b;
+
+    /* Indigo Color */
+    --color-indigo-500: #697ddb;
+
+    /* Typography */
+    --font-nunito: 'Nunito', sans-serif;
+    --font-nunito-sans: 'Nunito Sans', sans-serif;
+
+    /* Spacing */
+    --spacing-0: 0px;
+    --spacing-25: 2px;
+    --spacing-50: 4px;
+    --spacing-75: 6px;
+    --spacing-100: 8px;
+    --spacing-125: 10px;
+    --spacing-150: 12px;
+    --spacing-200: 16px;
+    --spacing-250: 20px;
+    --spacing-300: 24px;
+    --spacing-400: 32px;
+    --spacing-500: 40px;
+    --spacing-600: 48px;
+    --spacing-800: 64px;
+    --spacing-1000: 80px;
+    --spacing-1200: 96px;
+    --spacing-1400: 112px;
+    --spacing-1600: 128px;
+    --spacing-1800: 140px;
+
+    /* Radius */
+    --radius-0: 0px;
+    --radius-2: 2px;
+    --radius-4: 4px;
+    --radius-6: 6px;
+    --radius-8: 8px;
+    --radius-10: 10px;
+    --radius-12: 12px;
+    --radius-16: 16px;
+    --radius-20: 20px;
+    --radius-24: 24px;
+}
+
+@layer base {
+    body {
+        @apply bg-neutral-100;
+    }
+}
+
+@layer components {
+    .heading {
+        @apply font-extrabold text-[52px] md:text-[64px] lg:text-7xl font-nunito -tracking-[2px] leading-[110%];
+    }
+    .haeding-2 {
+        @apply font-extrabold text-[40px] md:text-5xl font-nunito -tracking-[2px] leading-[120%];
+    }
+    .sub-heading {
+        @apply font-bold text-[32px] font-nunito -tracking-[1px] leading-[130%];
+    }
+    .text-body--2xl {
+        @apply font-bold text-2xl font-nunito -tracking-[1px] leading-[130%];
+    }
+    .text-body--xl {
+        @apply font-bold text-xl font-nunito -tracking-[0.5px] leading-[140%];
+    }
+    .text-body--xl--sans {
+        @apply font-medium text-[40px] font-nunito-sans -tracking-[0.4px] leading-[150%];
+    }
+    .text-body--lg {
+        @apply font-semibold text-lg font-nunito -tracking-[0.3px] leading-[150%];
+    }
+    .text-body--base--bold {
+        @apply font-bold text-base font-nunito-sans -tracking-[0.3px] leading-[150%];
+    }
+    .text-body--base--medium {
+        @apply font-medium text-base font-nunito-sans -tracking-[0.3px] leading-[150%];
+    }
+    .text-body--sm {
+        @apply font-bold text-sm font-nunito-sans -tracking-[0.3px] leading-[150%];
+    }
+}
