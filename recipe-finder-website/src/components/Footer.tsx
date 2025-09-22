@@ -4,7 +4,7 @@ import BlueSkyIcon from '../assets/icon-bluesky.svg';
 
 function Footer() {
     return (
-        <div className="sticky bottom-0 max-w-[1192px] mx-auto w-full max-md:px-4 max-md:pt-8 max-md:pb-5 max-[1440px]:px-8 max-[1440px]:py-10 flex max-md:flex-col-reverse max-md:gap-6 items-center md:justify-between">
+        <footer className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-[124px] pt-8 md:py-10 max-md:pb-5 flex max-md:flex-col-reverse max-md:gap-6 items-center md:justify-between">
             <p className="text-body--base-medium text-neutral-900">
                 Made with ❤️ and 🥑
             </p>
@@ -19,7 +19,7 @@ function Footer() {
                     <img src={BlueSkyIcon} alt="bluesky Icon" />
                 </a>
             </div>
-        </div>
+        </footer>
     );
 }
 

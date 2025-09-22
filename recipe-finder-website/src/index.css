@@ -102,7 +102,7 @@
     .heading {
         @apply font-extrabold text-[52px] md:text-[64px] lg:text-7xl font-nunito -tracking-[2px] leading-[110%];
     }
-    .haeding-2 {
+    .heading-2 {
         @apply font-extrabold text-[40px] md:text-5xl font-nunito -tracking-[2px] leading-[120%];
     }
     .sub-heading {
@@ -115,7 +115,7 @@
         @apply font-bold text-xl font-nunito -tracking-[0.5px] leading-[140%];
     }
     .text-body--xl--sans {
-        @apply font-medium text-[40px] font-nunito-sans -tracking-[0.4px] leading-[150%];
+        @apply font-medium text-xl font-nunito-sans -tracking-[0.4px] leading-[150%];
     }
     .text-body--lg {
         @apply font-semibold text-lg font-nunito -tracking-[0.3px] leading-[150%];

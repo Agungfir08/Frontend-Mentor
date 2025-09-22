@@ -6,7 +6,7 @@ import { useState } from 'react';
 function Header() {
     const [open, setOpen] = useState<boolean>(false);
     return (
-        <header className="max-w-[1440px] mx-auto  p-4 md:px-8 md:pt-8 md:pb-5 lg:px-[60px] lg:py-5 bg-neutral-100 border-b border-neutral-300 sticky top-0">
+        <header className="max-w-[1440px] mx-auto  p-4 md:px-8 md:pt-8 md:pb-5 lg:px-[60px] lg:py-5 bg-neutral-100 border-b border-neutral-300 sticky top-0 z-10">
             <div className="relative flex items-center justify-between">
                 <a href="/">
                     <img
