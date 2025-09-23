@@ -1,10 +1,12 @@
-import { Button } from './button';
 import HamburgerIcon from '../assets/icon-hamburger-menu.svg';
 import NavLink from './NavLink';
 import { useState } from 'react';
+import { Button } from './ui/button';
+import { useNavigate } from 'react-router';
 
 function Header() {
     const [open, setOpen] = useState<boolean>(false);
+    const navigate = useNavigate();
     return (
         <header className="  bg-neutral-100 border-b border-neutral-300 sticky top-0 z-10">
             <div className="relative max-w-[1440px] p-4 md:px-8 md:pt-8 md:pb-5 lg:px-[60px] lg:py-5 mx-auto flex items-center justify-between">
@@ -19,6 +21,7 @@ function Header() {
                 <Button
                     variant="icon"
                     size="icon"
+                    rounded="icon"
                     className="lg:hidden"
                     onClick={() => setOpen((prev) => !prev)}>
                     <img src={HamburgerIcon} alt="hamburger menu icon" />
@@ -31,7 +34,10 @@ function Header() {
                             <NavLink label="About" to="/about" />
                             <NavLink label="Recipes" to="/recipes" />
                         </nav>
-                        <Button size="normal" className="w-full">
+                        <Button
+                            size="lg"
+                            className="w-full"
+                            onClick={() => navigate('/recipes')}>
                             Browse recipes
                         </Button>
                     </div>
@@ -42,7 +48,10 @@ function Header() {
                     <NavLink label="About" to="/about" />
                     <NavLink label="Recipes" to="/recipes" />
                 </nav>
-                <Button size="normal" className="max-lg:hidden">
+                <Button
+                    size="lg"
+                    className="max-lg:hidden"
+                    onClick={() => navigate('/recipes')}>
                     Browse recipes
                 </Button>
             </div>

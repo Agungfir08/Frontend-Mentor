@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
-import { Button } from './button';
 import ForkIcon from '/images/pattern-fork.svg';
 import KnifeIcon from '/images/pattern-knife.svg';
+import { Button } from './ui/button';
 
 function CTA() {
     const navigate = useNavigate();

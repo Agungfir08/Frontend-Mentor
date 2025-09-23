@@ -1,4 +1,4 @@
-import Badge from '../../badge';
+import { Badge } from '@/components/ui/badge';
 import PatternIllustration from '/images/pattern-squiggle-2.svg';
 
 function Mission() {
