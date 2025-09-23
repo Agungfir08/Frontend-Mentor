@@ -3,7 +3,7 @@ import PatternIllustration from '/images/pattern-squiggle-2.svg';
 
 function Mission() {
     return (
-        <section className="grid xl:grid-cols-[1fr_1.325fr] gap-10 md:gap-16 pb-12 md:pb-20 xl:pb-24">
+        <section className="grid xl:grid-cols-[1fr_1.2fr] xl:items-center gap-10 md:gap-16 pb-12 md:pb-20 xl:pb-24">
             <div className="space-y-6">
                 <Badge>Our Mission</Badge>
                 <h2 className="heading-2 text-neutral-900">

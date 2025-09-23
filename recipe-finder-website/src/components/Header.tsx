@@ -6,8 +6,8 @@ import { useState } from 'react';
 function Header() {
     const [open, setOpen] = useState<boolean>(false);
     return (
-        <header className="max-w-[1440px] mx-auto  p-4 md:px-8 md:pt-8 md:pb-5 lg:px-[60px] lg:py-5 bg-neutral-100 border-b border-neutral-300 sticky top-0 z-10">
-            <div className="relative flex items-center justify-between">
+        <header className="  bg-neutral-100 border-b border-neutral-300 sticky top-0 z-10">
+            <div className="relative max-w-[1440px] p-4 md:px-8 md:pt-8 md:pb-5 lg:px-[60px] lg:py-5 mx-auto flex items-center justify-between">
                 <a href="/">
                     <img
                         src="/images/logo.svg"
@@ -25,13 +25,11 @@ function Header() {
                 </Button>
 
                 {open && (
-                    <div className="absolute z-20 left-0 right-0 top-[125%] bg-neutral-0 border border-neutral-300 rounded-8 p-2 lg:hidden space-y-2.5">
-                        <nav>
-                            <ul className="flex flex-col items-start">
-                                <NavLink label="Home" />
-                                <NavLink label="About" />
-                                <NavLink label="Recipes" />
-                            </ul>
+                    <div className="absolute z-20 left-4 right-4 md:left-8 md:right-8 top-[90%] bg-neutral-0 border border-neutral-300 rounded-8 p-2 lg:hidden space-y-2.5">
+                        <nav className="flex flex-col items-start">
+                            <NavLink label="Home" to="/" />
+                            <NavLink label="About" to="/about" />
+                            <NavLink label="Recipes" to="/recipes" />
                         </nav>
                         <Button size="normal" className="w-full">
                             Browse recipes
@@ -39,12 +37,10 @@ function Header() {
                     </div>
                 )}
 
-                <nav className="max-lg:hidden">
-                    <ul className="flex items-center gap-10">
-                        <NavLink label="Home" />
-                        <NavLink label="About" />
-                        <NavLink label="Recipes" />
-                    </ul>
+                <nav className="max-lg:hidden flex items-center gap-10">
+                    <NavLink label="Home" to="/" />
+                    <NavLink label="About" to="/about" />
+                    <NavLink label="Recipes" to="/recipes" />
                 </nav>
                 <Button size="normal" className="max-lg:hidden">
                     Browse recipes

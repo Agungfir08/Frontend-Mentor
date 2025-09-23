@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router';
 import { Button } from './button';
 import ForkIcon from '/images/pattern-fork.svg';
 import KnifeIcon from '/images/pattern-knife.svg';
 
 function CTA() {
+    const navigate = useNavigate();
     return (
         <section className="relative bg-neutral-200 py-12 max-md:px-4 md:py-20 xl:py-24  rounded-16 overflow-hidden">
             <img
@@ -25,7 +27,9 @@ function CTA() {
                         table—fast.
                     </p>
                 </div>
-                <Button>Browse recipes</Button>
+                <Button onClick={() => navigate('/recipes')}>
+                    Browse recipes
+                </Button>
             </div>
         </section>
     );
