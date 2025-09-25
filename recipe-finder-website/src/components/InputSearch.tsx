@@ -3,7 +3,7 @@ import SearchIcon from '/images/icon-search.svg';
 
 function InputSearch() {
     return (
-        <div className="relative md:max-w-[320px]">
+        <div className="relative w-full md:max-w-[320px]">
             <img
                 src={SearchIcon}
                 alt="search icon"
@@ -14,11 +14,6 @@ function InputSearch() {
                 placeholder="Search by name or ingridient..."
                 className="pl-[42px]"
             />
-            {/* <input
-                type="text"
-                placeholder="Search by name or ingredient..."
-                className="bg-neutral-0 py-2.5 pl-[42px] pr-4 rounded-10 border border-neutral-300 text-body--lg text-neutral-900 w-full outline-none cursor-pointer focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
-            /> */}
         </div>
     );
 }

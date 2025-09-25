@@ -5,13 +5,13 @@ import {
 
 interface Option {
     label: string;
-    value: string | number;
+    value: number | null;
 }
 
 interface DropdownRadioButtonProps {
-    value: string;
+    value: number | null;
     options: Option[];
-    onValueChange: (value: string) => void;
+    onValueChange: (value: number | null) => void;
 }
 
 function DropdownRadioButton({
@@ -20,13 +20,15 @@ function DropdownRadioButton({
     onValueChange,
 }: DropdownRadioButtonProps) {
     return (
-        <DropdownMenuRadioGroup value={value} onValueChange={onValueChange}>
+        <DropdownMenuRadioGroup
+            value={value !== null ? String(value) : ''}
+            onValueChange={(val) => {
+                onValueChange(val === '' ? null : Number(val));
+            }}>
             {options.map(({ value, label }) => (
                 <DropdownMenuRadioItem
-                    key={value}
-                    value={
-                        typeof value === 'number' ? value.toString() : value
-                    }>
+                    key={value ?? 'null'}
+                    value={value !== null ? String(value) : ''}>
                     {label}
                 </DropdownMenuRadioItem>
             ))}

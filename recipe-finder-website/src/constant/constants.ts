@@ -2,6 +2,8 @@ import IconWholeFood from '/images/icon-whole-food-recipes.svg';
 import IconMinimumFuss from '/images/icon-minimum-fuss.svg';
 import IconSearchInSecond from '/images/icon-search-in-seconds.svg';
 
+export const LIMIT = 6;
+
 export const FEATURES_LIST = [
     {
         title: 'Whole-food recipes',
