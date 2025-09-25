@@ -4,12 +4,19 @@ import { Button } from '@/components/ui/button';
 import ArrowDownIcon from '../../../assets/icon-chevron-down.svg';
 import DropdownRadioButton from '@/components/DropdownRadioButton';
 import { useState } from 'react';
+import RecipeCard from './RecipeCard';
+import { useRecipe } from '@/hooks/use-recipe';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useSearchParams } from 'react-router';
 
-// TODO: create recipe card
+// TODO: add pagination
 
 function RecipesList() {
-    const [prepTime, setPrepTime] = useState('');
-    const [cookTime, setCookTime] = useState('');
+    const [prepTime, setPrepTime] = useState<number | null>(null);
+    const [cookTime, setCookTime] = useState<number | null>(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const page = Number(searchParams.get('page') || 1);
+    const { data, isFetching } = useRecipe(page);
     const PREP_TIME_LIST = [
         {
             label: '0 minutes',
@@ -47,10 +54,11 @@ function RecipesList() {
             value: 20,
         },
     ];
+    console.log(prepTime, cookTime);
     return (
-        <div>
-            <div className="flex items-center justify-between">
-                <div className="flex gap-3">
+        <section className="space-y-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+                <div className="flex flex-col md:flex-row max-md:w-full gap-3">
                     <DropdownButton
                         trigger={
                             <Button variant="secondary" size="sm">
@@ -70,7 +78,8 @@ function RecipesList() {
                             variant="ghost"
                             size="xs"
                             rounded="icon"
-                            className="w-full justify-start">
+                            className="w-full justify-start"
+                            onClick={() => setPrepTime(null)}>
                             Clear
                         </Button>
                     </DropdownButton>
@@ -93,14 +102,43 @@ function RecipesList() {
                             variant="ghost"
                             size="xs"
                             rounded="icon"
-                            className="w-full justify-start">
+                            className="w-full justify-start"
+                            onClick={() => setCookTime(null)}>
                             Clear
                         </Button>
                     </DropdownButton>
                 </div>
                 <InputSearch />
             </div>
-        </div>
+            <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                {isFetching
+                    ? Array.from({ length: 6 }).map((_, idx) => (
+                          <Skeleton
+                              key={idx}
+                              className="rounded-10 h-[550px] w-full"
+                          />
+                      ))
+                    : data?.recipes.map(
+                          ({
+                              id,
+                              name,
+                              prepTimeMinutes,
+                              cookTimeMinutes,
+                              servings,
+                              image,
+                          }) => (
+                              <RecipeCard
+                                  key={id}
+                                  imgSrc={image}
+                                  recipeName={name}
+                                  prepTime={prepTimeMinutes}
+                                  cookTime={cookTimeMinutes}
+                                  servings={servings}
+                              />
+                          )
+                      )}
+            </div>
+        </section>
     );
 }
 
