@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router';
 
 function Hero() {
+    const navigate = useNavigate();
     return (
         <section className="space-y-10 lg:space-y-20">
             <div className="flex flex-col items-start lg:items-center gap-10">
@@ -16,7 +18,9 @@ function Hero() {
                         cook tonight—no processed junk, no guesswork.
                     </p>
                 </div>
-                <Button>Start Exploring</Button>
+                <Button onClick={() => navigate('/recipes')}>
+                    Start Exploring
+                </Button>
             </div>
             <div className="bg-neutral-0 p-3 rounded-24">
                 <picture>

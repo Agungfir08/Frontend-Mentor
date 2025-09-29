@@ -17,6 +17,8 @@ const buttonVariants = cva(
                 secondary:
                     'font-semibold text-lg font-nunito -tracking-[0.3px] leading-[150%] text-neutral-900 bg-neutral-0 border border-neutral-300 hover:border-neutral-900',
                 ghost: 'bg-transparent hover:ring-2 hover:ring-neutral-900 font-medium text-base font-nunito-sans -tracking-[0.3px] leading-[150%]',
+                outline:
+                    'ring-2 ring-neutral-900 font-medium text-base font-nunito-sans -tracking-[0.3px] leading-[150%]',
                 link: 'text-primary underline-offset-4 hover:underline',
             },
             size: {

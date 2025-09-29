@@ -4,6 +4,44 @@ import IconSearchInSecond from '/images/icon-search-in-seconds.svg';
 
 export const LIMIT = 6;
 
+export const PREP_TIME_LIST = [
+    {
+        label: '0 minutes',
+        value: 0,
+    },
+    {
+        label: '5 minutes',
+        value: 5,
+    },
+    {
+        label: '10 minutes',
+        value: 10,
+    },
+];
+
+export const COOK_TIME_LIST = [
+    {
+        label: '0 minutes',
+        value: 0,
+    },
+    {
+        label: '5 minutes',
+        value: 5,
+    },
+    {
+        label: '10 minutes',
+        value: 10,
+    },
+    {
+        label: '15 minutes',
+        value: 15,
+    },
+    {
+        label: '20 minutes',
+        value: 20,
+    },
+];
+
 export const FEATURES_LIST = [
     {
         title: 'Whole-food recipes',

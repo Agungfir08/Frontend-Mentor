@@ -26,17 +26,42 @@ export interface RecipeResult {
     limit: number;
 }
 
-export async function fetchRecipe(page: number = 1) {
-    const skip = (page - 1) * LIMIT;
-    const res = await fetch(
-        `https://dummyjson.com/recipes?limit=${LIMIT}&skip=${skip}`
-    );
+const BASE_URL = 'https://dummyjson.com/recipes';
 
-    if (!res.ok) {
-        throw new Error('There is something wrong with the API');
+async function apiFetch<T>(
+    url: string | URL,
+    options?: RequestInit
+): Promise<T> {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
     }
 
-    const data = (await res.json()) as RecipeResult;
+    return response.json() as Promise<T>;
+}
 
-    return data;
+export async function fetchRecipe(
+    page: number = 1,
+    search?: string
+): Promise<RecipeResult> {
+    const endpoint = search && search.trim() !== '' ? '/search' : '';
+    const url = new URL(`${BASE_URL}${endpoint}`);
+
+    url.searchParams.set('limit', String(LIMIT));
+    url.searchParams.set('skip', String((page - 1) * LIMIT));
+
+    if (endpoint === '/search') {
+        url.searchParams.set('q', search!);
+    }
+
+    return apiFetch<RecipeResult>(url);
+}
+
+export async function fetchDetailRecipe(id: number): Promise<Recipe> {
+    return apiFetch<Recipe>(`${BASE_URL}/${id}`);
+}
+
+export async function fetchRecipeByTag(tag: string): Promise<RecipeResult> {
+    return apiFetch<RecipeResult>(`${BASE_URL}/tag/${encodeURIComponent(tag)}`);
 }
