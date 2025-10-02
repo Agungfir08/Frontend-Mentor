@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
 
 @theme {
     --color-gray-950: hsl(0, 0%, 17%);
@@ -9,6 +10,6 @@
 
 @layer base {
     body {
-        @apply font-rubik bg-red-200;
+        @apply font-rubik;
     }
 }

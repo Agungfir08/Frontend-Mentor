@@ -1,13 +1,27 @@
 import ResultComponent from './ResultComponent';
-
-function ResultCard() {
+interface ResultCardProps {
+    data: IpInformationData | undefined;
+}
+function ResultCard({ data }: ResultCardProps) {
     return (
-        <article className="bg-white px-8 py-10 rounded-2xl max-w-[1100px] mx-auto">
-            <div className="grid lg:grid-cols-4 gap-8 lg:*:not-last:border-r lg:*:not-last:border-gray-400">
-                <ResultComponent title="ip address" value="192.168.0.0" />
-                <ResultComponent title="location" value="Brooklyn, NY 10001" />
-                <ResultComponent title="timezone" value="UTC-05:00" />
-                <ResultComponent title="isp" value="SpaceX Starlink" />
+        <article className="bg-white px-8 py-[26px] md:py-10 rounded-2xl max-w-[1100px] mx-auto shadow-md">
+            <div className="grid md:grid-cols-4 gap-6 md:gap-8 md:*:not-last:border-r md:*:not-last:border-gray-400">
+                <ResultComponent title="ip address" value={data?.ip ?? '-'} />
+                <ResultComponent
+                    title="location"
+                    value={
+                        data?.location
+                            ? `${data.location.city}, ${data.location.country}`
+                            : '-'
+                    }
+                />
+                <ResultComponent
+                    title="timezone"
+                    value={
+                        data?.location ? `UTC${data.location.timezone}` : '-'
+                    }
+                />
+                <ResultComponent title="isp" value={data?.isp ?? '-'} />
             </div>
         </article>
     );
