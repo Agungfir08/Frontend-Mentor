@@ -3,11 +3,12 @@ import InputSearch from './components/InputSearch';
 import ResultCard from './components/ResultCard';
 import { fetchIp } from './api/getIp';
 import { fetchIpInformation } from './api/getIpInformation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Map from './components/Map';
 
 function App() {
     const [ipAddress, setIpAddress] = useState('');
+    const mapRef = useRef<HTMLDivElement>(null);
     const { data: initialIp } = useQuery({
         queryKey: ['ip'],
         queryFn: fetchIp,
@@ -19,7 +20,11 @@ function App() {
         }
     }, [initialIp]);
 
-    const { data: ipInformation, isLoading } = useQuery({
+    const {
+        data: ipInformation,
+        isLoading,
+        isSuccess,
+    } = useQuery({
         queryKey: ['ipInformation', ipAddress],
         queryFn: () => fetchIpInformation(ipAddress),
         enabled: !!ipAddress,
@@ -28,6 +33,12 @@ function App() {
     const handleSearch = (searchTerm: string) => {
         setIpAddress(searchTerm);
     };
+
+    useEffect(() => {
+        if (isSuccess && window.innerWidth < 768) {
+            mapRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [isSuccess]);
 
     return (
         <main className="relative">
@@ -42,7 +53,7 @@ function App() {
                     className="w-full h-[300px] md:h-[280px] object-cover"
                 />
             </picture>
-            <div className="absolute top-8 left-6 right-6 space-y-6 lg:space-y-12 z-[50]">
+            <div className="absolute top-6 left-6 right-6 space-y-6 lg:space-y-12 z-[50]">
                 <div className="space-y-[27px]">
                     <h1 className="text-2xl lg:text-[32px] font-semibold -tracking-tight lg:tracking-tight text-white text-center">
                         IP Address Tracker
@@ -52,17 +63,19 @@ function App() {
                 <ResultCard data={ipInformation} />
             </div>
             {isLoading || !ipInformation ? (
-                <div className="flex space-x-2 justify-center items-center h-[calc(100vh-300px)] md:h-[calc(100vh-280px)] bg-white">
+                <div className="flex space-x-2 justify-center items-center h-dvh md:h-[calc(100vh-280px)] bg-white">
                     <span className="sr-only">Loading...</span>
                     <div className="h-8 w-8 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                     <div className="h-8 w-8 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                     <div className="h-8 w-8 bg-gray-400 rounded-full animate-bounce"></div>
                 </div>
             ) : (
-                <Map
-                    lat={ipInformation.location.lat}
-                    lng={ipInformation.location.lng}
-                />
+                <div ref={mapRef}>
+                    <Map
+                        lat={ipInformation.location.lat}
+                        lng={ipInformation.location.lng}
+                    />
+                </div>
             )}
         </main>
     );
