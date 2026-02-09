@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('./assets/fonts/static/JetBrainsMono-BoldItalic.ttf')
+        format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('./assets/fonts/static/JetBrainsMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --color-grey-950: #08070b;
+    --color-grey-900: #14131b;
+    --color-grey-850: #18171f;
+    --color-grey-800: #24232c;
+    --color-grey-700: #54535b;
+    --color-grey-600: #817d92;
+    --color-grey-200: #e6e5ea;
+
+    --color-green-200: #a4ffaf;
+
+    --color-yellow-300: #f8cd65;
+
+    --color-orange-400: #fb7c58;
+
+    --color-red-500: #f64a4a;
+
+    --font-jetbrains-mono: 'JetBrains Mono';
+}
+
+@layer base {
+    body {
+        @apply font-jetbrains-mono bg-linear-to-r from-grey-900 to-grey-950;
+    }
+}
+
+@layer components {
+    .text-preset-one {
+        @apply text-[32px] leading-10.5 tracking-normal;
+    }
+
+    .text-preset-two {
+        @apply text-[24px] leading-8 tracking-normal;
+    }
+
+    .text-preset-three {
+        @apply text-lg leading-6 tracking-normal;
+    }
+
+    .text-preset-four {
+        @apply text-base leading-5 tracking-normal;
+    }
+}
