@@ -5,6 +5,7 @@ import DraggableTodos from './draggable-todos';
 import TodoItem from './todo-item';
 import Loader from './ui/loader';
 import { pluralize } from '../utils/util';
+import { useMemo } from 'react';
 
 const EmptyTodos = () => {
     return (
@@ -38,8 +39,9 @@ const FilterTodos = () => {
 function TodoList() {
     const { todos, isLoading, activeFilter, deleteCompletedTodos } = UseTodos();
 
-    const uncompletedTodos = todos.filter(
-        (todo) => todo.is_completed === false,
+    const uncompletedTodos = useMemo(
+        () => todos.filter((todo) => todo.is_completed === false),
+        [todos],
     );
 
     const renderContent = () => {
