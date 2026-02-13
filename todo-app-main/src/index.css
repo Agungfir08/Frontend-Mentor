@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-purple-800: #393a4b;
+    --color-purple-700: #4d5067;
+    --color-purple-600: #5b5e7e;
+    --color-purple-300: #c8cbe7;
+    --color-purple-100: #e3e4f1;
+
+    --color-gray-600: #9495a5;
+    --color-gray-300: #d1d2da;
+
+    --color-navy-950: #171823;
+    --color-navy-900: #25273d;
+    --color-navy-850: #494c6b --color-blue-500: #3a7cfd;
+
+    --font-josefin: 'Josefin Sans', sans-serif;
+}
+
+@layer base {
+    body {
+        @apply font-josefin bg-gray-50 dark:bg-navy-950;
+    }
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
