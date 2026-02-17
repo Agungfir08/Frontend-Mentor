@@ -49,6 +49,7 @@ const useDictionaryStore = create<DictionaryStoreState>()(
                             });
                         })
                         .catch((error) => {
+                            console.error(error);
                             set({ isError: true });
                         })
                         .finally(() => set({ isLoading: false }));
