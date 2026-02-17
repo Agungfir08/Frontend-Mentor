@@ -79,11 +79,47 @@
     --font-lora: 'Lora', serif;
     --font-inter: 'Inter', sans-serif;
     --font-inconsolata: 'Inconsolata', monospace;
+
+    --animate-spin-box: spin-box 2s linear infinite;
+    --animate-audio-animate: audio-animate 0.5s;
+
+    @keyframes spin-box {
+        0% {
+            transform: scale(1) rotate(0);
+        }
+        20%,
+        25% {
+            transform: scale(1.3) rotate(90deg);
+        }
+        45%,
+        50% {
+            transform: scale(1) rotate(180deg);
+        }
+        70%,
+        75% {
+            transform: scale(1.3) rotate(270deg);
+        }
+        95%,
+        100% {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @keyframes audio-animate {
+        0% {
+            transform: rotate(-180deg) scale(0);
+            opacity: 0;
+        }
+
+        50% {
+            transform: rotate(-10deg) scale(1.2);
+        }
+    }
 }
 
 @layer base {
     body {
-        @apply max-w-184 mx-auto! py-14.5! px-6! md:px-10! lg:px-0!  bg-neutral-0 dark:bg-neutral-950 font-inter;
+        @apply max-w-184 mx-auto! py-6! md:py-14.5! px-6! md:px-10! lg:px-0!  bg-neutral-0 dark:bg-neutral-950;
     }
 }
 

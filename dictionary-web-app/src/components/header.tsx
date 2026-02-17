@@ -5,7 +5,7 @@ import SwitchTheme from './switch-theme';
 function Header() {
     return (
         <header className="flex items-center justify-between">
-            <img src={Logo} alt="logo" className="w-8 h-auto" />
+            <img src={Logo} alt="logo" className="w-8 h-auto select-none" />
             <div className="flex items-center gap-4 md:gap-6">
                 <Dropdown />
                 <div className="w-px self-stretch bg-neutral-200"></div>

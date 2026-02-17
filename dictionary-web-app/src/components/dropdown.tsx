@@ -6,15 +6,22 @@ import {
     DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import ArrowIcon from '../assets/images/icon-arrow-down.svg';
+import useDictionaryStore from '@/store/dictionary-store';
+import { FONT_TYPES } from '@/lib/constants';
 
 function Dropdown() {
+    const fontType = useDictionaryStore((s) => s.fontType);
+    const onChangeFontType = useDictionaryStore((s) => s.onChangeFontType);
+
+    const selecttedFont = FONT_TYPES.find((font) => font.value === fontType);
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild className="group">
                 <Button
                     variant="ghost"
-                    className="font-bold text-sm md:text-lg p-0">
-                    Sans Serif
+                    className="font-bold text-sm md:text-lg p-0 focus-visible:ring-0 select-none">
+                    {selecttedFont?.label}
                     <img
                         src={ArrowIcon}
                         alt="arrow icon"
@@ -23,13 +30,14 @@ function Dropdown() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuItem className="font-inter">
-                    Sans Serif
-                </DropdownMenuItem>
-                <DropdownMenuItem className="font-lora">Serif</DropdownMenuItem>
-                <DropdownMenuItem className="font-inconsolata">
-                    Mono
-                </DropdownMenuItem>
+                {FONT_TYPES.map(({ label, className, value }) => (
+                    <DropdownMenuItem
+                        key={value}
+                        className={className}
+                        onClick={() => onChangeFontType(value as FontType)}>
+                        {label}
+                    </DropdownMenuItem>
+                ))}
             </DropdownMenuContent>
         </DropdownMenu>
     );
