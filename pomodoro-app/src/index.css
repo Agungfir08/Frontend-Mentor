@@ -31,7 +31,15 @@
 
 @layer base {
     body {
-        @apply bg-blue-850 font-kumbh-sans;
+        @apply bg-blue-850 font-kumbh-sans px-6!;
+    }
+}
+
+@layer utilities {
+    .number-input::-webkit-outer-spin-button,
+    .number-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 }
 

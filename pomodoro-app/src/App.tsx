@@ -1,3 +1,4 @@
+import SettingDialog from './components/setting-dialog';
 import TabMenu from './components/tab-menu';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
                 podomoro
             </h1>
             <TabMenu />
+            <SettingDialog />
         </main>
     );
 }
