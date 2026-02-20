@@ -18,7 +18,6 @@ function InputTime({ label, id, onUP, onDown, ...props }: InputTimeProps) {
                 <input
                     type="number"
                     id={id}
-                    name={id}
                     min={0}
                     max={60}
                     className="w-full pl-4 py-4 pr-7 text-[13px] font-bold bg-blue-50 rounded-md tracking-[5px] outline-none number-input"
