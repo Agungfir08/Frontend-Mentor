@@ -9,6 +9,7 @@ const usePomodoro = create<PomodoroStoreState>()(
     subscribeWithSelector(
         persist(
             (set) => ({
+                activeTab: 'pomodoro',
                 timer: {
                     pomodoro: 0,
                     shortBreak: 0,
@@ -16,29 +17,10 @@ const usePomodoro = create<PomodoroStoreState>()(
                 },
                 font: 'kumbh-sans',
                 color: 'red',
-                handleTimerUp: (name) =>
-                    set((state) => ({
-                        timer: {
-                            ...state.timer,
-                            [name]: state.timer[name] + 1,
-                        },
-                    })),
-                handleTimerDown: (name) =>
-                    set((state) => ({
-                        timer: {
-                            ...state.timer,
-                            [name]: Math.max(0, state.timer[name] - 1),
-                        },
-                    })),
-                handleTimerChanges: (name, value) =>
-                    set((state) => ({
-                        timer: {
-                            ...state.timer,
-                            [name]: value,
-                        },
-                    })),
-                selectColor: (color) => set({ color: color }),
-                selectFont: (font) => set({ font: font }),
+                setActiveTab: (tab) => set({ activeTab: tab }),
+                setTimer: (timer) => set({ timer: timer }),
+                setColor: (color) => set({ color: color }),
+                setFont: (font) => set({ font: font }),
             }),
             {
                 name: 'pomodoro-app',

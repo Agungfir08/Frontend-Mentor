@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { CheckIcon } from 'lucide-react';
 
 interface RadioButtonProps
     extends
@@ -16,6 +17,7 @@ const radioButtonVariant = cva(
             variant: {
                 tab: 'text-xs md:text-sm font-bold leading-5 text-blue-100 has-checked:text-blue-850 transition-colors duration-350 delay-50 bg-transparent h-12 w-26.25 md:w-30 z-10',
                 font: 'bg-blue-50 has-checked:bg-blue-900 has-checked:text-white size-10 rounded-full text-base hover:ring-2 hover:ring-blue-50 hover:ring-offset-2 text-blue-850 transition-colors has-checked:hover:ring-0',
+                color: 'size-10 rounded-full hover:ring-2 hover:ring-blue-50 hover:ring-offset-2 has-checked:hover:ring-0',
             },
         },
         defaultVariants: {
@@ -32,8 +34,12 @@ function RadioButton({
 }: RadioButtonProps) {
     return (
         <label className={cn(radioButtonVariant({ variant, className }))}>
-            <input type="radio" className="appearance-none" {...props} />
-            {label}
+            <input type="radio" className="appearance-none peer" {...props} />
+            {variant === 'color' ? (
+                <CheckIcon className="size-4 opacity-0 peer-checked:opacity-100 transition-all ease-in-out duration-250" />
+            ) : (
+                label
+            )}
         </label>
     );
 }

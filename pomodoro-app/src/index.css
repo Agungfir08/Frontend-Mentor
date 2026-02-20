@@ -30,8 +30,14 @@
 }
 
 @layer base {
+    html,
+    body,
+    #root {
+        height: 100%;
+        box-sizing: border-box;
+    }
     body {
-        @apply bg-blue-850 font-kumbh-sans px-6!;
+        @apply min-h-screen bg-blue-850 font-kumbh-sans px-6! pt-8! pb-12! md:pt-20! md:pb-27! lg:py-12!;
     }
 }
 
