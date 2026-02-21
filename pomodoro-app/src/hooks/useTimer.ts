@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export function useTimer(initialSeconds: number) {
+export function useTimer(timer: TIMER, tab: ActiveTabsType) {
+    const initialSeconds = timer[tab] * 60;
     const [time, setTime] = useState(initialSeconds);
     const [timerState, setTimerState] = useState<TimerState>('idle');
 
@@ -36,7 +37,7 @@ export function useTimer(initialSeconds: number) {
         };
         setTime(initialSeconds);
         setTimerState('idle');
-    }, [initialSeconds]);
+    }, [tab]);
 
     useEffect(() => clearTimer, []);
 

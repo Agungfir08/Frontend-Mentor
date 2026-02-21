@@ -23,8 +23,10 @@ const PROGRESS_COLOR: Record<COLOR_OPTIONS, string> = {
 function Timer() {
     const { timer, activeTab, color } = usePomodoro();
     const timerInSecond = timer[activeTab] * 60;
-    const { time, startTimer, timerState, pauseTimer, resetTimer } =
-        useTimer(timerInSecond);
+    const { time, startTimer, timerState, pauseTimer, resetTimer } = useTimer(
+        timer,
+        activeTab,
+    );
 
     const isMobile = useIsMobile();
     const { play, stop } = useSound(AlarmSound);
